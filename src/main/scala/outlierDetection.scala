@@ -4,12 +4,16 @@ import org.apache.spark.sql._
 import org.apache.spark.sql.catalyst.encoders
 import com.thesamet.spatial
 import com.thesamet.spatial._
+import org.apache.spark.sql.SQLContext
+import org.apache.spark.sql.functions._
+import org.apache.spark.sql.Encoders
+import scala.util.matching.Regex
 
-/*case class DataItem(id:Int,Alcohol:Double, Malicacid:Double,Ash:Double,
+case class DataItem(Alcohol:Double, Malicacid:Double,Ash:Double,
         AlcalinityOfash:Double,Magnesium:Double, TotalPhenols:Double,
         Flavanoids:Double, NonflavanoidPhenols:Double, Proanthocyanins:Double,
-        ColorIntensity:Double,Hue:Double, dilutedWines:Double, Proline:Double );*/
-case class DataItem(id:Int,Z:Double,Y:Double,X:Double,celsius:Double,eda:Double);
+        ColorIntensity:Double,Hue:Double, dilutedWines:Double, Proline:Double );
+//case class DataItem(id:Int,Z:Double,Y:Double,X:Double,celsius:Double,eda:Double);
 case class Window(width:Double,slide:Int);
 case class DataPoint(id:Int,preNeig:Seq[Int],succNeigNum:Int,expTime:Double);
 case class Event(time:Int,id:Int);
@@ -25,16 +29,11 @@ object outlierDetection {
     val sc = new SparkContext(conf);
     val sqlContext = new org.apache.spark.sql.SQLContext(sc);
     
-    import sqlContext.implicits._
-        
-    val dataFromText = sqlContext.read.text(nn).as[String];    
-    val ds = dataFromText.map(line => {
-    			val cols = line.split(","); // parse each line
-    			DataItem(cols(0).toInt, cols(1).toDouble, cols(2).toDouble, 
-    			    cols(3).toDouble, cols(4).toDouble, cols(5).toDouble);
-    		});
-    ds.show();
-    println(ds.count);
+   
+    //val ds = sqlContext.read.text(nn).as[DataItem];     
+
+   
+    /*
     var evtQue=Seq(Event(0,0)).toDS;
     var firstDataItem=Seq(ds.first).toDS;
     var pt=DataPoint(ds.first.id,Seq(ds.first.id),0,window.width);
@@ -42,19 +41,62 @@ object outlierDetection {
     var leftDs=ds.subtract(firstDataItem);
    
     while (leftDs.count>0) {  
-      var dataSetForKNN=ptInWindow.select($"Z".as[Double],$"Y".as[Double],$"X".as[Double],
+      var dataSetForKNN=ptInWindow.select($"Z_axis".as[Double],
+          $"Y_axis".as[Double],$"X_axis".as[Double],
           $"celsius".as[Double],$"eda".as[Double]).collect();
       var tempdata= for (i<-0 to (dataSetForKNN.length - 1)){
     	  val di= dataSetForKNN.apply(i);
-    	  yield (di(0),di(1),di(2),di(3),di(4));
+    	  //yield (di(0),di(1),di(2),di(3),di(4));
     	  //yield(dataSetForKNN.apply(i)(0),dataSetForKNN.apply(i)(1));
-    	  };
-      
+    	  };     
       
     	//val t = KDTree.fromSeq();
     	firstDataItem=Seq(ds.first).toDS;
     	leftDs=leftDs.subtract(firstDataItem)
-    }
+    }*/
+  }
+  def clean(srcFile:String,objFile:String,sqlContext:SQLContext){
+	  //val sqlContext = new SQLContext(sc);
+	  val df = sqlContext.read
+			  .format("com.databricks.spark.csv")
+			  .option("delimiter",",")
+			  .option("header", "true") // Use first line of all files as header
+			  .option("inferSchema", "true") // Automatically infer data types
+			  .load(srcFile);   //"cars.csv"
+	  val newDf=df.groupBy("year","month","day","hour")
+			  .agg(avg(col("Z_axis")), avg(col("Y_axis")),avg(col("X_axis")),
+	      avg(col("Celsius")),avg(col("EDA"))
+	      ).sort("year", "month","day","hour");
+	  
+	  newDf.write
+	  .format("com.databricks.spark.csv")
+	  .option("header", "true")
+	  .save(objFile);  //"newcars.csv"
+  }
+  def myRead[T](srcFile:String,delimiter:String,sqlContext:SQLContext) {
+	  import sqlContext.implicits._
+	  var tPattern=new Regex("\\.csv");
+	  var existOrNot=tPattern findFirstIn srcFile;	  
+
+	  if (!existOrNot.isEmpty){
+		  val df = sqlContext.read
+				  .format("com.databricks.spark.csv")
+				  .option("delimiter",",")
+				  .option("header", "true") // Use first line of all files as header
+				  .option("inferSchema", "true") // Automatically infer data types
+				  .load(srcFile);   //"cars.csv"
+	  } else {
+		  val dataFromText = sqlContext.read.text(srcFile).as[String]; //String
+		  val ds = dataFromText.map(line => {
+			  var cols = line.split(","); // parse each line
+			  cols;
+			  //DataItem(cols(0).toInt, cols(1).toDouble, cols(2).toDouble, 
+				//	  cols(3).toDouble, cols(4).toDouble, cols(5).toDouble);
+		  });
+		  ds.show();
+		  println(ds.count); 
+	  }    
+
   }
 }
 
