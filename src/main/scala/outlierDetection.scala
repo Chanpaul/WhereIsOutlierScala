@@ -28,7 +28,7 @@ object outlierDetection {
 	  val outlierParam=OutlierParam(12.62,6);
 	  val conf = new SparkConf().setAppName("WhereIsOutlier")
 			  .setMaster("local[2]")
-			  .setJars(Seq("/a/b/x.jar", "/c/d/y.jar"));
+			  //.setJars(Seq("/a/b/x.jar", "/c/d/y.jar"));
 	  val sc = new SparkContext(conf);
 	  val sqlContext = new org.apache.spark.sql.SQLContext(sc);
 	  cod(dataDir,sqlContext,window,outlierParam);
@@ -52,14 +52,26 @@ object outlierDetection {
   def cod(dataDir:String,sqlContext:SQLContext,window:Window,outlierParam:OutlierParam){
     import sqlContext.implicits._;
     val dataFile=dataDir+"//Patient1.csv//"+"part-00000";
-	  val ds = sqlContext.read.text(dataFile).as[DataItem];     
+    //val ds=sqlContext.read.text(dataFile).as[String].map(_.split(","));
+	  val df = sqlContext.read
+				  .format("com.databricks.spark.csv")
+				  .option("delimiter",",")
+				  .option("header", "true") // Use first line of all files as header
+				  .option("inferSchema", "true") // Automatically infer data types
+				  .load(dataFile);   //"cars.csv"  
+	  var colName=df.columns;
+	  var colType=df.dtypes;
+	  colType.map(x=>println(x._1,x._2))
+	  //colName.map(x=>println(x));
+	  //df.show(2);
+	  
     var evtQue=Seq(Event(0,0)).toDS;
-    var firstDataItem=Seq(ds.first).toDS;
-    var id=ds.first.year+ds.first.month+ds.first.day+ds.first.hour;
+    var firstDataItem=df.first;
+    
+    var id=df.first.year+df.first.month+df.first.day+df.first.hour;
     var pt=DataPoint(id,Seq(id),0,window.width+0);
     var ptInWindow=Seq(pt).toDS;
-    var leftDs=ds.subtract(firstDataItem);
-   
+    var leftDs=ds.subtract(firstDataItem);   
     while (leftDs.count>0) {  
       var dataSetForKNN=ptInWindow.select($"Z_axis".as[Double],
           $"Y_axis".as[Double],$"X_axis".as[Double],
@@ -171,9 +183,7 @@ object outlierDetection {
 		  }
 	  }
 
-  }
-  
-   
+  } 
    
   
   def clean(srcFile:String,objFile:String,sqlContext:SQLContext){	  
