@@ -5,6 +5,7 @@ version := "1.0"
 scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
+  "com.databricks" %% "spark-csv_2.11" % "1.2.0",
   "org.scalanlp" %% "breeze" % "0.12",
   "org.scalanlp" %% "breeze-natives" % "0.12",
   "org.scalanlp" %% "breeze-viz" % "0.12",
@@ -30,12 +31,14 @@ libraryDependencies ++= Seq(
   //"com.datastax.spark" %% "spark-cassandra-connector" % "1.0.0-rc5",
   //"com.datastax.spark" %% "spark-cassandra-connector-java" % "1.0.0-rc5",
   "com.github.scopt" %% "scopt" % "3.2.0",
-  "org.scalatest" %% "scalatest" % "2.2.1" % "test"
+  "org.scalatest" %% "scalatest" % "2.2.1" % "test",
   //"com.holdenkarau" %% "spark-testing-base" % "0.0.1" % "test" 
+  "com.thesamet" %% "kdtree" % "1.0.4"
 )
 
 resolvers ++= Seq(
   "bintray-spark-packages" at "https://dl.bintray.com/spark-packages/maven/",
+  "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/",
   "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
   "Sonatype Releases" at "https://oss.sonatype.org/content/repositories/releases/",
   "JBoss Repository" at "http://repository.jboss.org/nexus/content/repositories/releases/",
