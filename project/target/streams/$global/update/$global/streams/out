@@ -1,4 +1,4 @@
-[0m[[0minfo[0m] [0mUpdating {file:/D:/Wangjin/UmassMed/Code/scala/WhereIsOutlierScala/project/}whereisoutlierscala-build...[0m
+[0m[[0minfo[0m] [0mUpdating {file:/C:/Users/wangc/workspace/WhereIsOutlierScala/project/}whereisoutlierscala-build...[0m
 [0m[[0mdebug[0m] [0m:: resolving dependencies :: default#whereisoutlierscala-build;0.1-SNAPSHOT[0m
 [0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool][0m
 [0m[[0mdebug[0m] [0m	validate = true[0m
@@ -2544,19 +2544,19 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.11!apply-macro.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.6!jline.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 3415ms :: artifacts dl 234ms[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT compile produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-compile.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT runtime produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-runtime.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT test produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-test.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT provided produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-provided.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT optional produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-optional.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT compile-internal produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-compile-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT runtime-internal produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-runtime-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT test-internal produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-test-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT plugin produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-plugin.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT sources produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-sources.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT docs produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-docs.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT pom produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-pom.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT scala-tool produced in D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (3415ms resolve - 234ms download)[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 4751ms :: artifacts dl 47ms[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT compile produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT runtime produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT test produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT provided produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT optional produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT compile-internal produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT runtime-internal produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT test-internal produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT plugin produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT sources produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT docs produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT pom produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-pom.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#whereisoutlierscala-build;0.1-SNAPSHOT scala-tool produced in C:\Users\wangc\workspace\WhereIsOutlierScala\project\target\resolution-cache\reports\default-whereisoutlierscala-build-scala-tool.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (4751ms resolve - 47ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m
