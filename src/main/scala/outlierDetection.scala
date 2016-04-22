@@ -12,12 +12,22 @@ import java.io.File
 import java.io.File._
 import java.util.Scanner
 import java.io._
+import scala.math
+/***************data structure*******************
+ * distMap: Map(id1,id2->distance);
+ * ptInfoInWindow:  Map(id->DataPoint)
+ *ptInWindow: Map(id->dataAttributeItem), dataAttributeItem is row data structure;
+ *  
+ */
+ 
+ 
+
 
 case class DataItem(year:String,month:String,day:String,hour:String,
 		Z:Double,Y:Double,X:Double,celsius:Double,eda:Double);
 case class Window(width:Double,slide:Int);
-case class DataPoint(id:String,preNeig:Seq[String],succNeigNum:Int,expTime:Double);
-case class Event(time:Int,id:Int);
+case class PtInfo(id:String,preNeig:Seq[String],succNeigNum:Int,expTime:Double);
+case class Event(time:Int,id:String);
 case class OutlierParam(R:Double,k:Int);    //R radius, k number of neighbors;
 
 object outlierDetection {
@@ -61,32 +71,64 @@ object outlierDetection {
 				  .load(dataFile);   //"cars.csv"  
 	  var colName=df.columns;
 	  var colType=df.dtypes;
-	  colType.map(x=>println(x._1,x._2))
+	  colType.map(x=>println(x._1,x._2));
 	  //colName.map(x=>println(x));
 	  //df.show(2);
-	  
-    var evtQue=Seq(Event(0,0)).toDS;
+	  var evtQue=Seq(Event(0,"0")).toDS;	 
     var firstDataItem=df.first;
+    var id="1";
+    var distMap=Map(id+","+id->0.0);   //distance matrix;
+    var tPtInfo=PtInfo(id,Seq(id),0,window.width+0);  
+    var ptInfo=Map(id->tPtInfo);    
+    var ptInWindow=Map(id->df.first);  //can also use tuple like (id,df.first)    
+	  var ptCount=1;	 
+	  
+	  while(ptCount<df.count) {
+	    ptCount+=1;
+	    var curPt= df.head(ptCount).last;	
+	    var ptLen=curPt.length;
+	    ptInWindow=ptInWindow+(ptCount.toString->curPt);
+	    id=ptCount.toString;    
+	    tPtInfo=PtInfo(id,Seq(id),0,window.width+ptCount);
+	    ptInfo=Map(id->tPtInfo);
+	    var keyIte=ptInWindow.keysIterator;
+	    /******************update the distance map*************************/
+	    for (it<-keyIte){
+	      var tsum=0.0
+	    	for (i<-0 to (ptLen-1)){
+	    	  var temp=ptInWindow(it).getDouble(i)-curPt.getDouble(i)
+	    		tsum=tsum+scala.math.pow(temp,2.0);	    		
+	    	}  
+	      distMap=distMap+(it+","+id->scala.math.sqrt(tsum));
+	    } 
+	    /**********************End of update distance map*********************/
+	    /**********************find neighbors********************************/
+	    var strPat=new Regex(id);
+	    keyIte=distMap.keysIterator;
+	    for(it<-keyIte){
+	    	var isExist=strPat findFirstIn it;
+	    	if (!isExist.isEmpty && distMap(it)<outlierParam.R){
+	    	  
+	    	}
+	    	
+	    }
+	    
+	    /********************End of finding Neighbors**************************/
+	    
+	    if (ptInWindow.size>window.width){
+	      departure();
+	    }  
+	    /*For arrival*/
+	    val resUponArr=arrival(curPt,ptInWindow,ptInfo,distMap,evtQue);
+	    
+	    /*end of arrival*/
+	  }       
     
-    var id=df.first.year+df.first.month+df.first.day+df.first.hour;
-    var pt=DataPoint(id,Seq(id),0,window.width+0);
-    var ptInWindow=Seq(pt).toDS;
-    var leftDs=ds.subtract(firstDataItem);   
-    while (leftDs.count>0) {  
-      var dataSetForKNN=ptInWindow.select($"Z_axis".as[Double],
-          $"Y_axis".as[Double],$"X_axis".as[Double],
-          $"celsius".as[Double],$"eda".as[Double]).collect();
-      var tempdata= for (i<-0 to (dataSetForKNN.length - 1)){
-    	  val di= dataSetForKNN.apply(i);
-    	  //yield (di(0),di(1),di(2),di(3),di(4));
-    	  //yield(dataSetForKNN.apply(i)(0),dataSetForKNN.apply(i)(1));
-    	  };     
-      
-    	//val t = KDTree.fromSeq();
-    	firstDataItem=Seq(ds.first).toDS;
-    	leftDs=leftDs.subtract(firstDataItem)
-    }
   }
+  def departure(){
+    
+  }
+  
   def sortAndAgg(srcFile:String,objFile:String,sqlContext:SQLContext)  {    
   
 	  val df = sqlContext.read
