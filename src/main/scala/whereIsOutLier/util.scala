@@ -4,13 +4,13 @@ import org.apache.spark.sql
 import org.apache.spark.sql._
 import org.apache.spark.sql.functions._
 import com.typesafe.config._
-case class Window(width:Double,slideLen:Int);
-case class OutlierParam(typ:String,R:Double,k:Int);
+
 
 trait util { 
-	implicit var colName:Array[String];
-	implicit var colType:Array[(String,String)]; 
-  var distMap:Map[String,Double];   //distance matrix; 
+  case class Window(width:Double,slideLen:Int);
+  case class OutlierParam(typ:String,R:Double,k:Int);
+	//implicit var colName:Array[String];
+	//implicit var colType:Array[(String,String)];   
 	def getAttr(typ:String)={
     typ match {
     case "IntegerType" => (r:Row,attrName:String)=>{r.getAs[Int](attrName).toDouble}
@@ -28,5 +28,6 @@ trait util {
 	  }
 	  return(tsum);
   }
+  
     
 }

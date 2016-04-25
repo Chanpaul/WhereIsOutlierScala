@@ -17,76 +17,124 @@ import java.io._
 import scala.math
 import com.typesafe.config._    //config need
 import scala.util.control._     //break need
+import org.github.jamm
 
 //case class Slide(slidId:Int,element:Seq[String],expTriger:Seq[String]);
 case class Evidence(succ:Int,lastSlid:Int,prev:Map[Int,Int],checkOnLeave:Int,status:String);
 case class LeapPtInfo(id:String,slideID:Int,startTime:Double,content:Row);
 
 object leap extends util{
-  var window=Window(12.0,1);  //width=12.0,slide=1;	  
-  var outlierParam=OutlierParam("ThreshOutlier",12.62,6); 
-  
+  private var window=Window(12.0,1);  //width=12.0,slide=1;	  
+  private var outlierParam=OutlierParam("ThreshOutlier",12.62,6); 
+  private var distMap=scala.collection.mutable.Map[String,Double]();   //global variable
+  private var ptInWindow=Map[String,LeapPtInfo]();
+  private var ptEvidence=Map[String,Evidence]();
+  implicit var colName=Array[String]();
+	implicit var colType=Array[(String,String)](); 
+	private var srcDataDir="";
+	private var srcDataFileName="";
+	private var resDataDir="";
+	private var resDataFileName="";
   def setConfig(config:Config){
     outlierParam=OutlierParam(config.getString("outlier.typ"),
         config.getDouble("outlier.R"),
         config.getInt("outlier.k")); 
     window=Window(config.getDouble("win.width"),
 			  config.getInt("win.slideLen"));
+    srcDataDir=config.getString("dataset.directory");
+    srcDataFileName=config.getString("dataset.dataFile")
+    resDataDir=config.getString("outlier.directory")
+    resDataFileName=config.getString("dataset.fileName");
+  }
+  def printOutlier(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){        
+    var outliers=ptEvidence.filter(_._2.status=="Outlier").map(_._1);
+    writer.write(s"From $from to $to, the ourliers are: $outliers,"
+        +s"time usage is: $memUsage,"
+        +s"time usage is: $cpuUsage"
+        +"\n");    
   }
   
-  def leapMain(dataFile:String,sqlContext:SQLContext){    
+  def leapMain(sqlContext:SQLContext){    
+    import sqlContext.implicits._;
+    val dataFile=srcDataDir+"//Patient1.csv//"+srcDataFileName;
 	  val df = sqlContext.read
 				  .format("com.databricks.spark.csv")
 				  .option("delimiter",",")
 				  .option("header", "true") // Use first line of all files as header
 				  .option("inferSchema", "true") // Automatically infer data types
 				  .load(dataFile);   //"cars.csv"  
-	  implicit var colName=df.columns;
-	  implicit var colType=df.dtypes;	  
+	  colName=df.columns;
+	  colType=df.dtypes;	  
 	  
     var firstDataItem=df.first;
     var id="1";
-    distMap=distMap+(id+","+id->0.0);   //distance matrix;
+    //distMap=distMap+(id+","+id->0.0);   //distance matrix;
     var tPtInfo=LeapPtInfo(id,1,1.0,df.first);      
-    var ptInWindow=Map(id->tPtInfo);  //can also use tuple like (id,df.first)    
+    //ptInWindow=ptInWindow+(id->tPtInfo);  //can also use tuple like (id,df.first)    
 	  var ptCount=1;	
 	  var outliers=Seq("none");
-	  
-	  while(ptCount<df.count) {
-	    thresh(ptInWindow,ptEvidence);
+	  var slideUnit=Map(id->tPtInfo);
+	  var slideId=1;
+	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
+	  while(ptCount<df.count) {	    
+	    var curPt= df.head(ptCount).last;	
+	    id=ptCount.toString;    
+	    tPtInfo=LeapPtInfo(id,slideId,ptCount.toDouble,curPt);	  	    
+	    slideUnit=slideUnit+(id->tPtInfo);
+	    
+	    if (slideUnit.size==window.slideLen){	      
+	      ptInWindow=ptInWindow++slideUnit;
+	      slideUnit=slideUnit.empty;
+	      slideId=slideId+1;
+	      var begTime=System.nanoTime;
+	      //var meter=new MemoryMeter;
+	      var runtime=Runtime.getRuntime();
+	      var mem1=runtime.freeMemory();
+	      thresh();  
+	      var mem2=runtime.freeMemory();
+	      var cpuUsage=(System.nanoTime-begTime)/1000000000.0;
+	      var memUsage=math.abs(mem1-mem2)/(1024*1024);
+	      var from=ptInWindow.map(_._2.startTime).min.toString;
+	      var to=ptInWindow.map(_._2.startTime).max.toString;
+	      printOutlier(writer,from,to,memUsage,cpuUsage);
+	    }	    
+	    ptCount=ptCount+1;
 	  }
-	  
+	  writer.close;
   }
-  def thresh(ptInWindow:Map[String,LeapPtInfo],ptEvidence:Map[String,Evidence]){
-    var tempPtInWindow=ptInWindow;
-    var tempPtEvidence=ptEvidence;
-    
-    var maxID=ptInWindow.map(_._2.slideID).max;
-    var minID=ptInWindow.map(_._2.slideID).min;
-    for(it<-ptInWindow.filter(_._2.slideID==maxID).iterator){
-      tempPtEvidence=tempPtEvidence-it._1;
-    	var curPtEvi=leap(it._1,ptInWindow.filter(_._2.slideID!=minID),ptEvidence); 
-    	tempPtEvidence=tempPtEvidence+(it._1->curPtEvi);
+  def thresh(){
+    var newSlidID=ptInWindow.map(_._2.slideID).max;
+    var expSlidID=0;
+    if (ptInWindow.size>window.width){    	
+    	var expSlidID=ptInWindow.map(_._2.slideID).min;    	
+    	ptInWindow=ptInWindow.filter(_._2.slideID!=expSlidID);
+    	ptEvidence=ptEvidence.filter(x=>ptInWindow.contains(x._1));
     }
-    for(it<-ptEvidence.filter(_._2.checkOnLeave==minID).iterator){
-      var curPtEvi=it._2.prev-minID;
-      var newPtEvi=leap(it._1,ptInWindow,ptEvidence);
-      
-      //it._1;
-      tempPtEvidence=tempPtEvidence-it._1;
-    	var curPtEvi=leap(it._1,ptInWindow.filter(_._2.slideID!=minID),ptEvidence); 
-    	tempPtEvidence=tempPtEvidence+(it._1->curPtEvi);
+    for(it<-ptInWindow.filter(_._2.slideID==newSlidID).iterator if(!ptEvidence.exists(_._1==it._1))){
+    	var curPtEvi=leapThresh(it._1,ptInWindow.filter(_._2.slideID!=expSlidID),ptEvidence); 
+    	ptEvidence=ptEvidence+(it._1->curPtEvi);
     }
-    
+    for(it<-ptEvidence.filter(_._2.checkOnLeave==expSlidID).iterator){
+      ptEvidence=ptEvidence-it._1;  
+      var tempEvi=Evidence(it._2.succ,it._2.lastSlid,it._2.prev-expSlidID,it._2.checkOnLeave,it._2.status);
+      ptEvidence=ptEvidence+(it._1->tempEvi);
+      var newEvi=leapThresh(it._1,ptInWindow,ptEvidence);
+    }    
   }
   def knn(){
     
   }
-  def leap(ptId:String,ptInWindow:Map[String,LeapPtInfo],ptEvidence:Map[String,Evidence]):Evidence={
-    var temprev=ptEvidence(ptId).prev;
-    var checkOnLeave=ptEvidence(ptId).checkOnLeave;
-    var status=ptEvidence(ptId).status;
-    var succ=ptEvidence(ptId).succ;
+  def leapThresh(ptId:String,ptInWindow:Map[String,LeapPtInfo],ptEvidence:Map[String,Evidence]):Evidence={
+    var temprev=Map[Int,Int]();
+    var checkOnLeave=0;
+    var status="Outlier";
+    var succ=0;
+    if (ptEvidence.contains(ptId)){
+    	temprev=ptEvidence(ptId).prev;
+    	checkOnLeave=ptEvidence(ptId).checkOnLeave;
+    	status=ptEvidence(ptId).status;
+    	succ=ptEvidence(ptId).succ;
+    }  
     
     val loop = new Breaks;
     var tempID=ptInWindow(ptId).slideID;

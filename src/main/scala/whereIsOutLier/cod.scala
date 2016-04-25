@@ -22,16 +22,27 @@ case class Event(time:Double,id:String);
 object cod extends util{ 
   var window=Window(12.0,1);  //width=12.0,slide=1;	  
   var outlierParam=OutlierParam("ThreshOutlier",12.62,6);
+  var distMap=scala.collection.mutable.Map[String,Double]();
+  implicit var colName=Array[String]();
+	implicit var colType=Array[(String,String)]();
+	var srcDataDir="";
+	var srcDataFileName="";
+	var resDataDir="";
+	var resDataFileName="";
   def setConfig(config:Config){
     outlierParam=OutlierParam(config.getString("outlier.typ"),
         config.getDouble("outlier.R"),
         config.getInt("outlier.k")); 
     window=Window(config.getDouble("win.width"),
 			  config.getInt("win.slideLen"));
+    srcDataDir=config.getString("dataset.directory");
+    srcDataFileName=config.getString("dataset.dataFile")
+    resDataDir=config.getString("outlier.directory")
+    resDataFileName=config.getString("outlier.fileName");
   }
-  def detect(dataDir:String,sqlContext:SQLContext){
+  def detect(sqlContext:SQLContext){
     import sqlContext.implicits._;
-    val dataFile=dataDir+"//Patient1.csv//"+"part-00000";
+    val dataFile=srcDataDir+"//Patient1.csv//"+srcDataFileName;
     //val ds=sqlContext.read.text(dataFile).as[String].map(_.split(","));
 	  val df = sqlContext.read
 				  .format("com.databricks.spark.csv")
@@ -39,15 +50,15 @@ object cod extends util{
 				  .option("header", "true") // Use first line of all files as header
 				  .option("inferSchema", "true") // Automatically infer data types
 				  .load(dataFile);   //"cars.csv"  
-	  var colName=df.columns;
-	  var colType=df.dtypes;
+	  colName=df.columns;
+	  colType=df.dtypes;
 	  colType.map(x=>println(x._1,x._2));
 	  //colName.map(x=>println(x));
 	  //df.show(2);
 	  var evtQue=Seq(Event(0.0,"0")).toDS;	 
     var firstDataItem=df.first;
     var id="1";
-    var distMap=Map(id+","+id->0.0);   //distance matrix;
+    distMap=distMap+(id+","+id->0.0);   //distance matrix;
     var tPtInfo=PtInfo(id,Seq(id),0,1,window.width+1);  
     var ptInfo=Map(id->tPtInfo);    
     var ptInWindow=Map(id->df.first);  //can also use tuple like (id,df.first)    

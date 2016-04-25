@@ -31,7 +31,7 @@ case class DataItem(year:String,month:String,day:String,hour:String,
 object outlierDetection {
   
   def main(args:Array[String]){
-	  val dataDir="C://Users//wangc//DataSet//CleanedData";
+	  //val dataDir="C://Users//wangc//DataSet//CleanedData";
 	  //val window=Window(12.0,1);  //width=12.0,slide=1;  
 	  
 	  //val outlierParam=OutlierParam("ThreshOutlier",12.62,6);
@@ -41,15 +41,18 @@ object outlierDetection {
 	  val sc = new SparkContext(conf);
 	  val sqlContext = new org.apache.spark.sql.SQLContext(sc);
 	  
-	  val myConfigFile = new File("D://Wangjin//UmassMed//Code//scala//WhereIsOutlierScala//src//main//resource//application.conf");
+	  val myConfigFile = new File("C://Users//wangc//workspace//WhereIsOutlierScala//src//main//resource//application.conf");
 	  val fileConfig = ConfigFactory.parseFile(myConfigFile);
 	  val config = ConfigFactory.load(fileConfig);
-	  //println(config.getDouble("outlier.R"));
+	  println(config.getDouble("outlier.R"));
+	  println(config.getString("outlier.typ"));
+    println(config.getInt("outlier.k"));
+    println(config.getString("dataset.directory"));
 	  //val newConfig = config.withValue("outlier.R", 
 	  //    ConfigValueFactory.fromAnyRef(33.7));
 	  //println(newConfig.getDouble("outlier.R"));
 	  cod.setConfig(config);
-	  cod.detect(dataDir,sqlContext);
+	  cod.detect(sqlContext);
 	  //job4Clean(sqlContext);
   }
   def job4Clean(sqlContext:SQLContext){

@@ -1,9 +1,15 @@
 outlier {
-typ="ThreshOutlier"
-R=12.62
-k=6
+   typ = "ThreshOutlier"
+   directory="C://Users//wangc//Results//WhereIsOutlierScala"
+   fileName="tt"
+   R = 12.62
+   k = 6
 }
 win {
-width=12.0
-slideLen=1
+   width = 12.0
+   slideLen = 1
+}
+dataset {
+   directory="C://Users//wangc//DataSet"
+   dataFile="part-00000"
 }
