@@ -5,7 +5,8 @@ version := "1.0"
 scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
-  "com.databricks" %% "spark-csv_2.11" % "1.2.0",
+  "org.skife.com.typesafe.config" % "typesafe-config" % "0.3.0",
+  "com.databricks" %% "spark-csv" % "1.2.0",
   "org.scalanlp" %% "breeze" % "0.12",
   "org.scalanlp" %% "breeze-natives" % "0.12",
   "org.scalanlp" %% "breeze-viz" % "0.12",
