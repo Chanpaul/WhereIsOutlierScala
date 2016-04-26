@@ -134,7 +134,8 @@ object cod extends util{
 	    var to=ptInWindow.map(_._2.startTime).max.toString;
 	    printOutlier(writer,from,to,memUsage,cpuUsage);
 	    /*********************end of collection*********************/
-	  }           
+	  }   
+	  writer.close;
   }  
   def printOutlier(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){        
     var outliers=ptMeta.filter(_._2.status=="Outlier").map(_._1);
