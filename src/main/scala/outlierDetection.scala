@@ -51,8 +51,10 @@ object outlierDetection {
 	  //val newConfig = config.withValue("outlier.R", 
 	  //    ConfigValueFactory.fromAnyRef(33.7));
 	  //println(newConfig.getDouble("outlier.R"));
-	  cod.setConfig(config);
-	  cod.detect(sqlContext);
+	  //leap.setConfig(config);
+	  //leap.leapMain(sqlContext);
+    cod.setConfig(config);
+	  cod.codMain(sqlContext);
 	  //job4Clean(sqlContext);
   }
   def job4Clean(sqlContext:SQLContext){

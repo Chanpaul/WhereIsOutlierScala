@@ -1,7 +1,7 @@
 outlier {
    typ = "ThreshOutlier"
    directory="C://Users//wangc//Results//WhereIsOutlierScala"
-   fileName="tt"
+   fileName="cod"
    R = 12.62
    k = 6
 }
@@ -10,6 +10,6 @@ win {
    slideLen = 1
 }
 dataset {
-   directory="C://Users//wangc//DataSet"
+   directory="C://Users//wangc//DataSet//CleanedData//Patient1.csv"
    dataFile="part-00000"
 }

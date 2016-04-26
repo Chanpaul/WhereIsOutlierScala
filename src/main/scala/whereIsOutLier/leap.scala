@@ -44,19 +44,19 @@ object leap extends util{
     srcDataDir=config.getString("dataset.directory");
     srcDataFileName=config.getString("dataset.dataFile")
     resDataDir=config.getString("outlier.directory")
-    resDataFileName=config.getString("dataset.fileName");
+    resDataFileName=config.getString("outlier.fileName");
   }
   def printOutlier(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){        
     var outliers=ptEvidence.filter(_._2.status=="Outlier").map(_._1);
     writer.write(s"From $from to $to, the ourliers are: $outliers,"
-        +s"time usage is: $memUsage,"
-        +s"time usage is: $cpuUsage"
+        +s"memory usage is: $memUsage,"
+        +s"cpu usage is: $cpuUsage"
         +"\n");    
   }
   
   def leapMain(sqlContext:SQLContext){    
     import sqlContext.implicits._;
-    val dataFile=srcDataDir+"//Patient1.csv//"+srcDataFileName;
+    val dataFile=srcDataDir+"//"+srcDataFileName;
 	  val df = sqlContext.read
 				  .format("com.databricks.spark.csv")
 				  .option("delimiter",",")
@@ -76,12 +76,7 @@ object leap extends util{
 	  var slideUnit=Map(id->tPtInfo);
 	  var slideId=1;
 	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
-	  while(ptCount<df.count) {	    
-	    var curPt= df.head(ptCount).last;	
-	    id=ptCount.toString;    
-	    tPtInfo=LeapPtInfo(id,slideId,ptCount.toDouble,curPt);	  	    
-	    slideUnit=slideUnit+(id->tPtInfo);
-	    
+	  while(ptCount<df.count) {	 
 	    if (slideUnit.size==window.slideLen){	      
 	      ptInWindow=ptInWindow++slideUnit;
 	      slideUnit=slideUnit.empty;
@@ -97,8 +92,12 @@ object leap extends util{
 	      var from=ptInWindow.map(_._2.startTime).min.toString;
 	      var to=ptInWindow.map(_._2.startTime).max.toString;
 	      printOutlier(writer,from,to,memUsage,cpuUsage);
-	    }	    
+	    }
 	    ptCount=ptCount+1;
+	    var curPt= df.head(ptCount).last;	
+	    id=ptCount.toString;    
+	    tPtInfo=LeapPtInfo(id,slideId,ptCount.toDouble,curPt);	  	    
+	    slideUnit=slideUnit+(id->tPtInfo);
 	  }
 	  writer.close;
   }
@@ -109,12 +108,15 @@ object leap extends util{
     	var expSlidID=ptInWindow.map(_._2.slideID).min;    	
     	ptInWindow=ptInWindow.filter(_._2.slideID!=expSlidID);
     	ptEvidence=ptEvidence.filter(x=>ptInWindow.contains(x._1));
-    }
+    }    
     for(it<-ptInWindow.filter(_._2.slideID==newSlidID).iterator if(!ptEvidence.exists(_._1==it._1))){
-    	var curPtEvi=leapThresh(it._1,ptInWindow.filter(_._2.slideID!=expSlidID),ptEvidence); 
-    	ptEvidence=ptEvidence+(it._1->curPtEvi);
+    	{
+    		var curPtEvi=leapThresh(it._1,ptInWindow.filter(_._2.slideID!=expSlidID),ptEvidence); 
+    		ptEvidence=ptEvidence+(it._1->curPtEvi);
+    	}
     }
-    for(it<-ptEvidence.filter(_._2.checkOnLeave==expSlidID).iterator){
+    println("testy");
+    for(it<-ptEvidence.filter(_._2.checkOnLeave==expSlidID).iterator if(expSlidID!=0)){
       ptEvidence=ptEvidence-it._1;  
       var tempEvi=Evidence(it._2.succ,it._2.lastSlid,it._2.prev-expSlidID,it._2.checkOnLeave,it._2.status);
       ptEvidence=ptEvidence+(it._1->tempEvi);
@@ -129,18 +131,19 @@ object leap extends util{
     var checkOnLeave=0;
     var status="Outlier";
     var succ=0;
+    var lastSlid=0;
     if (ptEvidence.contains(ptId)){
     	temprev=ptEvidence(ptId).prev;
     	checkOnLeave=ptEvidence(ptId).checkOnLeave;
     	status=ptEvidence(ptId).status;
     	succ=ptEvidence(ptId).succ;
+    	lastSlid=ptEvidence(ptId).lastSlid;
     }  
     
     val loop = new Breaks;
-    var tempID=ptInWindow(ptId).slideID;
-    var lastSlid=ptEvidence(ptId).lastSlid;
-    var subWindowIt=ptInWindow.filter(_._2.slideID>lastSlid).iterator;  
-    lastSlid=subWindowIt.map(_._2.slideID).toList.max;
+    var tempID=ptInWindow(ptId).slideID;    
+    var subWindowIt=ptInWindow.filter(_._2.slideID>lastSlid).iterator;  //lastSlid: the mostly recent slide checked;  
+    lastSlid=subWindowIt.map(_._2.slideID).toList.max;   //update the lastSlid
     loop.breakable{
     	for (it<-subWindowIt){
     		var distId=ptId+","+it._1;
@@ -152,7 +155,7 @@ object leap extends util{
     			succ=succ+1;
     			if (succ>outlierParam.k){
     				status="Safe";    				
-    				return(Evidence(succ,lastSlid,temprev,checkOnLeave,status));
+    				//return(Evidence(succ,lastSlid,temprev,checkOnLeave,status));
     				loop.break;
     			}
     		}
@@ -180,7 +183,7 @@ object leap extends util{
     			if (succ+temprev.map(_._2).sum>outlierParam.k){
     			  status="Unsafe";
     			  checkOnLeave=tempID-i;
-    			  return(Evidence(succ,lastSlid,temprev,checkOnLeave,status));
+    			  //return(Evidence(succ,lastSlid,temprev,checkOnLeave,status));
     			  loop1.break;
     			}
     		}
