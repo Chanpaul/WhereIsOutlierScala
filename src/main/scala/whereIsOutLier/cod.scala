@@ -16,19 +16,21 @@ import java.util.Scanner
 import java.io._
 import scala.math
 import com.typesafe.config._
+import collection.JavaConverters._
 
 case class CodMeta(preNeig:Seq[String],succ:Int,checkOnLeave:Double,status:String);
-case class CodPt(id:String,startTime:Double,expTime:Double,content:Row);
+case class CodPt(id:String,startTime:Double,expTime:Double,content:Array[Double]);
 //case class Event(time:Double,id:String);
 object cod extends util{ 
   var window=Window(12.0,1);  //width=12.0,slide=1;	  
   var outlierParam=OutlierParam("ThreshOutlier",12.62,6);
-  private var distMap=scala.collection.mutable.Map[String,Double]();
-  private var ptInWindow=Map[String,CodPt]();
-  private var ptMeta=Map[String,CodMeta]();
+  private var distMap=scala.collection.mutable.Map[String,Double]().par;
+  private var ptInWindow=Map[String,CodPt]().par;
+  private var ptMeta=Map[String,CodMeta]().par;
   private var curWindowStart=0;
   implicit var colName=Array[String]();
 	implicit var colType=Array[(String,String)]();
+	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;
 	var srcDataDir="";
 	var srcDataFileName="";
 	var resDataDir="";
@@ -42,7 +44,8 @@ object cod extends util{
     srcDataDir=config.getString("dataset.directory");
     srcDataFileName=config.getString("dataset.dataFile")
     resDataDir=config.getString("outlier.directory")
-    resDataFileName=config.getString("outlier.fileName");
+    resDataFileName=config.getString("outlier.fileName");   
+    colTypeI=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0).trim,x(1).toInt));
   }
   def depart(){		  
 		  var expired=ptInWindow.filter(_._2.startTime<=curWindowStart).iterator;		
@@ -75,65 +78,87 @@ object cod extends util{
   def codMain(sqlContext:SQLContext){
     import sqlContext.implicits._;
     val dataFile=srcDataDir+"//"+srcDataFileName;
-    //val ds=sqlContext.read.text(dataFile).as[String].map(_.split(","));
-	  val df = sqlContext.read
+    /*
+    //val ds=sqlContext.read.text(dataFile).as[String].map(_.split(","));    
+	  var df = sqlContext.read
 				  .format("com.databricks.spark.csv")
 				  .option("delimiter",",")
 				  .option("header", "true") // Use first line of all files as header
 				  .option("inferSchema", "true") // Automatically infer data types
 				  .load(dataFile);   //"cars.csv"  
-	  colName=df.columns;
-	  colType=df.dtypes;
-	  colType.map(x=>println(x._1,x._2));
-	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
-	  //var evtQue=Seq(Event(0.0,"0")).toDS;	 
-    var firstDataItem=df.first;
-    var id="1";
-    distMap=distMap+(id+","+id->0.0);   //distance matrix;
-    //var tPtInfo=CodMeta(preNeig:Seq[String],succ:Int,checkOnLeave:Int,status:String);  
-    //var ptInfo=Map(id->tPtInfo); 
-    curWindowStart=1;
-    ptInWindow=ptInWindow+(id->CodPt(id,1.0,1.0+window.width,df.first));  //can also use tuple like (id,df.first)  
-    ptMeta=ptMeta+(id->CodMeta(Seq[String](),0,0.0,"Outlier"));
-	  var ptCount=1;	
+	  
+	  colName=df.columns.map(_.trim).filter(_!="ID");
+	  colType=df.dtypes.map(x=>(x._1.trim,x._2.trim));	  
+	  colTypeI.map(x=>println(x._1,x._2));  
 	  var dfCount=df.count;
-	  while(ptCount<dfCount) {
-	    println(ptCount);
-	    ptCount+=1;
-	    if (ptCount==15)
-	      println("debug here");
-	    id=ptCount.toString;
-	    var curPt= df.head(ptCount).last;	
-	    println(curPt);
-	    var ptLen=curPt.length;
-	    ptInWindow=ptInWindow+(id->CodPt(id,ptCount,ptCount+window.width,curPt));	      
-	    if (ptInWindow.size>window.width){
-	    	depart();   
-	    }
-	    /****************setup metrics measure***********************/
-	    var begTime=System.nanoTime;
-	    //var meter=new MemoryMeter;
-	    var runtime=Runtime.getRuntime();
-	    var mem1=runtime.freeMemory();
-	    /******************end of setup*********************/
-	    /*********************Update distance map*************************/
-	    for (it<-ptInWindow.filter(_._1!=id).iterator){
-	      var tempDist=eucDistance(curPt,it._2.content);	    	
-	    	distMap=distMap+(it._1+","+id->tempDist);
-	    }	  
-	    /*********************end of update distance map***********************/
-	    if(!ptMeta.exists(_._1==id)){
-	    	ptMeta=ptMeta+(id->CodMeta(Seq[String](),0,0.0,"Outlier"));
-	    }
-	    searchNeighbor(id);	 
-	    /************collect metrics***********************/
-	    var mem2=runtime.freeMemory();
-	    var cpuUsage=(System.nanoTime-begTime)/1000000000.0;
-	    var memUsage=math.abs(mem1-mem2)/(1024*1024);
-	    var from=ptInWindow.map(_._2.startTime).min.toString;
-	    var to=ptInWindow.map(_._2.startTime).max.toString;
-	    printOutlier(writer,from,to,memUsage,cpuUsage);
-	    /*********************end of collection*********************/
+	  df.registerTempTable("df");     //register df as a temp table in order to use sql clause to lookup;
+	  */
+	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
+	  	 
+    //var firstDataItem=df.first;
+    //var id="1";
+    //distMap=distMap+(id+","+id->0.0);   //distance matrix;     
+    curWindowStart=1;
+    //ptInWindow=ptInWindow+(id->CodPt(id,1.0,1.0+window.width,df.first));  //can also use tuple like (id,df.first)  
+    //ptMeta=ptMeta+(id->CodMeta(Seq[String](),0,0.0,"Outlier"));
+	  var ptCount=0;		  
+	  var id=ptCount.toString;
+	  var lines=scala.io.Source.fromFile(dataFile).getLines;
+	  /****************setup metrics measure***********************/
+	  var begTime=System.nanoTime;
+	  //var meter=new MemoryMeter;
+	  var runtime=Runtime.getRuntime();
+	  var mem1=runtime.freeMemory();
+	  /******************end of setup*********************/
+	  for(line<-lines) {
+		  println(ptCount);
+		  id=ptCount.toString;
+		  var curPt=Array[Double]();
+		  if (ptCount==0){
+			  colName=line.split(",").map(_.trim).filter(_!="ID");
+		  } else {
+			  curPt=line.split(",").map(_.trim).map(x=>{x match {
+			    case y if x.contains(".") =>x.toDouble
+			    case z if !x.contains(".") =>x.toInt.toDouble
+			  }
+			    }).drop(1);
+			  //var curPt=sqlContext.sql("""SELECT * FROM df WHERE ID==ptCount""").first;  //result of sql queries is dataframe;
+			  //var curPt=df.filter(s"ID =$ptCount").first;  
+			  //var curPt= df.head(ptCount).last;	
+			  //println(curPt);
+			  //var ptLen=curPt.length;
+			  ptInWindow=ptInWindow+(id->CodPt(id,ptCount,ptCount+window.width,curPt));	      
+			  if (ptInWindow.size>window.width){
+				  /************collect metrics***********************/
+				  var mem2=runtime.freeMemory();
+				  var cpuUsage=(System.nanoTime-begTime)/1000000000.0;
+				  var memUsage=math.abs(mem1-mem2)/(1024*1024);
+				  var from=ptInWindow.map(_._2.startTime).min.toString;
+				  var to=ptInWindow.map(_._2.startTime).max.toString;
+				  printOutlier(writer,from,to,memUsage,cpuUsage);
+				  /*********************end of collection*********************/
+				  depart();
+				  /****************renew metrics measure***********************/
+				  begTime=System.nanoTime;
+				  runtime=Runtime.getRuntime();
+				  mem1=runtime.freeMemory();
+				  /******************end of setup*********************/
+			  }
+			  
+			  /*********************Update distance map*************************/
+			  for (it<-ptInWindow.filter(_._1!=id).iterator){
+				  var tempDist=eucDistance(curPt,it._2.content);	    	
+				  distMap=distMap+(it._1+","+id->tempDist);
+			  }	  
+			  /*********************end of update distance map***********************/
+			  if(!ptMeta.exists(_._1==id)){
+				  ptMeta=ptMeta+(id->CodMeta(Seq[String](),0,0.0,"Outlier"));
+			  }
+			  searchNeighbor(id);	 
+			  
+			  
+		  }
+		  ptCount+=1;
 	  }   
 	  writer.close;
   }  

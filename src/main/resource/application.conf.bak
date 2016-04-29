@@ -7,7 +7,7 @@ outlier {
 }
 win {
    width = 12.0
-   slideLen = 1
+   slideLen = 3
 }
 dataset {
    directory="C://Users//wangc//DataSet//CleanedData//Patient1.csv"

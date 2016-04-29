@@ -40,14 +40,13 @@ object outlierDetection {
 			  //.setJars(Seq("/a/b/x.jar", "/c/d/y.jar"));
 	  val sc = new SparkContext(conf);
 	  val sqlContext = new org.apache.spark.sql.SQLContext(sc);
+	  var confFileName="ForestCover.conf";
+	  //var confFileName="application.conf";
+	  var confDir="C://Users//wangc//workspace//WhereIsOutlierScala//src//main//resource//";
+	  val myConfigFile = new File(confDir+confFileName);
 	  
-	  val myConfigFile = new File("C://Users//wangc//workspace//WhereIsOutlierScala//src//main//resource//application.conf");
 	  val fileConfig = ConfigFactory.parseFile(myConfigFile);
 	  val config = ConfigFactory.load(fileConfig);
-	  println(config.getDouble("outlier.R"));
-	  println(config.getString("outlier.typ"));
-    println(config.getInt("outlier.k"));
-    println(config.getString("dataset.directory"));
 	  //val newConfig = config.withValue("outlier.R", 
 	  //    ConfigValueFactory.fromAnyRef(33.7));
 	  //println(newConfig.getDouble("outlier.R"));

@@ -1,6 +1,7 @@
 package whereIsOutLier
 
 import org.apache.spark.{SparkContext, SparkConf}
+import scala.collection.parallel
 import org.apache.spark.sql
 import org.apache.spark.sql._
 import org.apache.spark.sql.catalyst.encoders
@@ -21,16 +22,17 @@ import org.github.jamm
 
 //case class Slide(slidId:Int,element:Seq[String],expTriger:Seq[String]);
 case class Evidence(succ:Int,lastSlid:Int,prev:Map[Int,Int],checkOnLeave:Int,status:String);
-case class LeapPtInfo(id:String,slideID:Int,startTime:Double,content:Row);
+case class LeapPtInfo(id:String,slideID:Int,startTime:Double,content:Array[Double]);
 
 object leap extends util{
   private var window=Window(12.0,1);  //width=12.0,slide=1;	  
   private var outlierParam=OutlierParam("ThreshOutlier",12.62,6); 
-  private var distMap=scala.collection.mutable.Map[String,Double]();   //global variable
-  private var ptInWindow=Map[String,LeapPtInfo]();
-  private var ptEvidence=Map[String,Evidence]();
+  private var distMap=scala.collection.mutable.Map[String,Double]().par;   //global variable
+  private var ptInWindow=Map[String,LeapPtInfo]().par;
+  private var ptEvidence=Map[String,Evidence]().par;
   implicit var colName=Array[String]();
 	implicit var colType=Array[(String,String)](); 
+	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;
 	private var srcDataDir="";
 	private var srcDataFileName="";
 	private var resDataDir="";
@@ -45,6 +47,7 @@ object leap extends util{
     srcDataFileName=config.getString("dataset.dataFile")
     resDataDir=config.getString("outlier.directory")
     resDataFileName=config.getString("outlier.fileName");
+    colTypeI=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0),x(1).toInt));
   }
   def printOutlier(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){        
     var outliers=ptEvidence.filter(_._2.status=="Outlier").map(_._1);
@@ -57,6 +60,7 @@ object leap extends util{
   def leapMain(sqlContext:SQLContext){    
     import sqlContext.implicits._;
     val dataFile=srcDataDir+"//"+srcDataFileName;
+    /*
 	  val df = sqlContext.read
 				  .format("com.databricks.spark.csv")
 				  .option("delimiter",",")
@@ -67,16 +71,20 @@ object leap extends util{
 	  colType=df.dtypes;	  
 	  
     var firstDataItem=df.first;
-    var id="1";
+    * */
+    
+    
     //distMap=distMap+(id+","+id->0.0);   //distance matrix;
-    var tPtInfo=LeapPtInfo(id,1,1.0,df.first);      
+    //var tPtInfo=LeapPtInfo(id,1,1.0,df.first);      
     //ptInWindow=ptInWindow+(id->tPtInfo);  //can also use tuple like (id,df.first)    
 	  var ptCount=1;	
-	  var outliers=Seq("none");
-	  var slideUnit=Map(id->tPtInfo);
+    var id="1";
+	  //var outliers=Seq("none");
+	  var slideUnit=Map[String,LeapPtInfo]();
 	  var slideId=1;
 	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
-	  while(ptCount<df.count) {	 
+	  var lines=scala.io.Source.fromFile(dataFile).getLines;
+	  for(line<-lines) {	 
 	    if (slideUnit.size==window.slideLen){	      
 	      ptInWindow=ptInWindow++slideUnit;
 	      slideUnit=slideUnit.empty;
@@ -93,11 +101,22 @@ object leap extends util{
 	      var to=ptInWindow.map(_._2.startTime).max.toString;
 	      printOutlier(writer,from,to,memUsage,cpuUsage);
 	    }
-	    ptCount=ptCount+1;
-	    var curPt= df.head(ptCount).last;	
-	    id=ptCount.toString;    
-	    tPtInfo=LeapPtInfo(id,slideId,ptCount.toDouble,curPt);	  	    
+	    println(ptCount);
+		  id=ptCount.toString;
+		  var curPt=Array[Double]();
+		  if (ptCount==0){
+			  colName=line.split(",").map(_.trim).filter(_!="ID");
+		  } else{
+		    curPt=line.split(",").map(_.trim).map(x=>{x match {
+			    case y if x.contains(".") =>x.toDouble
+			    case z if !x.contains(".") =>x.toInt.toDouble
+			  }
+			    }).drop(1);		  	        
+	    var tPtInfo=LeapPtInfo(id,slideId,ptCount.toDouble,curPt);	  	    
 	    slideUnit=slideUnit+(id->tPtInfo);
+		  }
+	    ptCount=ptCount+1;
+	    
 	  }
 	  writer.close;
   }
@@ -126,7 +145,7 @@ object leap extends util{
   def knn(){
     
   }
-  def leapThresh(ptId:String,ptInWindow:Map[String,LeapPtInfo],ptEvidence:Map[String,Evidence]):Evidence={
+  def leapThresh(ptId:String,ptInWindow:scala.collection.parallel.ParMap[String,LeapPtInfo],ptEvidence:scala.collection.parallel.ParMap[String,Evidence]):Evidence={
     var temprev=Map[Int,Int]();
     var checkOnLeave=0;
     var status="Outlier";
