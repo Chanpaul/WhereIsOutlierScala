@@ -18,7 +18,7 @@ import java.io._
 import scala.math
 import com.typesafe.config._    //config need
 import scala.util.control._     //break need
-import org.github.jamm
+//import org.github.jamm
 
 //case class Slide(slidId:Int,element:Seq[String],expTriger:Seq[String]);
 case class Evidence(succ:Int,lastSlid:Int,prev:Map[Int,Int],checkOnLeave:Int,status:String);

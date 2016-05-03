@@ -7,7 +7,7 @@
 		revision="1.0"
 		conf="test"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20160425175007"/>
+		date="20160430075244"/>
 	<dependencies>
 		<module organisation="com.thesamet" name="kdtree_2.11">
 			<revision name="1.0.4" status="release" pubdate="20150905155600" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/thesamet/kdtree-scala" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="242">
@@ -58,7 +58,7 @@
 			</revision>
 		</module>
 		<module organisation="com.hadoop.gplcompression" name="hadoop-lzo">
-			<revision name="0.4.19" status="release" pubdate="20131002204215" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/hadoop-lzo" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master, default(compile)" position="239">
+			<revision name="0.4.19" status="release" pubdate="20131002203811" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/hadoop-lzo" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master, default(compile)" position="239">
 				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
 				<metadata-artifact status="no" details="" size="3386" time="0" location="C:\Users\wangc\.ivy2\cache\com.hadoop.gplcompression\hadoop-lzo\ivy-0.4.19.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/hadoop/gplcompression/hadoop-lzo/0.4.19/hadoop-lzo-0.4.19.pom"/>
 				<caller organisation="com.twitter.elephantbird" name="elephant-bird-core" conf="default, compile, runtime, master" rev="0.4.19" rev-constraint-default="0.4.19" rev-constraint-dynamic="0.4.19" callerrev="4.5"/>
@@ -566,8 +566,7 @@
 		</module>
 		<module organisation="commons-codec" name="commons-codec">
 			<revision name="1.10" status="release" pubdate="20141106091535" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/proper/commons-codec/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="198">
-				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="no" details="" size="10706" time="0" location="C:\Users\wangc\.ivy2\cache\commons-codec\commons-codec\ivy-1.10.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/commons-codec/commons-codec/1.10/commons-codec-1.10.pom"/>
+				<metadata-artifact status="no" details="" size="10603" time="0" location="C:\Users\wangc\.ivy2\cache\commons-codec\commons-codec\ivy-1.10.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/commons-codec/commons-codec/1.10/commons-codec-1.10.pom"/>
 				<caller organisation="org.apache.parquet" name="parquet-encoding" conf="compile, runtime" rev="1.5" rev-constraint-default="1.5" rev-constraint-dynamic="1.5" callerrev="1.7.0"/>
 				<caller organisation="net.java.dev.jets3t" name="jets3t" conf="compile, runtime" rev="1.3" rev-constraint-default="1.3" rev-constraint-dynamic="1.3" callerrev="0.7.1"/>
 				<caller organisation="org.apache.parquet" name="parquet-column" conf="compile, runtime" rev="1.5" rev-constraint-default="1.5" rev-constraint-dynamic="1.5" callerrev="1.7.0"/>
@@ -1076,7 +1075,7 @@
 		<module organisation="org.apache.spark" name="spark-sql_2.11">
 			<revision name="1.6.1" status="release" pubdate="20160227014131" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://spark.apache.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="40">
 				<license name="Apache 2.0 License" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="no" details="" size="72103" time="0" location="C:\Users\wangc\.ivy2\cache\org.apache.spark\spark-sql_2.11\ivy-1.6.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/spark/spark-sql_2.11/1.6.1/spark-sql_2.11-1.6.1.pom"/>
+				<metadata-artifact status="no" details="" size="72456" time="0" location="C:\Users\wangc\.ivy2\cache\org.apache.spark\spark-sql_2.11\ivy-1.6.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/spark/spark-sql_2.11/1.6.1/spark-sql_2.11-1.6.1.pom"/>
 				<caller organisation="org.apache.spark" name="spark-mllib_2.11" conf="default, compile, runtime, master" rev="1.6.1" rev-constraint-default="1.6.1" rev-constraint-dynamic="1.6.1" callerrev="1.6.1"/>
 				<caller organisation="whereisoutlier" name="whereisoutlier_2.11" conf="test, compile, runtime" rev="1.6.1" rev-constraint-default="1.6.1" rev-constraint-dynamic="1.6.1" callerrev="1.0"/>
 				<caller organisation="org.apache.spark" name="spark-hive_2.11" conf="default, compile, runtime, master" rev="1.6.1" rev-constraint-default="1.6.1" rev-constraint-dynamic="1.6.1" callerrev="1.6.1"/>
@@ -1601,14 +1600,14 @@
 				<artifacts>
 				</artifacts>
 			</revision>
-			<revision name="1.3.0" status="release" pubdate="20150508114611" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/typesafehub/config" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master, runtime(*), master(compile), compile(*)" position="1">
+			<revision name="1.3.0" status="release" pubdate="20150508114611" resolver="public" artresolver="public" homepage="https://github.com/typesafehub/config" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master, runtime(*), master(compile), compile(*)" position="1">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="no" details="" size="2910" time="0" location="C:\Users\wangc\.ivy2\cache\com.typesafe\config\ivy-1.3.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/config/1.3.0/config-1.3.0.pom"/>
+				<metadata-artifact status="successful" details="" size="1864" time="312" location="C:\Users\wangc\.ivy2\cache\com.typesafe\config\ivy-1.3.0.xml" searched="true" original-local-location="C:\Users\wangc\.ivy2\cache\com.typesafe\config\ivy-1.3.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/config/1.3.0/config-1.3.0.pom"/>
 				<caller organisation="com.typesafe.akka" name="akka-actor_2.11" conf="compile, runtime" rev="1.2.1" rev-constraint-default="1.2.1" rev-constraint-dynamic="1.2.1" callerrev="2.3.11"/>
 				<caller organisation="whereisoutlier" name="whereisoutlier_2.11" conf="test, compile, runtime" rev="1.3.0" rev-constraint-default="1.3.0" rev-constraint-dynamic="1.3.0" callerrev="1.0"/>
 				<caller organisation="com.typesafe.play" name="play-iteratees_2.10" conf="compile, runtime" rev="1.0.2" rev-constraint-default="1.0.2" rev-constraint-dynamic="1.0.2" callerrev="2.2.1"/>
 				<artifacts>
-					<artifact name="config" type="bundle" ext="jar" status="no" details="" size="277782" time="0" location="C:\Users\wangc\.ivy2\cache\com.typesafe\config\bundles\config-1.3.0.jar">
+					<artifact name="config" type="bundle" ext="jar" status="successful" details="" size="277782" time="686" location="C:\Users\wangc\.ivy2\cache\com.typesafe\config\bundles\config-1.3.0.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/config/1.3.0/config-1.3.0.jar"/>
 					</artifact>
 				</artifacts>
@@ -1752,7 +1751,7 @@
 		</module>
 		<module organisation="org.apache.curator" name="curator-recipes">
 			<revision name="2.4.0" status="release" pubdate="20140205180911" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="111">
-				<license name="The Apache Software License, Version 2.0" url="file://C:\Users\wangc\workspace\WhereIsOutlierScala/LICENSE"/>
+				<license name="The Apache Software License, Version 2.0" url="file://D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala/LICENSE"/>
 				<metadata-artifact status="no" details="" size="7690" time="0" location="C:\Users\wangc\.ivy2\cache\org.apache.curator\curator-recipes\ivy-2.4.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/curator/curator-recipes/2.4.0/curator-recipes-2.4.0.pom"/>
 				<caller organisation="org.apache.spark" name="spark-core_2.11" conf="compile, runtime" rev="2.4.0" rev-constraint-default="2.4.0" rev-constraint-dynamic="2.4.0" callerrev="1.6.1"/>
 				<artifacts>
@@ -1764,7 +1763,7 @@
 		</module>
 		<module organisation="org.apache.curator" name="curator-framework">
 			<revision name="2.4.0" status="release" pubdate="20140205180848" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="112">
-				<license name="The Apache Software License, Version 2.0" url="file://C:\Users\wangc\workspace\WhereIsOutlierScala/LICENSE"/>
+				<license name="The Apache Software License, Version 2.0" url="file://D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala/LICENSE"/>
 				<metadata-artifact status="no" details="" size="7537" time="0" location="C:\Users\wangc\.ivy2\cache\org.apache.curator\curator-framework\ivy-2.4.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/curator/curator-framework/2.4.0/curator-framework-2.4.0.pom"/>
 				<caller organisation="org.apache.curator" name="curator-recipes" conf="compile, runtime" rev="2.4.0" rev-constraint-default="2.4.0" rev-constraint-dynamic="2.4.0" callerrev="2.4.0"/>
 				<artifacts>
@@ -1776,7 +1775,7 @@
 		</module>
 		<module organisation="org.apache.curator" name="curator-client">
 			<revision name="2.4.0" status="release" pubdate="20140205180826" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="113">
-				<license name="The Apache Software License, Version 2.0" url="file://C:\Users\wangc\workspace\WhereIsOutlierScala/LICENSE"/>
+				<license name="The Apache Software License, Version 2.0" url="file://D:\Wangjin\UmassMed\Code\scala\WhereIsOutlierScala/LICENSE"/>
 				<metadata-artifact status="no" details="" size="7585" time="0" location="C:\Users\wangc\.ivy2\cache\org.apache.curator\curator-client\ivy-2.4.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/curator/curator-client/2.4.0/curator-client-2.4.0.pom"/>
 				<caller organisation="org.apache.curator" name="curator-framework" conf="compile, runtime" rev="2.4.0" rev-constraint-default="2.4.0" rev-constraint-dynamic="2.4.0" callerrev="2.4.0"/>
 				<artifacts>
@@ -2292,7 +2291,7 @@
 		<module organisation="org.apache.hadoop" name="hadoop-yarn-server-nodemanager">
 			<revision name="2.2.0" status="release" pubdate="20131007023538" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*)" position="163">
 				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="no" details="" size="30948" time="0" location="C:\Users\wangc\.ivy2\cache\org.apache.hadoop\hadoop-yarn-server-nodemanager\ivy-2.2.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-yarn-server-nodemanager/2.2.0/hadoop-yarn-server-nodemanager-2.2.0.pom"/>
+				<metadata-artifact status="no" details="" size="30996" time="0" location="C:\Users\wangc\.ivy2\cache\org.apache.hadoop\hadoop-yarn-server-nodemanager\ivy-2.2.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-yarn-server-nodemanager/2.2.0/hadoop-yarn-server-nodemanager-2.2.0.pom"/>
 				<caller organisation="org.apache.hadoop" name="hadoop-mapreduce-client-shuffle" conf="compile, runtime" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="2.2.0"/>
 				<artifacts>
 				</artifacts>
@@ -3790,7 +3789,7 @@
 				<artifacts>
 				</artifacts>
 			</revision>
-			<revision name="2.11.8" status="release" pubdate="20160304102633" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.8/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master, runtime(*), master(compile), compile(*)" position="0">
+			<revision name="2.11.8" status="release" pubdate="20160304102633" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.8/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master, master(*), runtime(*), compile(*), master(compile)" position="0">
 				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
 				<metadata-artifact status="no" details="" size="2685" time="0" location="C:\Users\wangc\.ivy2\cache\org.scala-lang\scala-library\ivy-2.11.8.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.8/scala-library-2.11.8.pom"/>
 				<caller organisation="com.typesafe.akka" name="akka-remote_2.11" conf="compile, runtime" rev="2.11.5" rev-constraint-default="2.11.5" rev-constraint-dynamic="2.11.5" callerrev="2.3.11"/>
@@ -3883,7 +3882,7 @@
 				<artifacts>
 				</artifacts>
 			</revision>
-			<revision name="2.11.6" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
+			<revision name="2.11.6" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="master(*), compile, runtime(*), runtime, compile(*), master" position="-1">
 				<evicted-by rev="2.11.8"/>
 				<caller organisation="com.databricks" name="spark-csv_2.11" conf="default, compile, runtime, master" rev="2.11.6" rev-constraint-default="2.11.6" rev-constraint-dynamic="2.11.6" callerrev="1.2.0"/>
 				<artifacts>
@@ -3893,7 +3892,7 @@
 		<module organisation="com.databricks" name="spark-csv_2.11">
 			<revision name="1.2.0" status="release" pubdate="20150806203909" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/databricks/spark-csv" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="2">
 				<license name="Apache License, Verision 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="no" details="" size="3882" time="0" location="C:\Users\wangc\.ivy2\cache\com.databricks\spark-csv_2.11\ivy-1.2.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/databricks/spark-csv_2.11/1.2.0/spark-csv_2.11-1.2.0.pom"/>
+				<metadata-artifact status="no" details="" size="3900" time="0" location="C:\Users\wangc\.ivy2\cache\com.databricks\spark-csv_2.11\ivy-1.2.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/databricks/spark-csv_2.11/1.2.0/spark-csv_2.11-1.2.0.pom"/>
 				<caller organisation="whereisoutlier" name="whereisoutlier_2.11" conf="test, compile, runtime" rev="1.2.0" rev-constraint-default="1.2.0" rev-constraint-dynamic="1.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="spark-csv_2.11" type="jar" ext="jar" status="no" details="" size="112631" time="0" location="C:\Users\wangc\.ivy2\cache\com.databricks\spark-csv_2.11\jars\spark-csv_2.11-1.2.0.jar">
@@ -3915,9 +3914,9 @@
 			</revision>
 		</module>
 		<module organisation="com.univocity" name="univocity-parsers">
-			<revision name="1.5.1" status="release" pubdate="20150408185631" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/uniVocity/univocity-parsers" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="4">
+			<revision name="1.5.1" status="release" pubdate="20150408185631" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/uniVocity/univocity-parsers" downloaded="false" searched="false" default="false" conf="master(*), compile, runtime(*), runtime, compile(*), master" position="4">
 				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="no" details="" size="3751" time="0" location="C:\Users\wangc\.ivy2\cache\com.univocity\univocity-parsers\ivy-1.5.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/univocity/univocity-parsers/1.5.1/univocity-parsers-1.5.1.pom"/>
+				<metadata-artifact status="no" details="" size="3817" time="0" location="C:\Users\wangc\.ivy2\cache\com.univocity\univocity-parsers\ivy-1.5.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/univocity/univocity-parsers/1.5.1/univocity-parsers-1.5.1.pom"/>
 				<caller organisation="com.databricks" name="spark-csv_2.11" conf="default, compile, runtime, master" rev="1.5.1" rev-constraint-default="1.5.1" rev-constraint-dynamic="1.5.1" callerrev="1.2.0"/>
 				<artifacts>
 					<artifact name="univocity-parsers" type="jar" ext="jar" status="no" details="" size="148962" time="0" location="C:\Users\wangc\.ivy2\cache\com.univocity\univocity-parsers\jars\univocity-parsers-1.5.1.jar">
@@ -3927,9 +3926,8 @@
 			</revision>
 		</module>
 		<module organisation="org.apache.commons" name="commons-csv">
-			<revision name="1.1" status="release" pubdate="20141116154846" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/proper/commons-csv/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="3">
-				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="no" details="" size="11076" time="0" location="C:\Users\wangc\.ivy2\cache\org.apache.commons\commons-csv\ivy-1.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/commons/commons-csv/1.1/commons-csv-1.1.pom"/>
+			<revision name="1.1" status="release" pubdate="20141116154846" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/proper/commons-csv/" downloaded="false" searched="false" default="false" conf="master(*), compile, runtime(*), runtime, compile(*), master" position="3">
+				<metadata-artifact status="no" details="" size="11363" time="0" location="C:\Users\wangc\.ivy2\cache\org.apache.commons\commons-csv\ivy-1.1.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/apache/commons/commons-csv/1.1/commons-csv-1.1.pom"/>
 				<caller organisation="com.databricks" name="spark-csv_2.11" conf="default, compile, runtime, master" rev="1.1" rev-constraint-default="1.1" rev-constraint-dynamic="1.1" callerrev="1.2.0"/>
 				<artifacts>
 					<artifact name="commons-csv" type="jar" ext="jar" status="no" details="" size="36888" time="0" location="C:\Users\wangc\.ivy2\cache\org.apache.commons\commons-csv\jars\commons-csv-1.1.jar">
