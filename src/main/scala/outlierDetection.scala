@@ -16,6 +16,7 @@ import scala.math
 import com.typesafe.config._
 
 import whereIsOutLier._
+
 /***************data structure*******************
  * distMap: Map(id1,id2->distance);
  * ptInfoInWindow:  Map(id->DataPoint)

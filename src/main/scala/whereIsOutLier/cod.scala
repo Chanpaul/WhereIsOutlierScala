@@ -17,6 +17,7 @@ import java.io._
 import scala.math
 import com.typesafe.config._
 import collection.JavaConverters._
+import mtree._
 
 case class CodMeta(preNeig:Seq[String],succ:Int,checkOnLeave:Double,status:String);
 case class CodPt(id:String,startTime:Double,expTime:Double,content:Array[Double]);
@@ -35,6 +36,7 @@ object cod extends util{
 	var srcDataFileName="";
 	var resDataDir="";
 	var resDataFileName="";
+	var mt=new mtree.mtree;
   def setConfig(config:Config){
     outlierParam=OutlierParam(config.getString("outlier.typ"),
         config.getDouble("outlier.R"),
@@ -110,6 +112,8 @@ object cod extends util{
 	  var runtime=Runtime.getRuntime();
 	  var mem1=runtime.freeMemory();
 	  /******************end of setup*********************/
+	  //var mt=new mtree.mtree;
+	  mt.initialization(50,colName,colType,colTypeI);
 	  for(line<-lines) {
 		  println(ptCount);
 		  id=ptCount.toString;
@@ -127,7 +131,12 @@ object cod extends util{
 			  //var curPt= df.head(ptCount).last;	
 			  //println(curPt);
 			  //var ptLen=curPt.length;
-			  ptInWindow=ptInWindow+(id->CodPt(id,ptCount,ptCount+window.width,curPt));	      
+			  ptInWindow=ptInWindow+(id->CodPt(id,ptCount,ptCount+window.width,curPt));	 
+			  if (id=="1"){
+				  mt.create(id,curPt);  //creating m-tree  
+			  } else {
+			    mt.insert(id,curPt)(mt.rootNd);
+			  }			  
 			  if (ptInWindow.size>window.width){
 				  /************collect metrics***********************/
 				  var mem2=runtime.freeMemory();

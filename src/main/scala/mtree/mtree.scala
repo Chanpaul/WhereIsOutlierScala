@@ -1,118 +1,117 @@
 package mtree
 import whereIsOutLier._
-case class MtNd(centerId:String,coverTree:Array[Tuple2[String,Double]],radius:Double, distToParent:Tuple2[String,Double],typ:String);
-case class Point(content:Array[Double],parentNd:String);
-object mtree extends util {
+case class Entry(obj:String,nextNdId:String,distance2ParentObj:Double,radius:Double);
+case class MtNd(id:String,parentObj:String,entries:Array[Entry],dist2ParentNd:Tuple2[String,Double],typ:String);
+case class Point(content:Array[Double],ndId:String);
+class mtree extends util {
   var mtNdMap=Map[String,MtNd]();
   var ptMap=Map[String,Point]();  
-  //var distMap=Map[String,Double]();
+  var ndCount=1;
   var ndCapacity=100;
+  implicit var rootNd=MtNd(ndCount.toString,"",Array[Entry](),("None",0.0),"leaf");
   implicit var colName=Array[String]();
 	implicit var colType=Array[(String,String)]();
 	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;
 	
   //var rootNd=MtNd("",Array[Double](),Array[String](),0.0,("None",0.0),"leaf");
-  def setNdCapacity(capacity:Int){
-    ndCapacity=capacity;
-  }
-  //private var rootNd=MtNd(Array[Double](),Array[String](),0.0,0.0);
-  def create(id:String,content:Array[Double],pcolName:Array[String],
-      pcolType:Array[(String,String)],pcolTypeI:Array[(String,Int)]):MtNd={
-    colName=pcolName;
+	def initialization(capacity:Int,pcolName:Array[String],
+      pcolType:Array[(String,String)],pcolTypeI:Array[(String,Int)]){
+	  colName=pcolName;
     colType=pcolType;
     colTypeI=pcolTypeI;
-    var tRootNd=MtNd(id,Array[Tuple2[String,Double]](),0.0,("None",0.0),"leaf");
-    mtNdMap=mtNdMap+(id->tRootNd);
-    ptMap=ptMap+(id->Point(content,"0"));
-    return(tRootNd);
+    ndCapacity=capacity;
+	}
+  
+  def create(id:String,content:Array[Double]){
+    var ndid=ndCount.toString;
+    rootNd=MtNd(ndid,id,Array(Entry(id,"None",0.0,0.0)),("None",0.0),"leaf");
+    mtNdMap=mtNdMap+(ndid->rootNd);
+    ptMap=ptMap+(id->Point(content,ndid));    
   }
-  def insert(id:String,curContent:Array[Double],nd:MtNd){
-    //ptMap=ptMap+(id->Point(content));
-    if (nd.typ!="leaf"){
-      var Nin=Map[String,Double]();      
-      for (tempStr<-nd.coverTree){
-    	  var tempDist=eucDistance(ptMap(tempStr._1).content,curContent);  
-    	  Nin=Nin+(tempStr._1->tempDist);               
-      }
-      var objNdId="";      
-      var tempNin=Nin.filter(x=>x._2<=mtNdMap(x._1).radius);
-      if (!tempNin.isEmpty){
-        objNdId=tempNin.minBy(_._2)._1;
+  def insert(objId:String,curContent:Array[Double])(implicit nd:MtNd){
+    if (nd.typ=="leaf"){
+      var dist2ParentObj=eucDistance(ptMap(nd.parentObj).content,curContent);
+      var entryItem=Entry(objId,"None",dist2ParentObj,0.0);
+    	if(nd.entries.size<ndCapacity){
+    		mtNdMap=mtNdMap-nd.id;
+    		mtNdMap=mtNdMap+(nd.id->MtNd(nd.id,nd.parentObj,nd.entries:+entryItem,nd.dist2ParentNd,nd.typ));
+    		ptMap=ptMap+(objId->Point(curContent,nd.id));
+    	} else {
+    		split(nd,entryItem);
+    	}  
+    } else {    
+      var objNdId=""; 
+      var Nin=Map[String,Double]();   
+      var subNin=Map[String,Double]();
+      for (entry<-nd.entries){
+    	  var tempDist=eucDistance(ptMap(entry.obj).content,curContent);  
+    	  Nin=Nin+(entry.nextNdId->tempDist);
+    	  if (tempDist<=entry.radius){
+    	    subNin=subNin+(entry.nextNdId->tempDist);
+    	  }
+      }     
+      if (subNin.isEmpty){  
+        objNdId=Nin.minBy(x=>(x._2-nd.entries.filter(_.nextNdId==x._1).head.radius))._1;    	  
+    	  mtNdMap=mtNdMap-nd.id;
+    	  var tEntryItem=nd.entries.filter(_.nextNdId==objNdId).head;
+    	  var tentry=nd.entries.filter(_.nextNdId!=objNdId):+Entry(tEntryItem.obj,tEntryItem.nextNdId,tEntryItem.distance2ParentObj,Nin(objNdId));
+    	  mtNdMap=mtNdMap+(nd.id->MtNd(nd.id,nd.parentObj,tentry,nd.dist2ParentNd,nd.typ));
       } else {
-        objNdId=Nin.minBy(x=>x._2-mtNdMap(x._1).radius)._1;
-        var tempNd=mtNdMap(objNdId);
-        mtNdMap=mtNdMap-objNdId;
-        mtNdMap=mtNdMap+(objNdId->MtNd(objNdId,tempNd.coverTree,Nin(objNdId), 
-            tempNd.distToParent,tempNd.typ));
+        objNdId=subNin.minBy(_._2)._1;
       }
-      insert(id,curContent, mtNdMap(objNdId));
-    } else {
-      if(nd.coverTree.size<ndCapacity){  
-        var tempDist=eucDistance(ptMap(nd.centerId).content,curContent);
-        mtNdMap=mtNdMap-nd.centerId;
-        mtNdMap=mtNdMap+(nd.centerId->MtNd(nd.centerId,nd.coverTree:+(id,tempDist),
-            math.max(nd.radius,tempDist),nd.distToParent,nd.typ));
-        ptMap=ptMap+(id->Point(curContent,nd.centerId));
-      } else {
-        split(nd,id);
-      }      
+      insert(objId,curContent)(mtNdMap(objNdId));      
     }     
   }
-  def split(nd:MtNd,id:String){
-    var candidate="";
-    var tempD=0.0;
-    for (x<-nd.coverTree){
-      if (x._2>tempD){
-        tempD=x._2;
-        candidate=x._1;
-      }
-    }    
-    if (nd.distToParent._1=="None"){
-      var tempDistSet=nd.coverTree.map(_._2);
+  def split(nd:MtNd,entry:Entry){        
+    if (nd.dist2ParentNd._1=="None"){     //root node
+      var tempDistSet=nd.entries.map(_.distance2ParentObj);
       var minDist=tempDistSet.min;
       var maxDist=tempDistSet.max;
-      var sons=nd.coverTree.filter(x=>x._2==minDist||x._2==minDist).map(_._1);      
-      var entrySet=(nd.coverTree.map(_._1):+id).filter(y=> sons.contains(y)==false);     
       
-      var separatedEntry=entryDistribution(sons(0),sons(1),entrySet); 
-      for (x <-sons){
-        var tempDist=nd.coverTree.filter(_._1==x).head._2;
-    	  var tempCoverTree=separatedEntry(x);
-    	  var newRadius=getRadius(tempCoverTree,nd.typ);
-    	  mtNdMap=mtNdMap+(x->MtNd(x,tempCoverTree,newRadius, (nd.centerId,tempDist),nd.typ));
-      };      
-      var rootConverTree=nd.coverTree.filter(y=> sons.contains(y._1));
-      var newRadius=getRadius(rootConverTree,"route");
-      mtNdMap=mtNdMap-nd.centerId+
-      (nd.centerId->MtNd(nd.centerId,rootConverTree,newRadius, nd.distToParent,"route"));
+      var sonObjs=nd.entries.filter(x=>x.distance2ParentObj==maxDist||x.distance2ParentObj==minDist).map(_.obj);
       
+      var separatedEntry=entryDistribution(sonObjs(0),sonObjs(1),nd.entries); 
+      var newEntry=Array[Entry]();
+      for (x <-sonObjs){
+        var dist2parentObj=nd.entries.filter(_.obj==x).head.distance2ParentObj;
+    	  var tempEntries=separatedEntry(x);
+    	  var newRadius=getRadius(tempEntries,nd.typ);
+    	  ndCount=ndCount+1;
+    	  var newNd=ndCount.toString;
+    	  mtNdMap=mtNdMap+(newNd->MtNd(newNd,x,tempEntries,(nd.id,dist2parentObj),nd.typ));    	  
+    	  newEntry=newEntry:+Entry(x,newNd,dist2parentObj,newRadius);    	  
+      }; 
+      mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntry,("None",0.0),"route"));   //register new route objectives to the parent node;
+            
     } else {
-    	var parent=nd.distToParent._1;      
-    	var tempDistSet=nd.coverTree.map(_._2);    	  
+    	var parentNdId=nd.dist2ParentNd._1;      
+    	var tempDistSet=nd.entries.map(_.distance2ParentObj);    	  
     	var maxDist=tempDistSet.max;
-    	var candidate=nd.coverTree.filter(_._2==maxDist).head._1; 
-    	var tempEntries=(nd.coverTree.map(_._1):+id).filter(_!=candidate);
-
-    	var newEntry=entryDistribution(candidate,nd.centerId,tempEntries);
-    	for (x<-Array(candidate,nd.centerId)){
-    		var tempDist=0.0
-    				if(x==nd.centerId){
-    					tempDist=nd.distToParent._2;
-    				} else {
-    					tempDist=eucDistance(ptMap(parent).content,ptMap(x).content);  
-    				}
-    		var tempCoverTree=newEntry(x);
-    		var newRadius=getRadius(tempCoverTree,nd.typ);
-    		mtNdMap=mtNdMap+(x->MtNd(x,tempCoverTree,newRadius, (parent,tempDist),nd.typ));
+    	var candidate=nd.entries.filter(_.distance2ParentObj==maxDist).head.obj;    	
+    	var newEntry=Array[Entry]();
+    	var separatedEntry=entryDistribution(candidate,nd.parentObj,nd.entries);    	
+    	for (x<-Array(candidate,nd.parentObj)){
+    		var dist2ParentNd= x match{
+    		  case nd.parentObj => nd.dist2ParentNd._2
+    		  case default => eucDistance(ptMap(mtNdMap(parentNdId).parentObj).content,ptMap(x).content)
+    		};    		
+    	  var tempEntries=separatedEntry(x);
+    	  var newRadius=getRadius(tempEntries,nd.typ);
+    	  if (mtNdMap.contains(x)){
+    	    mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,x,tempEntries,(parentNdId,dist2ParentNd),nd.typ));
+    	  } else {
+    		  ndCount=ndCount+1;
+    		  var newNd=ndCount.toString;
+    		  mtNdMap=mtNdMap+(newNd->MtNd(newNd,x,tempEntries,(parentNdId,dist2ParentNd),nd.typ));
+    		  newEntry=newEntry:+Entry(x,newNd,dist2ParentNd,newRadius); 
+    	  }    		
     	}
-    	var parentNd=mtNdMap(parent);
-    	if (parentNd.coverTree.length>ndCapacity-1){
-    		split(mtNdMap(parent),candidate);
-    	} else {
-    		var rootConverTree=parentNd.coverTree:+(candidate,mtNdMap(candidate).distToParent._2);
-    		var newRadius=getRadius(rootConverTree,"route");
-    		mtNdMap=mtNdMap-parent+
-    				(parent->MtNd(parent,rootConverTree,newRadius, parentNd.distToParent,"route"));
+    	var parentNd=mtNdMap(parentNdId);
+    	if (parentNd.entries.length>ndCapacity-1){
+    		split(parentNd,newEntry.head);
+    	} else {    		
+    		mtNdMap=mtNdMap-parentNdId+
+    				(parentNdId->MtNd(parentNdId,parentNd.parentObj,parentNd.entries++newEntry,parentNd.dist2ParentNd,nd.typ));
     	}
       
     }
@@ -125,44 +124,42 @@ object mtree extends util {
     }
     return typ
   }
-  def getRadius(entries:Array[Tuple2[String,Double]],typ:String):Double={
+  def getRadius(entries:Array[Entry],typ:String):Double={
     var dist= typ match {
-      case "leaf" => entries.map(_._2).max
-      case default => entries.map(x=>x._2+mtNdMap(x._1).radius).max
-    }
-    
+      case "leaf" => entries.map(_.distance2ParentObj).max
+      case default => entries.map(x=>x.distance2ParentObj+x.radius).max
+    }    
     return dist;
   }
-  def entryDistribution(o1:String,o2:String,entries:Array[String]):scala.collection.mutable.Map[String,Array[Tuple2[String,Double]]]={
-    var tempSepMap=scala.collection.mutable.Map(o1->Array[Tuple2[String,Double]](),o2->Array[Tuple2[String,Double]]());
+  def entryDistribution(o1:String,o2:String,entries:Array[Entry]):scala.collection.mutable.Map[String,Array[Entry]]={
+    var tempSepMap=scala.collection.mutable.Map(o1->Array[Entry](),o2->Array[Entry]());
     for (id<-entries){
-      if (id!=o1 && id!=o2){        
-        var dist1=eucDistance(ptMap(o1).content,ptMap(id).content);
-        var dist2=eucDistance(ptMap(o2).content,ptMap(id).content);          
-        if (dist1>=dist2){
-          tempSepMap(o2)=tempSepMap(o2):+(id,dist2);
-        } else {
-          tempSepMap(o1)=tempSepMap(o1):+(id,dist2);
-        }
-      }
+    	var dist1=eucDistance(ptMap(o1).content,ptMap(id.obj).content);
+    	var dist2=eucDistance(ptMap(o2).content,ptMap(id.obj).content);          
+    	if (dist1>=dist2){
+    		tempSepMap(o2)=tempSepMap(o2):+id;
+    	} else {
+    		tempSepMap(o1)=tempSepMap(o1):+id;
+    	}
+
     }
     return tempSepMap;
   }
-  def rangeQuery(nd:MtNd,id:String,radius:Double):Array[String]={
+  def rangeQuery(id:String,radius:Double)(implicit nd:MtNd):Array[String]={
     var neig=Array[String]();
-    var dist=eucDistance(ptMap(nd.centerId).content,ptMap(id).content);
+    var dist=eucDistance(ptMap(nd.parentObj).content,ptMap(id).content);
     if (nd.typ!="leaf"){
-      for (x<-nd.coverTree if math.abs(dist-x._2)<=(radius+mtNdMap(x._1).radius)){
-        var dist1=eucDistance(ptMap(x._1).content,ptMap(id).content);
-        if (dist1<(radius+mtNdMap(x._1).radius)) {
-          neig=neig++rangeQuery(mtNdMap(x._1),id,radius);
+      for (x<-nd.entries if math.abs(dist-x.distance2ParentObj)<=(radius+x.radius)){
+        var dist1=eucDistance(ptMap(x.obj).content,ptMap(id).content);
+        if (dist1<(radius+x.radius)) {
+          neig=neig++rangeQuery(id,radius)(mtNdMap(x.nextNdId));
         }
       }
     } else {
-      for (x<-nd.coverTree if math.abs(dist-x._2)<=radius){
-        var dist1=eucDistance(ptMap(x._1).content,ptMap(id).content);
+      for (x<-nd.entries if math.abs(dist-x.distance2ParentObj)<=radius){
+        var dist1=eucDistance(ptMap(x.obj).content,ptMap(id).content);
         if (dist1<=radius) {
-          neig=neig:+x._1;
+          neig=neig:+x.obj;
         }
       }
     }    
@@ -170,29 +167,10 @@ object mtree extends util {
   }
   
   def delete(id:String){
-    var parentNd=ptMap(id).parentNd;  
-    
-    if (mtNdMap.contains(id)){      
-      var tempDist=100000000000.0;
-      var candidate="";
-      for (x<-mtNdMap(parentNd).coverTree if x._1!=id){
-        var tempDist1=eucDistance(ptMap(x._1).content,ptMap(id).content);
-        if (tempDist>tempDist1) {
-          tempDist=tempDist1;
-          candidate=x._1;
-        }
-    	    
-      }    
-      
-      
-    } else {
-      var centerId=ptMap(id).parentNd;
-      var mtNd=mtNdMap(centerId);
-      var tempEntries=mtNd.coverTree.filter(_._1!=id);
-      var tempRadius=getRadius(tempEntries,mtNd.typ);
-      mtNdMap=mtNdMap-centerId+(centerId->MtNd(centerId,tempEntries,tempRadius, mtNd.distToParent,mtNd.typ));
-      ptMap=ptMap-id;
-    }
-    
+	  var parentNdId=ptMap(id).ndId; 	 
+	  var parentNd=mtNdMap(parentNdId);
+	  var newEntries=parentNd.entries.filter(_.obj!=id);	  
+	  mtNdMap=mtNdMap-parentNdId+(parentNdId->MtNd(parentNdId,parentNd.parentObj,newEntries,parentNd.dist2ParentNd,parentNd.typ));
+	  ptMap=ptMap-id;    
   }
 }
