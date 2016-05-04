@@ -29,13 +29,14 @@ class mtree extends util {
     ptMap=ptMap+(id->Point(content,ndid));    
   }
   def insert(objId:String,curContent:Array[Double])(implicit nd:MtNd){
+    ptMap=ptMap+(objId->Point(curContent,"None"));
     if (nd.typ=="leaf"){
       var dist2ParentObj=eucDistance(ptMap(nd.parentObj).content,curContent);
       var entryItem=Entry(objId,"None",dist2ParentObj,0.0);
     	if(nd.entries.size<ndCapacity){
     		mtNdMap=mtNdMap-nd.id;
-    		mtNdMap=mtNdMap+(nd.id->MtNd(nd.id,nd.parentObj,nd.entries:+entryItem,nd.dist2ParentNd,nd.typ));
-    		ptMap=ptMap+(objId->Point(curContent,nd.id));
+    		mtNdMap=mtNdMap+(nd.id->MtNd(nd.id,nd.parentObj,nd.entries:+entryItem,nd.dist2ParentNd,nd.typ));    		
+    		ptMap=ptMap-objId+(objId->Point(curContent,nd.id));
     	} else {
     		split(nd,entryItem);
     	}  
@@ -60,7 +61,8 @@ class mtree extends util {
         objNdId=subNin.minBy(_._2)._1;
       }
       insert(objId,curContent)(mtNdMap(objNdId));      
-    }     
+    }
+    rootNd=mtNdMap(rootNd.id);
   }
   def split(nd:MtNd,entry:Entry){        
     if (nd.dist2ParentNd._1=="None"){     //root node
@@ -70,7 +72,7 @@ class mtree extends util {
       
       var sonObjs=nd.entries.filter(x=>x.distance2ParentObj==maxDist||x.distance2ParentObj==minDist).map(_.obj);
       
-      var separatedEntry=entryDistribution(sonObjs(0),sonObjs(1),nd.entries); 
+      var separatedEntry=entryDistribution(sonObjs(0),sonObjs(1),nd.entries:+entry); 
       var newEntry=Array[Entry]();
       for (x <-sonObjs){
         var dist2parentObj=nd.entries.filter(_.obj==x).head.distance2ParentObj;
@@ -84,12 +86,13 @@ class mtree extends util {
       mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntry,("None",0.0),"route"));   //register new route objectives to the parent node;
             
     } else {
-    	var parentNdId=nd.dist2ParentNd._1;      
+    	var parentNdId=nd.dist2ParentNd._1;     
+    	var parentNd=mtNdMap(parentNdId);
     	var tempDistSet=nd.entries.map(_.distance2ParentObj);    	  
     	var maxDist=tempDistSet.max;
     	var candidate=nd.entries.filter(_.distance2ParentObj==maxDist).head.obj;    	
     	var newEntry=Array[Entry]();
-    	var separatedEntry=entryDistribution(candidate,nd.parentObj,nd.entries);    	
+    	var separatedEntry=entryDistribution(candidate,nd.parentObj,nd.entries:+entry);    	
     	for (x<-Array(candidate,nd.parentObj)){
     		var dist2ParentNd= x match{
     		  case nd.parentObj => nd.dist2ParentNd._2
@@ -97,17 +100,18 @@ class mtree extends util {
     		};    		
     	  var tempEntries=separatedEntry(x);
     	  var newRadius=getRadius(tempEntries,nd.typ);
-    	  if (mtNdMap.contains(x)){
+    	  if (nd.parentObj==x){
     	    mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,x,tempEntries,(parentNdId,dist2ParentNd),nd.typ));
+    	    var newParentEntries=parentNd.entries.filter(_.obj!=x):+Entry(x,nd.id,newRadius,nd.dist2ParentNd._2);
+    	    mtNdMap=mtNdMap-parentNdId+(parentNdId->MtNd(parentNdId,parentNd.parentObj,newParentEntries,parentNd.dist2ParentNd,nd.typ));
     	  } else {
     		  ndCount=ndCount+1;
     		  var newNd=ndCount.toString;
     		  mtNdMap=mtNdMap+(newNd->MtNd(newNd,x,tempEntries,(parentNdId,dist2ParentNd),nd.typ));
     		  newEntry=newEntry:+Entry(x,newNd,dist2ParentNd,newRadius); 
     	  }    		
-    	}
-    	var parentNd=mtNdMap(parentNdId);
-    	if (parentNd.entries.length>ndCapacity-1){
+    	}    	
+    	if (parentNd.entries.length==ndCapacity){
     		split(parentNd,newEntry.head);
     	} else {    		
     		mtNdMap=mtNdMap-parentNdId+
@@ -136,10 +140,10 @@ class mtree extends util {
     for (id<-entries){
     	var dist1=eucDistance(ptMap(o1).content,ptMap(id.obj).content);
     	var dist2=eucDistance(ptMap(o2).content,ptMap(id.obj).content);          
-    	if (dist1>=dist2){
-    		tempSepMap(o2)=tempSepMap(o2):+id;
+    	if (dist1>=dist2){    	  
+    		tempSepMap(o2)=tempSepMap(o2):+Entry(id.obj,id.nextNdId,dist2,id.radius);
     	} else {
-    		tempSepMap(o1)=tempSepMap(o1):+id;
+    		tempSepMap(o1)=tempSepMap(o1):+Entry(id.obj,id.nextNdId,dist1,id.radius);
     	}
 
     }
@@ -147,6 +151,7 @@ class mtree extends util {
   }
   def rangeQuery(id:String,radius:Double)(implicit nd:MtNd):Array[String]={
     var neig=Array[String]();
+     
     var dist=eucDistance(ptMap(nd.parentObj).content,ptMap(id).content);
     if (nd.typ!="leaf"){
       for (x<-nd.entries if math.abs(dist-x.distance2ParentObj)<=(radius+x.radius)){
@@ -166,11 +171,64 @@ class mtree extends util {
     return neig;
   }
   
+  /*******************delUpdate is a little complex, need dynamically update the point-node correlation******************/
+  def delUpdate(id:String,nd:MtNd,candidateEntry:Entry){
+    if (nd.dist2ParentNd._1=="None"){
+      var newEntries=nd.entries.filter(_.obj!=id):+candidateEntry;      
+      if (nd.parentObj==id){
+        var minDist=newEntries.map(_.distance2ParentObj).min;
+        var candidate=newEntries.filter(_.distance2ParentObj==minDist).head.obj; 
+        newEntries=newEntries.map(x=>Entry(x.obj,x.nextNdId,eucDistance(ptMap(candidate).content,ptMap(x.obj).content),x.radius));
+        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,candidate,newEntries,nd.dist2ParentNd,nd.typ));
+      } else {
+        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
+      }
+    } else if(nd.typ=="leaf") {
+      var parentNdId=nd.dist2ParentNd._1;
+      var newEntries=nd.entries.filter(_.obj!=id);
+      if (nd.parentObj==id){
+        var minDist=newEntries.map(_.distance2ParentObj).min;
+        var candidate=newEntries.filter(_.distance2ParentObj==minDist).head.obj;        
+        newEntries=newEntries
+        		.map(x=>Entry(x.obj,x.nextNdId,eucDistance(ptMap(candidate).content,ptMap(x.obj).content),0.0));
+        var dist2ParentNd=eucDistance(ptMap(candidate).content,ptMap(mtNdMap(parentNdId).parentObj).content);
+        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,candidate,newEntries,(parentNdId,dist2ParentNd),nd.typ));
+        var radius=getRadius(newEntries,nd.typ);
+        delUpdate(id,mtNdMap(parentNdId),Entry(candidate,nd.id,dist2ParentNd,radius));  
+      } else {
+        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
+        var radius=getRadius(newEntries,nd.typ);
+        delUpdate(id,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
+      }    
+      
+    } else {
+      var newEntries=nd.entries.filter(_.obj==id):+candidateEntry;
+      var parentNdId=nd.dist2ParentNd._1;
+      if (nd.parentObj==id){
+        var minDist=newEntries.map(_.distance2ParentObj).min;
+        var candidate=newEntries.filter(_.distance2ParentObj==minDist).head.obj;        
+        newEntries=newEntries
+        		.map(x=>Entry(x.obj,x.nextNdId,eucDistance(ptMap(candidate).content,ptMap(x.obj).content),x.radius));
+        var dist2ParentNd=eucDistance(ptMap(candidate).content,ptMap(mtNdMap(parentNdId).parentObj).content);        
+        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,id,nd.entries.filter(_.obj!=id):+candidateEntry,(parentNdId,dist2ParentNd),nd.typ));
+        var radius=getRadius(newEntries,nd.typ);
+        delUpdate(id,mtNdMap(parentNdId),Entry(candidate,nd.id,dist2ParentNd,radius));
+      } else {
+        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
+        var radius=getRadius(newEntries,nd.typ);
+        delUpdate(id,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
+      }
+    } 
+  }
   def delete(id:String){
-	  var parentNdId=ptMap(id).ndId; 	 
-	  var parentNd=mtNdMap(parentNdId);
-	  var newEntries=parentNd.entries.filter(_.obj!=id);	  
-	  mtNdMap=mtNdMap-parentNdId+(parentNdId->MtNd(parentNdId,parentNd.parentObj,newEntries,parentNd.dist2ParentNd,parentNd.typ));
-	  ptMap=ptMap-id;    
+	  var masterNdId=ptMap(id).ndId; 	 
+	  var masterNd=mtNdMap(masterNdId);
+	  //var newEntries=parentNd.entries.filter(_.obj!=id);	  
+	  //mtNdMap=mtNdMap-parentNdId+(parentNdId->MtNd(parentNdId,parentNd.parentObj,newEntries,parentNd.dist2ParentNd,parentNd.typ));
+	  if (mtNdMap.filter(_._2.parentObj==id).isEmpty){
+		  ptMap=ptMap-id;  
+	  }
+	      
+	  //delUpdate(id,masterNd,masterNd.entries.filter(_.obj==id).head);
   }
 }

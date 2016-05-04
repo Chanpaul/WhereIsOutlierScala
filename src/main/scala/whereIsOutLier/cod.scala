@@ -17,6 +17,7 @@ import java.io._
 import scala.math
 import com.typesafe.config._
 import collection.JavaConverters._
+import scala.collection.parallel._
 import mtree._
 
 case class CodMeta(preNeig:Seq[String],succ:Int,checkOnLeave:Double,status:String);
@@ -36,7 +37,7 @@ object cod extends util{
 	var srcDataFileName="";
 	var resDataDir="";
 	var resDataFileName="";
-	var mt=new mtree.mtree;
+	
   def setConfig(config:Config){
     outlierParam=OutlierParam(config.getString("outlier.typ"),
         config.getDouble("outlier.R"),
@@ -49,10 +50,10 @@ object cod extends util{
     resDataFileName=config.getString("outlier.fileName");   
     colTypeI=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0).trim,x(1).toInt));
   }
-  def depart(){		  
-		  var expired=ptInWindow.filter(_._2.startTime<=curWindowStart).iterator;		
+  def depart():Map[String,CodPt]={		  
+		  var expired=ptInWindow.filter(_._2.startTime<=curWindowStart);		
 		  curWindowStart=curWindowStart+window.slideLen;
-		  for (expIt<-expired){
+		  for (expIt<-expired.iterator){
 			  ptInWindow=ptInWindow-expIt._1;
 			  
 			  if (ptMeta.exists(_._1==expIt._1)){
@@ -74,7 +75,8 @@ object cod extends util{
 				  
 				  ptMeta=ptMeta+(it3._1->CodMeta(tempNeig,it3._2.succ,checkOnLeave,status));				  
 			  }
-		  }		  	  
+		  }		 
+		  return(expired.seq);
   }
   
   def codMain(sqlContext:SQLContext){
@@ -112,7 +114,7 @@ object cod extends util{
 	  var runtime=Runtime.getRuntime();
 	  var mem1=runtime.freeMemory();
 	  /******************end of setup*********************/
-	  //var mt=new mtree.mtree;
+	  var mt=new mtree.mtree;
 	  mt.initialization(50,colName,colType,colTypeI);
 	  for(line<-lines) {
 		  println(ptCount);
@@ -134,9 +136,11 @@ object cod extends util{
 			  ptInWindow=ptInWindow+(id->CodPt(id,ptCount,ptCount+window.width,curPt));	 
 			  if (id=="1"){
 				  mt.create(id,curPt);  //creating m-tree  
-			  } else {
-			    mt.insert(id,curPt)(mt.rootNd);
-			  }			  
+			  } else if (id!="0") {
+			    mt.insert(id,curPt)(mt.mtNdMap(mt.rootNd.id));
+			  }			 
+			  //var test=mt.rangeQuery(id,105455.0)(mt.mtNdMap(mt.rootNd.id));
+			  //println(test.mkString(","));
 			  if (ptInWindow.size>window.width){
 				  /************collect metrics***********************/
 				  var mem2=runtime.freeMemory();
@@ -146,24 +150,28 @@ object cod extends util{
 				  var to=ptInWindow.map(_._2.startTime).max.toString;
 				  printOutlier(writer,from,to,memUsage,cpuUsage);
 				  /*********************end of collection*********************/
-				  depart();
+				  var expired=depart();
+				  for (expIt<-expired.iterator){
+				    mt.delete(expIt._1);
+				  }
 				  /****************renew metrics measure***********************/
 				  begTime=System.nanoTime;
 				  runtime=Runtime.getRuntime();
 				  mem1=runtime.freeMemory();
 				  /******************end of setup*********************/
 			  }
-			  
+			  /*
 			  /*********************Update distance map*************************/
 			  for (it<-ptInWindow.filter(_._1!=id).iterator){
 				  var tempDist=eucDistance(curPt,it._2.content);	    	
 				  distMap=distMap+(it._1+","+id->tempDist);
 			  }	  
 			  /*********************end of update distance map***********************/
+			   */
 			  if(!ptMeta.exists(_._1==id)){
 				  ptMeta=ptMeta+(id->CodMeta(Seq[String](),0,0.0,"Outlier"));
 			  }
-			  searchNeighbor(id);	 
+			  searchNeighbor(id,mt);	 
 			  
 			  
 		  }
@@ -178,21 +186,23 @@ object cod extends util{
         +s"cpu usage is: $cpuUsage"
         +"\n");    
   }
-  def searchNeighbor(id:String){    
+  def searchNeighbor(id:String,mt:mtree){    
 	    var strPat=new Regex(id);
 	    var idCheckTime=ptInWindow(id).expTime;	 
 	    var tempPreNeig=ptMeta(id).preNeig;
 	    var succ=ptMeta(id).succ;
 	    var checkOnLeave=ptMeta(id).checkOnLeave;
 	    var status=ptMeta(id).status;
-	    
+	    /*
 	    for(it<-distMap.iterator){
 	    	var isExist=strPat findFirstIn it._1;
 	    	if (!isExist.isEmpty && it._2<outlierParam.R){	    	  
 	    	  var oid=it._1.split(",").filter(_!=id).head
 	    	  tempPreNeig=tempPreNeig:+oid;
 	    	}
-	    }
+	    }*/
+	    
+	    tempPreNeig=mt.rangeQuery(id,105455.0)(mt.mtNdMap(mt.rootNd.id));
 	    if (tempPreNeig.length>outlierParam.k){
 	      status="Unsafe";
 	      checkOnLeave=ptInWindow.filter(x=>tempPreNeig.contains(x._1)).map(_._2.expTime).min;	      
