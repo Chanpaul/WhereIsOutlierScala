@@ -50,9 +50,10 @@ object cod extends util{
     resDataFileName=config.getString("outlier.fileName");   
     colTypeI=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0).trim,x(1).toInt));
   }
-  def depart():Map[String,CodPt]={		  
-		  var expired=ptInWindow.filter(_._2.startTime<=curWindowStart);		
+  def depart():Map[String,CodPt]={
 		  curWindowStart=curWindowStart+window.slideLen;
+		  var expired=ptInWindow.filter(_._2.startTime<=curWindowStart);		
+		  
 		  for (expIt<-expired.iterator){
 			  ptInWindow=ptInWindow-expIt._1;
 			  
@@ -115,7 +116,7 @@ object cod extends util{
 	  var mem1=runtime.freeMemory();
 	  /******************end of setup*********************/
 	  var mt=new mtree.mtree;
-	  mt.initialization(50,colName,colType,colTypeI);
+	  mt.initialization(500,colName,colType,colTypeI);
 	  for(line<-lines) {
 		  println(ptCount);
 		  id=ptCount.toString;
@@ -137,10 +138,9 @@ object cod extends util{
 			  if (id=="1"){
 				  mt.create(id,curPt);  //creating m-tree  
 			  } else if (id!="0") {
-			    mt.insert(id,curPt)(mt.mtNdMap(mt.rootNd.id));
-			  }			 
-			  //var test=mt.rangeQuery(id,105455.0)(mt.mtNdMap(mt.rootNd.id));
-			  //println(test.mkString(","));
+			     mt.insert(id,curPt)(mt.mtNdMap(mt.rootNd.id));
+			  }			  
+			  
 			  if (ptInWindow.size>window.width){
 				  /************collect metrics***********************/
 				  var mem2=runtime.freeMemory();
@@ -150,8 +150,9 @@ object cod extends util{
 				  var to=ptInWindow.map(_._2.startTime).max.toString;
 				  printOutlier(writer,from,to,memUsage,cpuUsage);
 				  /*********************end of collection*********************/
+				  
 				  var expired=depart();
-				  for (expIt<-expired.iterator){
+				  for (expIt<-expired.iterator){				    
 				    mt.delete(expIt._1);
 				  }
 				  /****************renew metrics measure***********************/
@@ -202,7 +203,8 @@ object cod extends util{
 	    	}
 	    }*/
 	    
-	    tempPreNeig=mt.rangeQuery(id,105455.0)(mt.mtNdMap(mt.rootNd.id));
+	    tempPreNeig=mt.query(id,105455.0)(mt.mtNdMap(mt.rootNd.id));
+	    //println(tempPreNeig.mkString(","));
 	    if (tempPreNeig.length>outlierParam.k){
 	      status="Unsafe";
 	      checkOnLeave=ptInWindow.filter(x=>tempPreNeig.contains(x._1)).map(_._2.expTime).min;	      

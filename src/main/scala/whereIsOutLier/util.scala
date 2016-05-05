@@ -41,7 +41,7 @@ trait util {
 		  }
 		  tsum=tsum+scala.math.pow(temp,2.0);	    		
 	  }
-	  return(tsum);
+	  return(scala.math.sqrt(tsum));
   } 
     
 }

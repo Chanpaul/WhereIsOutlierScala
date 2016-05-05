@@ -3,9 +3,10 @@ import whereIsOutLier._
 case class Entry(obj:String,nextNdId:String,distance2ParentObj:Double,radius:Double);
 case class MtNd(id:String,parentObj:String,entries:Array[Entry],dist2ParentNd:Tuple2[String,Double],typ:String);
 case class Point(content:Array[Double],ndId:String);
+case class  QueryResult(ndId:String,objId:String);
 class mtree extends util {
-  var mtNdMap=Map[String,MtNd]();
-  var ptMap=Map[String,Point]();  
+  var mtNdMap=Map[String,MtNd]().par;
+  var ptMap=Map[String,Point]().par;  
   var ndCount=1;
   var ndCapacity=100;
   implicit var rootNd=MtNd(ndCount.toString,"",Array[Entry](),("None",0.0),"leaf");
@@ -28,15 +29,19 @@ class mtree extends util {
     mtNdMap=mtNdMap+(ndid->rootNd);
     ptMap=ptMap+(id->Point(content,ndid));    
   }
+  
   def insert(objId:String,curContent:Array[Double])(implicit nd:MtNd){
-    ptMap=ptMap+(objId->Point(curContent,"None"));
+    if (!ptMap.contains(objId)){
+    	ptMap=ptMap+(objId->Point(curContent,"None"));  
+    }    
     if (nd.typ=="leaf"){
       var dist2ParentObj=eucDistance(ptMap(nd.parentObj).content,curContent);
       var entryItem=Entry(objId,"None",dist2ParentObj,0.0);
     	if(nd.entries.size<ndCapacity){
     		mtNdMap=mtNdMap-nd.id;
     		mtNdMap=mtNdMap+(nd.id->MtNd(nd.id,nd.parentObj,nd.entries:+entryItem,nd.dist2ParentNd,nd.typ));    		
-    		ptMap=ptMap-objId+(objId->Point(curContent,nd.id));
+    		//Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,nd.entries.map(_.distance2ParentObj).max);
+    		//ptMap=ptMap-objId+(objId->Point(curContent,nd.id));
     	} else {
     		split(nd,entryItem);
     	}  
@@ -44,8 +49,10 @@ class mtree extends util {
       var objNdId=""; 
       var Nin=Map[String,Double]();   
       var subNin=Map[String,Double]();
+      
       for (entry<-nd.entries){
-    	  var tempDist=eucDistance(ptMap(entry.obj).content,curContent);  
+        var tempDist=eucDistance(ptMap(entry.obj).content,curContent);  
+    	  
     	  Nin=Nin+(entry.nextNdId->tempDist);
     	  if (tempDist<=entry.radius){
     	    subNin=subNin+(entry.nextNdId->tempDist);
@@ -90,20 +97,21 @@ class mtree extends util {
     	var parentNd=mtNdMap(parentNdId);
     	var tempDistSet=nd.entries.map(_.distance2ParentObj);    	  
     	var maxDist=tempDistSet.max;
-    	var candidate=nd.entries.filter(_.distance2ParentObj==maxDist).head.obj;    	
+    	var candidate=nd.entries.filter(_.distance2ParentObj==maxDist).head.obj; 
     	var newEntry=Array[Entry]();
+    	
     	var separatedEntry=entryDistribution(candidate,nd.parentObj,nd.entries:+entry);    	
-    	for (x<-Array(candidate,nd.parentObj)){
+    	for (x<-Array(candidate,nd.parentObj)){    	  
     		var dist2ParentNd= x match{
     		  case nd.parentObj => nd.dist2ParentNd._2
     		  case default => eucDistance(ptMap(mtNdMap(parentNdId).parentObj).content,ptMap(x).content)
     		};    		
     	  var tempEntries=separatedEntry(x);
     	  var newRadius=getRadius(tempEntries,nd.typ);
-    	  if (nd.parentObj==x){
-    	    mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,x,tempEntries,(parentNdId,dist2ParentNd),nd.typ));
+    	  if (x==nd.parentObj){
+    	    mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,x,tempEntries,nd.dist2ParentNd,nd.typ));
     	    var newParentEntries=parentNd.entries.filter(_.obj!=x):+Entry(x,nd.id,newRadius,nd.dist2ParentNd._2);
-    	    mtNdMap=mtNdMap-parentNdId+(parentNdId->MtNd(parentNdId,parentNd.parentObj,newParentEntries,parentNd.dist2ParentNd,nd.typ));
+    	    mtNdMap=mtNdMap-parentNdId+(parentNdId->MtNd(parentNdId,parentNd.parentObj,newParentEntries,parentNd.dist2ParentNd,parentNd.typ));
     	  } else {
     		  ndCount=ndCount+1;
     		  var newNd=ndCount.toString;
@@ -115,29 +123,29 @@ class mtree extends util {
     		split(parentNd,newEntry.head);
     	} else {    		
     		mtNdMap=mtNdMap-parentNdId+
-    				(parentNdId->MtNd(parentNdId,parentNd.parentObj,parentNd.entries++newEntry,parentNd.dist2ParentNd,nd.typ));
+    				(parentNdId->MtNd(parentNdId,parentNd.parentObj,parentNd.entries++newEntry,parentNd.dist2ParentNd,parentNd.typ));
     	}
       
     }
     
   }
-  def checkNdType(entries:Array[Tuple2[String,Double]]):String={
-    var typ=mtNdMap.filter(x=>entries.map(_._1).contains(x._1)).isEmpty match {
-      case true => "leaf"
-      case default => "rout"
-    }
-    return typ
-  }
+  
   def getRadius(entries:Array[Entry],typ:String):Double={
-    var dist= typ match {
-      case "leaf" => entries.map(_.distance2ParentObj).max
-      case default => entries.map(x=>x.distance2ParentObj+x.radius).max
+    var dist=0.0
+    if (entries.length>0){
+    	dist= typ match {
+    	case "leaf" => entries.map(_.distance2ParentObj).max
+    	case default => entries.map(x=>x.distance2ParentObj+x.radius).max
+    	}  
     }    
+        
     return dist;
   }
   def entryDistribution(o1:String,o2:String,entries:Array[Entry]):scala.collection.mutable.Map[String,Array[Entry]]={
+    
     var tempSepMap=scala.collection.mutable.Map(o1->Array[Entry](),o2->Array[Entry]());
-    for (id<-entries){
+    for (id<-entries){    
+      
     	var dist1=eucDistance(ptMap(o1).content,ptMap(id.obj).content);
     	var dist2=eucDistance(ptMap(o2).content,ptMap(id.obj).content);          
     	if (dist1>=dist2){    	  
@@ -149,12 +157,11 @@ class mtree extends util {
     }
     return tempSepMap;
   }
-  def rangeQuery(id:String,radius:Double)(implicit nd:MtNd):Array[String]={
-    var neig=Array[String]();
-     
+  def rangeQuery(id:String,radius:Double)(implicit nd:MtNd):Array[QueryResult]={
+    var neig=Array[QueryResult]();     
     var dist=eucDistance(ptMap(nd.parentObj).content,ptMap(id).content);
-    if (nd.typ!="leaf"){
-      for (x<-nd.entries if math.abs(dist-x.distance2ParentObj)<=(radius+x.radius)){
+    if (nd.typ!="leaf"){      
+      for (x<-nd.entries if math.abs(dist-x.distance2ParentObj)<=(radius+x.radius)){        	
         var dist1=eucDistance(ptMap(x.obj).content,ptMap(id).content);
         if (dist1<(radius+x.radius)) {
           neig=neig++rangeQuery(id,radius)(mtNdMap(x.nextNdId));
@@ -164,14 +171,17 @@ class mtree extends util {
       for (x<-nd.entries if math.abs(dist-x.distance2ParentObj)<=radius){
         var dist1=eucDistance(ptMap(x.obj).content,ptMap(id).content);
         if (dist1<=radius) {
-          neig=neig:+x.obj;
+          neig=neig:+QueryResult(nd.id,x.obj);
         }
       }
     }    
     return neig;
   }
-  
-  /*******************delUpdate is a little complex, need dynamically update the point-node correlation******************/
+  def query(id:String,radius:Double)(implicit nd:MtNd):Array[String]={
+    var qr=rangeQuery(id,radius)(nd);    
+    return(qr.map(_.objId));
+  }
+  /*
   def delUpdate(id:String,nd:MtNd,candidateEntry:Entry){
     if (nd.dist2ParentNd._1=="None"){
       var newEntries=nd.entries.filter(_.obj!=id):+candidateEntry;      
@@ -220,15 +230,41 @@ class mtree extends util {
       }
     } 
   }
+  */
+  def delUpdate(id:String,nd:MtNd,candidateEntry:Entry){
+    if (nd.typ=="leaf"){
+      var parentNdId=nd.dist2ParentNd._1;
+      var newEntries=nd.entries.filter(_.obj!=id);      
+      mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
+      var radius=getRadius(newEntries,nd.typ);
+      delUpdate(id,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
+      
+    } else {
+    	if (nd.dist2ParentNd._1=="None"){
+    		var newEntries=nd.entries.filter(_.obj!=candidateEntry.obj):+candidateEntry;
+    		mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));      
+    	} else {
+    		var parentNdId=nd.dist2ParentNd._1;
+    		var newEntries=nd.entries.filter(_.obj!=candidateEntry.obj):+candidateEntry;      
+    		mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
+    		var radius=getRadius(newEntries,nd.typ);
+    		delUpdate(id,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
+    	}
+    }
+  }
   def delete(id:String){
-	  var masterNdId=ptMap(id).ndId; 	 
-	  var masterNd=mtNdMap(masterNdId);
+	  //var masterNdId=ptMap(id).ndId; 	 
+	  //var masterNd=mtNdMap(masterNdId);
 	  //var newEntries=parentNd.entries.filter(_.obj!=id);	  
 	  //mtNdMap=mtNdMap-parentNdId+(parentNdId->MtNd(parentNdId,parentNd.parentObj,newEntries,parentNd.dist2ParentNd,parentNd.typ));
-	  if (mtNdMap.filter(_._2.parentObj==id).isEmpty){
+    //println(ptMap.contains("1"));
+    var masterNdId=rangeQuery(id,0.1)(mtNdMap(rootNd.id)).filter(_.objId==id).head.ndId;
+	  var masterNd=mtNdMap(masterNdId);
+	  delUpdate(id,masterNd,masterNd.entries.filter(_.obj==id).head);
+	  
+    if (mtNdMap.filter(_._2.parentObj==id).isEmpty){
 		  ptMap=ptMap-id;  
 	  }
-	      
-	  //delUpdate(id,masterNd,masterNd.entries.filter(_.obj==id).head);
+	  
   }
 }
