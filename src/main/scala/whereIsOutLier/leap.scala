@@ -1,6 +1,7 @@
 package whereIsOutLier
 
 import org.apache.spark.{SparkContext, SparkConf}
+
 import scala.collection.parallel
 import org.apache.spark.sql
 import org.apache.spark.sql._
@@ -18,6 +19,7 @@ import java.io._
 import scala.math
 import com.typesafe.config._    //config need
 import scala.util.control._     //break need
+import mtree._
 //import org.github.jamm
 
 //case class Slide(slidId:Int,element:Seq[String],expTriger:Seq[String]);
@@ -30,6 +32,7 @@ object leap extends util{
   private var distMap=scala.collection.mutable.Map[String,Double]().par;   //global variable
   private var ptInWindow=Map[String,LeapPtInfo]().par;
   private var ptEvidence=Map[String,Evidence]().par;
+  
   implicit var colName=Array[String]();
 	implicit var colType=Array[(String,String)](); 
 	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;
@@ -84,6 +87,8 @@ object leap extends util{
 	  var slideId=1;
 	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
 	  var lines=scala.io.Source.fromFile(dataFile).getLines;
+	  var mt=new mtree.mtree;
+	  mt.initialization(500,colName,colType,colTypeI);
 	  for(line<-lines) {	 
 	    if (slideUnit.size==window.slideLen){	      
 	      ptInWindow=ptInWindow++slideUnit;
@@ -93,7 +98,10 @@ object leap extends util{
 	      //var meter=new MemoryMeter;
 	      var runtime=Runtime.getRuntime();
 	      var mem1=runtime.freeMemory();
-	      thresh();  
+	      var expired=thresh();  
+	      for (expIt<-expired.iterator){				    
+				    mt.delete(expIt._1);
+				  }
 	      var mem2=runtime.freeMemory();
 	      var cpuUsage=(System.nanoTime-begTime)/1000000000.0;
 	      var memUsage=math.abs(mem1-mem2)/(1024*1024);
@@ -111,7 +119,12 @@ object leap extends util{
 			    case y if x.contains(".") =>x.toDouble
 			    case z if !x.contains(".") =>x.toInt.toDouble
 			  }
-			    }).drop(1);		  	        
+			    }).drop(1);		  	
+		    if (ptCount==1){
+		    	mt.create(id,curPt);  //creating m-tree  
+		    } else if (ptCount!=0) {
+		    	mt.insert(id,curPt)(mt.mtNdMap(mt.rootNd.id));
+		    }	
 	    var tPtInfo=LeapPtInfo(id,slideId,ptCount.toDouble,curPt);	  	    
 	    slideUnit=slideUnit+(id->tPtInfo);
 		  }
@@ -120,13 +133,14 @@ object leap extends util{
 	  }
 	  writer.close;
   }
-  def thresh(){
+  def thresh():Map[String,LeapPtInfo]={
     var newSlidID=ptInWindow.map(_._2.slideID).max;
     var expSlidID=0;
     if (ptInWindow.size>window.width){    	
     	var expSlidID=ptInWindow.map(_._2.slideID).min;    	
     	ptInWindow=ptInWindow.filter(_._2.slideID!=expSlidID);
     	ptEvidence=ptEvidence.filter(x=>ptInWindow.contains(x._1));
+    	
     }    
     for(it<-ptInWindow.filter(_._2.slideID==newSlidID).iterator if(!ptEvidence.exists(_._1==it._1))){
     	{
@@ -141,10 +155,9 @@ object leap extends util{
       ptEvidence=ptEvidence+(it._1->tempEvi);
       var newEvi=leapThresh(it._1,ptInWindow,ptEvidence);
     }    
+    return(ptInWindow.seq.filter(_._2.slideID==expSlidID));
   }
-  def knn(){
-    
-  }
+  
   def leapThresh(ptId:String,ptInWindow:scala.collection.parallel.ParMap[String,LeapPtInfo],ptEvidence:scala.collection.parallel.ParMap[String,Evidence]):Evidence={
     var temprev=Map[Int,Int]();
     var checkOnLeave=0;
