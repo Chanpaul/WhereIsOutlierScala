@@ -237,7 +237,8 @@ class mtree extends util {
       var newEntries=nd.entries.filter(_.obj!=id);      
       mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
       var radius=getRadius(newEntries,nd.typ);
-      delUpdate(id,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
+      if(parentNdId!="None")
+    	  delUpdate(id,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
       
     } else {
     	if (nd.dist2ParentNd._1=="None"){

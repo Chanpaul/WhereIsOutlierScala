@@ -119,6 +119,7 @@ object cod extends util{
 	  mt.initialization(500,colName,colType,colTypeI);
 	  for(line<-lines) {
 		  println(ptCount);
+		  
 		  id=ptCount.toString;
 		  var curPt=Array[Double]();
 		  if (ptCount==0){
@@ -142,6 +143,7 @@ object cod extends util{
 			  }			  
 			  
 			  if (ptInWindow.size>window.width){
+			    println(line);
 				  /************collect metrics***********************/
 				  var mem2=runtime.freeMemory();
 				  var cpuUsage=(System.nanoTime-begTime)/1000000000.0;
@@ -203,7 +205,7 @@ object cod extends util{
 	    	}
 	    }*/
 	    
-	    tempPreNeig=mt.query(id,105455.0)(mt.mtNdMap(mt.rootNd.id));
+	    tempPreNeig=mt.query(id,outlierParam.R)(mt.mtNdMap(mt.rootNd.id));
 	    //println(tempPreNeig.mkString(","));
 	    if (tempPreNeig.length>outlierParam.k){
 	      status="Unsafe";

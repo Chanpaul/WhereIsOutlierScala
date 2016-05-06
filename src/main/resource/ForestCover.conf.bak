@@ -2,7 +2,7 @@ outlier {
    typ = "ThreshOutlier"
    directory="C://Users//wangc//Results//WhereIsOutlierScala"
    fileName="cod_FC"
-   R = 12.62
+   R = 1262
    k = 6
 }
 win {
