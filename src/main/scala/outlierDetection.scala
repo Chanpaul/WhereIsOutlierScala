@@ -48,13 +48,41 @@ object outlierDetection {
 	  
 	  val fileConfig = ConfigFactory.parseFile(myConfigFile);
 	  val config = ConfigFactory.load(fileConfig);
-	  //val newConfig = config.withValue("outlier.R", 
+	  for (slidSz<-Array(0.5,1,5,10,25,50).map(_*1000)){
+	    var newConfigLeap = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(slidSz))
+				  .withValue("win.width", ConfigValueFactory.fromAnyRef(100000))
+				  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef("leap_slideSize_"+slidSz));
+		  
+		  //println(newConfig.getDouble("outlier.R"));
+		  leap.setConfig(newConfigCod);
+		  leap.leapMain(sqlContext);
+		  var newConfigCod = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(slidSz))
+				  .withValue("win.width", ConfigValueFactory.fromAnyRef(100000))
+				  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef("cod_slideSize_"+slidSz));
+		  cod.setConfig(newConfigLeap);
+		  cod.codMain(sqlContext);
+	  }
+	  for (windSz<-Array(1,50,100,150,200).map(_*1000)){
+		  var newConfigLeap = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(500))
+				  .withValue("win.width", ConfigValueFactory.fromAnyRef(windSz))
+				  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef("leap_windowSize_"+windSz));
+		  //println(newConfig.getDouble("outlier.R"));
+		  leap.setConfig(newConfigLeap);
+		  leap.leapMain(sqlContext);		  
+		  var newConfigCod = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(500))
+				  .withValue("win.width", ConfigValueFactory.fromAnyRef(windSz))
+				  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef("cod_windowSize_"+windSz));
+		  cod.setConfig(newConfigCod);
+		  cod.codMain(sqlContext);
+	    }
+	  
+	  //var newConfig = config.withValue("outlier.R", 
 	  //    ConfigValueFactory.fromAnyRef(33.7));
 	  //println(newConfig.getDouble("outlier.R"));
 	  //leap.setConfig(config);
 	  //leap.leapMain(sqlContext);
-    cod.setConfig(config);
-	  cod.codMain(sqlContext);
+    //cod.setConfig(config);
+	  //cod.codMain(sqlContext);
 	  //job4Clean(sqlContext);
   }
   def job4Clean(sqlContext:SQLContext){
