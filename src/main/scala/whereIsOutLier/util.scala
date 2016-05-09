@@ -31,9 +31,10 @@ trait util {
 	  return(tsum);
   }
   
-   def eucDistance(item1:Array[Double],item2:Array[Double])(implicit colName:Array[String], colType:Array[(String,String)],colTypeI:Array[(String,Int)]):Double ={
+   def eucDistance(item1:Array[Double],item2:Array[Double])(implicit colName:Array[String], colType:Array[(String,String)],colTypeI:Array[(String,Int)],used:Array[Int]):Double ={
 	  var tsum=0.0;	
-	  for (i<-0 to (item1.size-1)){   
+	  for (i<-0 to (item1.size-1) if used.contains(i)){
+	    
 	    //var attr=colType.apply(i)._2;
 		  var temp= colTypeI.apply(i)._2 match {
 		    case  0  => item1.apply(i)-item2.apply(i)    //numeric

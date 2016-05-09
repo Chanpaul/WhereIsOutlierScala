@@ -23,7 +23,7 @@ import mtree._
 case class CodMeta(preNeig:Seq[String],succ:Int,checkOnLeave:Double,status:String);
 case class CodPt(id:String,startTime:Double,expTime:Double,content:Array[Double]);
 //case class Event(time:Double,id:String);
-object cod extends util{ 
+class cod extends util{ 
   var window=Window(12.0,1);  //width=12.0,slide=1;	  
   var outlierParam=OutlierParam("ThreshOutlier",12.62,6);
   private var distMap=scala.collection.mutable.Map[String,Double]().par;
@@ -33,10 +33,13 @@ object cod extends util{
   implicit var colName=Array[String]();
 	implicit var colType=Array[(String,String)]();
 	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;
+	var notUsed=Array[Int]();
+	implicit var used=Array[Int]();
 	var srcDataDir="";
 	var srcDataFileName="";
 	var resDataDir="";
 	var resDataFileName="";
+	var srcMiddle="";
 	
   def setConfig(config:Config){
     outlierParam=OutlierParam(config.getString("outlier.typ"),
@@ -45,10 +48,13 @@ object cod extends util{
     window=Window(config.getDouble("win.width"),
 			  config.getInt("win.slideLen"));
     srcDataDir=config.getString("dataset.directory");
+    srcMiddle=config.getString("dataset.middle");
     srcDataFileName=config.getString("dataset.dataFile")
     resDataDir=config.getString("outlier.directory")
     resDataFileName=config.getString("outlier.fileName");   
     colTypeI=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0).trim,x(1).toInt));
+    notUsed=config.getString("dataattr.notUsed").split(",").map(_.toInt);
+    used=config.getString("dataattr.used").split(",").map(_.toInt);
   }
   def depart():Map[String,CodPt]={
 		  curWindowStart=curWindowStart+window.slideLen;
@@ -82,7 +88,7 @@ object cod extends util{
   
   def codMain(sqlContext:SQLContext){
     import sqlContext.implicits._;
-    val dataFile=srcDataDir+"//"+srcDataFileName;
+    val dataFile=srcDataDir+srcMiddle+"//"+srcDataFileName;
     /*
     //val ds=sqlContext.read.text(dataFile).as[String].map(_.split(","));    
 	  var df = sqlContext.read
@@ -116,7 +122,7 @@ object cod extends util{
 	  var mem1=runtime.freeMemory();
 	  /******************end of setup*********************/
 	  var mt=new mtree.mtree;
-	  mt.initialization(500,colName,colType,colTypeI);
+	  mt.initialization(500,colName,colType,colTypeI,used);
 	  for(line<-lines) {
 		  println(ptCount);
 		  
@@ -129,7 +135,7 @@ object cod extends util{
 			    case y if x.contains(".") =>x.toDouble
 			    case z if !x.contains(".") =>x.toInt.toDouble
 			  }
-			    }).drop(1);
+			    })//.drop(1);
 			  //var curPt=sqlContext.sql("""SELECT * FROM df WHERE ID==ptCount""").first;  //result of sql queries is dataframe;
 			  //var curPt=df.filter(s"ID =$ptCount").first;  
 			  //var curPt= df.head(ptCount).last;	
@@ -182,12 +188,19 @@ object cod extends util{
 	  }   
 	  writer.close;
   }  
+  
   def printOutlier(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){        
-    var outliers=ptMeta.filter(_._2.status=="Outlier").map(_._1);
-    writer.write(s"From $from to $to, the ourliers are: $outliers,"
-        +s"memory usage is: $memUsage,"
-        +s"cpu usage is: $cpuUsage"
-        +"\n");    
+    var outliers=ptMeta.filter(_._2.status=="Outlier").map(_._1).map(x=>ptInWindow(x).content);
+    var msg=s"From $from to $to, the outliers are:\n";
+    for (otly<-outliers){
+      var tempMsg="----------";
+      for (e<-otly if notUsed.contains(otly.indexOf(e))){
+        tempMsg=tempMsg+e.toInt+"-";
+      }
+      msg=msg+tempMsg+"\n";
+    }
+    msg=msg+s"memory usage is: $memUsage,"+s"cpu usage is: $cpuUsage"+"\n************************************";
+    writer.write(msg);    
   }
   def searchNeighbor(id:String,mt:mtree){    
 	    var strPat=new Regex(id);

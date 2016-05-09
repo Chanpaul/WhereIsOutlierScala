@@ -41,25 +41,26 @@ object outlierDetection {
 			  //.setJars(Seq("/a/b/x.jar", "/c/d/y.jar"));
 	  val sc = new SparkContext(conf);
 	  val sqlContext = new org.apache.spark.sql.SQLContext(sc);
-	  var confFileName="ForestCover.conf";
-	  //var confFileName="application.conf";
+	  //var confFileName="ForestCover.conf";
+	  var confFileName="application.conf";
 	  var confDir="C://Users//wangc//workspace//WhereIsOutlierScala//src//main//resource//";
 	  val myConfigFile = new File(confDir+confFileName);
 	  
 	  val fileConfig = ConfigFactory.parseFile(myConfigFile);
 	  val config = ConfigFactory.load(fileConfig);
+	  /*
 	  for (slidSz<-Array(0.5,1,5,10,25,50).map(_*1000)){
 	    var newConfigLeap = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(slidSz))
 				  .withValue("win.width", ConfigValueFactory.fromAnyRef(100000))
 				  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef("leap_slideSize_"+slidSz));
 		  
 		  //println(newConfig.getDouble("outlier.R"));
-		  leap.setConfig(newConfigCod);
+		  leap.setConfig(newConfigLeap);
 		  leap.leapMain(sqlContext);
 		  var newConfigCod = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(slidSz))
 				  .withValue("win.width", ConfigValueFactory.fromAnyRef(100000))
 				  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef("cod_slideSize_"+slidSz));
-		  cod.setConfig(newConfigLeap);
+		  cod.setConfig(newConfigCod);
 		  cod.codMain(sqlContext);
 	  }
 	  for (windSz<-Array(1,50,100,150,200).map(_*1000)){
@@ -75,12 +76,24 @@ object outlierDetection {
 		  cod.setConfig(newConfigCod);
 		  cod.codMain(sqlContext);
 	    }
-	  
+	  */
 	  //var newConfig = config.withValue("outlier.R", 
 	  //    ConfigValueFactory.fromAnyRef(33.7));
 	  //println(newConfig.getDouble("outlier.R"));
 	  //leap.setConfig(config);
 	  //leap.leapMain(sqlContext);
+	  
+	  for (i<-1 to 15){
+		  for (r<-5 to 12){
+			  var newConfigCod = config.withValue("outlier.R", ConfigValueFactory.fromAnyRef(r))
+					  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef(s"patient$i"+s"_$r"))
+					  .withValue("dataset.middle",ConfigValueFactory.fromAnyRef("Patient"+i+".csv"));
+			  var tcod= new cod; 
+			  tcod.setConfig(newConfigCod);
+			  tcod.codMain(sqlContext);
+		  }  
+	  }
+	  
     //cod.setConfig(config);
 	  //cod.codMain(sqlContext);
 	  //job4Clean(sqlContext);

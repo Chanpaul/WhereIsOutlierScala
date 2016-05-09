@@ -1,8 +1,8 @@
 outlier {
    typ = "ThreshOutlier"
    directory="C://Users//wangc//Results//WhereIsOutlierScala"
-   fileName="patient1"
-   R = 0.62
+   fileName="patient14"
+   R = 5
    k = 6
 }
 win {
@@ -10,11 +10,14 @@ win {
    slideLen = 3
 }
 dataset {
-   directory="C://Users//wangc//DataSet//CleanedData//Patient1.csv"
+   directory="C://Users//wangc//DataSet//CleanedData//"
+   middlle="Patient14.csv";
    dataFile="part-00000"
+   
 }
 dataattr {
    name="year,month,day,hour,avg(Z-axis),avg(Y-axis),avg(X-axis),avg(Celsius),avg(EDA),avg(Battery),avg(Event)"
    label="None"
-   type="(year,0) (month,0) (day,0) (hour,0) (avg(Z-axis),0) (avg(Y-axis),0) (avg(X-axis),0) (avg(Celsius),0) (avg(EDA),0) (avg(Battery),0) (avg(Event),0)"   
+   type="(year,0) (month,0) (day,0) (hour,0) (avg(Z-axis),0) (avg(Y-axis),0) (avg(X-axis),0) (avg(Celsius),0) (avg(EDA),0) (avg(Battery),0) (avg(Event),0)"
+   notUsed="0,1,2,3"   
 }

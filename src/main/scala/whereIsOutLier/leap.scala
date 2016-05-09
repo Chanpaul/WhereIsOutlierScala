@@ -26,7 +26,7 @@ import mtree._
 case class Evidence(succ:Int,lastSlid:Int,prev:Map[Int,Int],checkOnLeave:Int,status:String);
 case class LeapPtInfo(id:String,slideID:Int,startTime:Double,content:Array[Double]);
 
-object leap extends util{
+class leap extends util{
   private var window=Window(12.0,1);  //width=12.0,slide=1;	  
   private var outlierParam=OutlierParam("ThreshOutlier",12.62,6); 
   private var distMap=scala.collection.mutable.Map[String,Double]().par;   //global variable
@@ -35,9 +35,12 @@ object leap extends util{
   
   implicit var colName=Array[String]();
 	implicit var colType=Array[(String,String)](); 
-	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;
+	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;	
+	implicit var used=Array[Int]();
+	var notUsed=Array[Int]();
 	private var srcDataDir="";
 	private var srcDataFileName="";
+	var srcMiddle="";
 	private var resDataDir="";
 	private var resDataFileName="";
   def setConfig(config:Config){
@@ -47,22 +50,32 @@ object leap extends util{
     window=Window(config.getDouble("win.width"),
 			  config.getInt("win.slideLen"));
     srcDataDir=config.getString("dataset.directory");
+    srcMiddle=config.getString("dataset.middle");
     srcDataFileName=config.getString("dataset.dataFile")
     resDataDir=config.getString("outlier.directory")
     resDataFileName=config.getString("outlier.fileName");
     colTypeI=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0),x(1).toInt));
+    notUsed=config.getString("dataattr.notUsed").split(",").map(_.toInt);
+    used=config.getString("dataattr.used").split(",").map(_.toInt);
   }
+  
   def printOutlier(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){        
-    var outliers=ptEvidence.filter(_._2.status=="Outlier").map(_._1);
-    writer.write(s"From $from to $to, the ourliers are: $outliers,"
-        +s"memory usage is: $memUsage,"
-        +s"cpu usage is: $cpuUsage"
-        +"\n");    
+    var outliers=ptEvidence.filter(_._2.status=="Outlier").map(_._1).map(x=>ptInWindow(x).content);
+    var msg=s"From $from to $to, the outliers are:\n";
+    for (otly<-outliers){      
+      var tempMsg="----------"
+      for (e<-otly if notUsed.contains(otly.indexOf(e))){
+        tempMsg=tempMsg+e.toInt+"-";
+      }
+      msg=msg+tempMsg+"\n";
+    }
+    msg=msg+s"memory usage is: $memUsage,"+s"cpu usage is: $cpuUsage"+"\n************************************\n";
+    writer.write(msg);    
   }
   
   def leapMain(sqlContext:SQLContext){    
     import sqlContext.implicits._;
-    val dataFile=srcDataDir+"//"+srcDataFileName;
+    val dataFile=srcDataDir+srcMiddle+"//"+srcDataFileName;
     /*
 	  val df = sqlContext.read
 				  .format("com.databricks.spark.csv")
@@ -80,7 +93,7 @@ object leap extends util{
     //distMap=distMap+(id+","+id->0.0);   //distance matrix;
     //var tPtInfo=LeapPtInfo(id,1,1.0,df.first);      
     //ptInWindow=ptInWindow+(id->tPtInfo);  //can also use tuple like (id,df.first)    
-	  var ptCount=1;	
+	  var ptCount=0;	
     var id="1";
 	  //var outliers=Seq("none");
 	  var slideUnit=Map[String,LeapPtInfo]();
@@ -88,7 +101,7 @@ object leap extends util{
 	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
 	  var lines=scala.io.Source.fromFile(dataFile).getLines;
 	  var mt=new mtree.mtree;
-	  mt.initialization(500,colName,colType,colTypeI);
+	  mt.initialization(500,colName,colType,colTypeI,used);
 	  for(line<-lines) {	 
 	    if (slideUnit.size==window.slideLen){	      
 	      ptInWindow=ptInWindow++slideUnit;
@@ -119,7 +132,7 @@ object leap extends util{
 			    case y if x.contains(".") =>x.toDouble
 			    case z if !x.contains(".") =>x.toInt.toDouble
 			  }
-			    }).drop(1);		  	
+			    })//.drop(1);		  	
 		    if (ptCount==1){
 		    	mt.create(id,curPt);  //creating m-tree  
 		    } else if (ptCount!=0) {
