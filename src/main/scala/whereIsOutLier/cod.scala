@@ -55,6 +55,9 @@ class cod extends util{
     colTypeI=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0).trim,x(1).toInt));
     notUsed=config.getString("dataattr.notUsed").split(",").map(_.toInt);
     used=config.getString("dataattr.used").split(",").map(_.toInt);
+    if (used.length==0){
+      used=(0 to colTypeI.length-1).toArray.filter(x=>(!notUsed.contains(x)));
+    }
   }
   def depart():Map[String,CodPt]={
 		  curWindowStart=curWindowStart+window.slideLen;
@@ -88,7 +91,7 @@ class cod extends util{
   
   def codMain(sqlContext:SQLContext){
     import sqlContext.implicits._;
-    val dataFile=srcDataDir+srcMiddle+"//"+srcDataFileName;
+    val dataFile=srcDataDir+srcMiddle+srcDataFileName;
     /*
     //val ds=sqlContext.read.text(dataFile).as[String].map(_.split(","));    
 	  var df = sqlContext.read
