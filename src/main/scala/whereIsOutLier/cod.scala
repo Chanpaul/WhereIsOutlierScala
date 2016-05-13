@@ -26,9 +26,9 @@ case class CodPt(id:String,startTime:Double,expTime:Double,content:Array[Double]
 class cod extends util{ 
   var window=Window(12.0,1);  //width=12.0,slide=1;	  
   var outlierParam=OutlierParam("ThreshOutlier",12.62,6);
-  private var distMap=scala.collection.mutable.Map[String,Double]().par;
-  private var ptInWindow=Map[String,CodPt]().par;
-  private var ptMeta=Map[String,CodMeta]().par;
+  private var distMap=scala.collection.mutable.Map[String,Double]();
+  private var ptInWindow=Map[String,CodPt]();
+  private var ptMeta=Map[String,CodMeta]();
   private var curWindowStart=0;
   implicit var colName=Array[String]();
 	implicit var colType=Array[(String,String)]();
@@ -54,10 +54,12 @@ class cod extends util{
     resDataFileName=config.getString("outlier.fileName");   
     colTypeI=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0).trim,x(1).toInt));
     notUsed=config.getString("dataattr.notUsed").split(",").map(_.toInt);
-    used=config.getString("dataattr.used").split(",").map(_.toInt);
-    if (used.length==0){
-      used=(0 to colTypeI.length-1).toArray.filter(x=>(!notUsed.contains(x)));
-    }
+    var tempUsed=config.getString("dataattr.used");
+    used=tempUsed match{
+      case " "=> (0 to (colTypeI.length-1)).toArray.filter(x=>(!notUsed.contains(x)))
+      case default =>tempUsed.split(",").map(_.toInt)
+    };
+    
   }
   def depart():Map[String,CodPt]={
 		  curWindowStart=curWindowStart+window.slideLen;
@@ -126,7 +128,8 @@ class cod extends util{
 	  /******************end of setup*********************/
 	  var mt=new mtree.mtree;
 	  mt.initialization(500,colName,colType,colTypeI,used);
-	  for(line<-lines) {
+	  val pattern=new Regex("^[\\s]+\n");
+	  for(line<-lines if (pattern.findAllIn(line).isEmpty)) {
 		  println(ptCount);
 		  
 		  id=ptCount.toString;
@@ -182,9 +185,9 @@ class cod extends util{
 			   */
 			  if(!ptMeta.exists(_._1==id)){
 				  ptMeta=ptMeta+(id->CodMeta(Seq[String](),0,0.0,"Outlier"));
-			  }
+			  }		  
+			    
 			  searchNeighbor(id,mt);	 
-			  
 			  
 		  }
 		  ptCount+=1;
@@ -194,14 +197,15 @@ class cod extends util{
   
   def printOutlier(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){        
     var outliers=ptMeta.filter(_._2.status=="Outlier").map(_._1).map(x=>ptInWindow(x).content);
-    var msg=s"From $from to $to, the outliers are:\n";
-    for (otly<-outliers){
-      var tempMsg="----------";
-      for (e<-otly if notUsed.contains(otly.indexOf(e))){
-        tempMsg=tempMsg+e.toInt+"-";
+    var msg=s"From $from to $to, the outliers are:\n";    
+    for (otly<-outliers){      
+      var tempMsg="----------"
+      for (x<-notUsed){
+        tempMsg=tempMsg+otly.apply(x)+"-";
       }
       msg=msg+tempMsg+"\n";
-    }
+    }   
+    
     msg=msg+s"memory usage is: $memUsage,"+s"cpu usage is: $cpuUsage"+"\n************************************";
     writer.write(msg);    
   }

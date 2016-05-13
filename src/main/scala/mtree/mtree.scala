@@ -5,8 +5,8 @@ case class MtNd(id:String,parentObj:String,entries:Array[Entry],dist2ParentNd:Tu
 case class Point(content:Array[Double],ndId:String);
 case class  QueryResult(ndId:String,objId:String);
 class mtree extends util {
-  var mtNdMap=Map[String,MtNd]().par;
-  var ptMap=Map[String,Point]().par;  
+  var mtNdMap=Map[String,MtNd]();
+  var ptMap=Map[String,Point]();  
   var ndCount=1;
   var ndCapacity=100;
   implicit var rootNd=MtNd(ndCount.toString,"",Array[Entry](),("None",0.0),"leaf");
@@ -261,10 +261,17 @@ class mtree extends util {
 	  //var newEntries=parentNd.entries.filter(_.obj!=id);	  
 	  //mtNdMap=mtNdMap-parentNdId+(parentNdId->MtNd(parentNdId,parentNd.parentObj,newEntries,parentNd.dist2ParentNd,parentNd.typ));
     //println(ptMap.contains("1"));
+    //println(id);
+    //if (id=="385"){
+    //  println("debug here!");
+    //}
     var masterNdId=rangeQuery(id,0.1)(mtNdMap(rootNd.id)).filter(_.objId==id).head.ndId;
 	  var masterNd=mtNdMap(masterNdId);
-	  delUpdate(id,masterNd,masterNd.entries.filter(_.obj==id).head);
 	  
+	  var newEntries=masterNd.entries.filter(_.obj!=id);
+	  
+	  //delUpdate(id,masterNd,masterNd.entries.filter(_.obj==id).head);
+	  mtNdMap=mtNdMap-masterNdId+(masterNdId->MtNd(masterNd.id,masterNd.parentObj,newEntries,masterNd.dist2ParentNd,masterNd.typ));
     if (mtNdMap.filter(_._2.parentObj==id).isEmpty){
 		  ptMap=ptMap-id;  
 	  }
