@@ -20,6 +20,8 @@ import scala.math
 import com.typesafe.config._    //config need
 import scala.util.control._     //break need
 import mtree._
+import emtree._
+import breeze.linalg._
 //import org.github.jamm
 
 //case class Slide(slidId:Int,element:Seq[String],expTriger:Seq[String]);
@@ -30,9 +32,11 @@ class leap extends util{
   private var window=Window(12.0,1);  //width=12.0,slide=1;	  
   private var outlierParam=OutlierParam("ThreshOutlier",12.62,6); 
   private var distMap=scala.collection.mutable.Map[String,Double]();   //global variable
-  private var ptInWindow=Map[String,LeapPtInfo]();
-  private var ptEvidence=Map[String,Evidence]();
+  private var ptInWindow=scala.collection.mutable.Map[String,LeapPtInfo]();
+  private var ptEvidence=scala.collection.mutable.Map[String,Evidence]();
   
+  
+  var mt=new mtree.mtree;
   implicit var colName=Array[String]();
 	implicit var colType=Array[(String,String)](); 
 	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;	
@@ -77,6 +81,19 @@ class leap extends util{
     msg=msg+s"memory usage is: $memUsage,"+s"cpu usage is: $cpuUsage"+"\n************************************\n";
     writer.write(msg);    
   }
+  def printAll(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){
+	  var msg=s"From $from to $to:\n";
+	  for (pt <-ptEvidence){    	      
+		  var tempMsg="----------";
+		  for (x<-notUsed){
+			  tempMsg=tempMsg+ptInWindow(pt._1).content.apply(x)+"-";
+		  }    	
+		  msg=msg+tempMsg+pt._2.status+"-"+(pt._2.succ+pt._2.prev.map(_._2).sum)+"\n";
+		  //println(msg);
+	  }
+	  msg=msg+s"memory usage is: $memUsage,"+s"cpu usage is: $cpuUsage"+"\n************************************\n";
+	  writer.write(msg);     
+  }
   
   def leapMain(sqlContext:SQLContext){    
     import sqlContext.implicits._;
@@ -92,58 +109,24 @@ class leap extends util{
 	  colType=df.dtypes;	  
 	  
     var firstDataItem=df.first;
-    * */   
-    
-    //distMap=distMap+(id+","+id->0.0);   //distance matrix;
-    //var tPtInfo=LeapPtInfo(id,1,1.0,df.first);      
-    //ptInWindow=ptInWindow+(id->tPtInfo);  //can also use tuple like (id,df.first)    
+    * */         
 	  var ptCount=0;	
-    var id="1";
-	  //var outliers=Seq("none");
+    var id="1";	  
 	  var slideUnit=Map[String,LeapPtInfo]();
 	  var slideId=1;
 	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
 	  var lines=scala.io.Source.fromFile(dataFile).getLines;
-	  var mt=new mtree.mtree;
-	  mt.initialization(500,colName,colType,colTypeI,used);
+	  //var mt=new emtree.emtree;
+	  mt.initialization(10,colName,colType,colTypeI,used);
 	  //initialize profile;
 	  var begTime=System.nanoTime;
 	  //var meter=new MemoryMeter;
 	  var runtime=Runtime.getRuntime();
-	  var mem1=runtime.freeMemory();
+	  var totalMem=runtime.totalMemory();
 	  
 	  val pattern=new Regex("^[\\s]+\n");
 	  
-	  for(line<-lines if (pattern.findAllIn(line).isEmpty)) {
-	    //var test=pattern.findAllIn(line).isEmpty;
-	    if (slideUnit.size==window.slideLen){	  
-	      var expSlidID=0;
-	    	if (ptInWindow.size>=window.width){
-	    		expSlidID=ptInWindow.map(_._2.slideID).min;
-	    		var expPt=ptInWindow.seq.filter(_._2.slideID==expSlidID);
-	    		ptInWindow=ptInWindow.filter(_._2.slideID!=expSlidID);
-	    		ptEvidence=ptEvidence.filter(x=>ptInWindow.contains(x._1));
-	    		for (expIt<-expPt.iterator){				    
-	    			mt.delete(expIt._1);
-	    		}
-	    		var mem2=runtime.freeMemory();
-	    		var cpuUsage=(System.nanoTime-begTime)/1000000000.0;
-	    		var memUsage=math.abs(mem1-mem2)/(1024*1024);    
-	    		var from=ptInWindow.map(_._2.startTime).min.toString;
-	    		var to=ptInWindow.map(_._2.startTime).max.toString;
-	    		printOutlier(writer,from,to,memUsage,cpuUsage);
-	    		//reset profile;
-	    		begTime=System.nanoTime;
-	    		runtime=Runtime.getRuntime();
-	    		mem1=runtime.freeMemory();
-	    	}
-	      
-	      ptInWindow=ptInWindow++slideUnit;
-	      slideUnit=slideUnit.empty;
-	      slideId=slideId+1;	      
-	      
-	      thresh(mt,expSlidID); 
-	    }
+	  for(line<-lines if (pattern.findAllIn(line).isEmpty)) {	 	    
 	    println(ptCount);
 		  id=ptCount.toString;
 		  var curPt=Array[Double]();
@@ -151,137 +134,111 @@ class leap extends util{
 			  colName=line.split(",").map(_.trim).filter(_!="ID");
 		  } else{
 		    curPt=line.split(",").map(_.trim).map(x=>{x match {
-			    case y if x.contains(".") =>x.toDouble
-			    case z if !x.contains(".") =>x.toInt.toDouble
-			  }
-			    })//.drop(1);		  	
-		    if (ptCount==1){
-		    	mt.create(id,curPt);  //creating m-tree  
-		    } else if (ptCount!=0) {
-		    	mt.insert(id,curPt)(mt.mtNdMap(mt.rootNd.id));
-		    }	
-	    var tPtInfo=LeapPtInfo(id,slideId,ptCount.toDouble,curPt);	  	    
-	    slideUnit=slideUnit+(id->tPtInfo);
+		    case y if x.contains(".") =>x.toDouble
+		    case z if !x.contains(".") =>x.toInt.toDouble
+		    }
+			    });			    
+		    var tPtInfo=LeapPtInfo(id,slideId,ptCount.toDouble,curPt);	  	    
+		    slideUnit=slideUnit+(id->tPtInfo);
 		  }
 	    ptCount=ptCount+1;
 	    
+	    if (slideUnit.size==window.slideLen){
+	      var expSlidID=0;
+	      if ((ptInWindow.size+slideUnit.size)>window.width){
+	        var curFreeMem=runtime.freeMemory();
+	    		var cpuUsage=(System.nanoTime-begTime)/1000000000.0;
+	    		var memUsage=math.abs(totalMem-curFreeMem)/(1024*1024);    
+	    		var from=ptInWindow.map(_._2.startTime).min.toString;
+	    		var to=ptInWindow.map(_._2.startTime).max.toString;
+	    		printAll(writer,from,to,memUsage,cpuUsage);
+	    		
+	    		expSlidID=ptInWindow.map(_._2.slideID).min;	    		
+	    		ptInWindow=ptInWindow.filter(_._2.slideID!=expSlidID);
+	    		ptEvidence=ptEvidence.filter(x=>ptInWindow.contains(x._1));	    			    		
+	    		
+	    		//printOutlier(writer,from,to,memUsage,cpuUsage);
+	    		//reset profile;
+	    		begTime=System.nanoTime;
+	      }
+	      ptInWindow=ptInWindow++slideUnit;     //current Window
+	    	
+	      var expTrigered=Array[LeapPtInfo]();
+	      ptEvidence.filter(_._2.checkOnLeave==expSlidID).map(_._1).foreach(x=>expTrigered=expTrigered++Array(ptInWindow(x)));
+	      for (p<-expTrigered){
+	        var tempEvidence=ptEvidence(p.id)
+	        ptEvidence=ptEvidence-p.id+(p.id->Evidence(tempEvidence.succ,tempEvidence.lastSlid,tempEvidence.prev-expSlidID,
+	            tempEvidence.checkOnLeave,tempEvidence.status));
+	    		  var lastSlidId=ptEvidence(p.id).lastSlid;
+	    			thresh(p,ptInWindow.filter(_._2.slideID>lastSlidId).map(_._2).toArray);  
+	    		}	      
+	      for (p<-slideUnit){
+	    	  thresh(p._2,ptInWindow.map(_._2).toArray); 
+	      }
+	      slideUnit=slideUnit.empty;
+	      slideId=slideId+1;	    	    		            	       
+	    }	    	    
 	  }
 	  writer.close;
   }
-  def thresh(mt:mtree,expSlidID:Int){
-    var newSlidID=ptInWindow.map(_._2.slideID).max;   
-        
-    for(it<-ptInWindow.filter(_._2.slideID==newSlidID).iterator if(!ptEvidence.exists(_._1==it._1))){
-    	{
-    		var curPtEvi=leapThresh(it._1,ptInWindow,ptEvidence,mt); 
-    		ptEvidence=ptEvidence+(it._1->curPtEvi);
-    	}
-    }
-    
-    for(it<-ptEvidence.filter(_._2.checkOnLeave==expSlidID).iterator if(expSlidID!=0)){
-      ptEvidence=ptEvidence-it._1;  
-      var tempEvi=Evidence(it._2.succ,it._2.lastSlid,it._2.prev-expSlidID,it._2.checkOnLeave,it._2.status);
-      ptEvidence=ptEvidence+(it._1->tempEvi);
-      var newEvi=leapThresh(it._1,ptInWindow,ptEvidence,mt);
+  def thresh(pt:LeapPtInfo,ptSet:Array[LeapPtInfo]){
+	  var succ=0;
+	  var temprev=Map[Int,Int]();
+	  var status="Outlier";
+	  var checkOnLeave=pt.slideID;
+	  var lastSlidId=pt.slideID;
+	  if (ptEvidence.contains(pt.id)){
+		  succ=ptEvidence(pt.id).succ;
+		  temprev=ptEvidence(pt.id).prev;
+		  status=ptEvidence(pt.id).status;
+		  checkOnLeave=ptEvidence(pt.id).checkOnLeave;
+		  lastSlidId=ptEvidence(pt.id).lastSlid+1;
+		  ptEvidence=ptEvidence-pt.id;
     }    
-   
-  }
-  
-  def leapThresh(ptId:String,ptInWindow:Map[String,LeapPtInfo],ptEvidence:Map[String,Evidence],mt:mtree):Evidence={
-    var temprev=Map[Int,Int]();
-    var checkOnLeave=0;
-    var status="Outlier";
-    var succ=0;
-    var lastSlid=ptInWindow(ptId).slideID;
-    var tempSuccNeig=Array[String]();
-    if (ptEvidence.contains(ptId)){
-    	temprev=ptEvidence(ptId).prev;
-    	checkOnLeave=ptEvidence(ptId).checkOnLeave;
-    	status=ptEvidence(ptId).status;
-    	succ=ptEvidence(ptId).succ;
-    	lastSlid=ptEvidence(ptId).lastSlid;
-    }
-    
-    var tempNeig=mt.query(ptId,outlierParam.R)(mt.mtNdMap(mt.rootNd.id));
-    var tempID=ptInWindow(ptId).slideID;    
-    var subWindowItem=ptInWindow.seq.filter(_._2.slideID>=tempID).map(_._1).toArray;
-    
-    succ=tempNeig.intersect(subWindowItem).length;
+    succ=succ+knn(pt,ptSet.filter(_.slideID>=lastSlidId),outlierParam.k-succ);
+    lastSlidId=ptSet.map(_.slideID).max;
     if (succ>=outlierParam.k){
       status="Safe";
-    }  
-     
-    if (status!="Safe"){
-      var preWindow=ptInWindow.seq.filter(_._2.slideID<tempID);  
-      val loop1 = new Breaks;
-    	loop1.breakable{
-    		for (i<-1 to (tempID-1)){    			
-    			if (!temprev.exists(_._1==tempID-i)){    			  
-    			  var subWindowItem1=preWindow.filter(_._2.slideID==tempID-i).map(_._1).toArray;    				
-    				var numOfNeig=tempNeig.intersect(subWindowItem1).length;    				
-    				temprev=temprev+(tempID-i->numOfNeig);
-    			}
-    			if (succ+temprev.map(_._2).sum>=outlierParam.k){
-    			  status="Unsafe";
-    			  checkOnLeave=tempID-i;    			  
-    			  loop1.break;
-    			}
-    		}
-    	}
-    }
-    
-    /*
-     * var tempID=ptInWindow(ptId).slideID;    
-    var subWindowIt=ptInWindow.filter(_._2.slideID>lastSlid).iterator;  //lastSlid: the mostly recent slide checked;  
-    lastSlid=subWindowIt.map(_._2.slideID).toList.max;   //update the lastSlid
-     val loop = new Breaks;
-    loop.breakable{
-    	for (it<-subWindowIt){
-    		var distId=ptId+","+it._1;
-    		if (!distMap.exists(_._1==distId)){
-    			var tempDist=eucDistance(ptInWindow(ptId).content,it._2.content);
-    			distMap=distMap+(distId->tempDist);
-    		}
-    		if (distMap(distId)<=outlierParam.R){
-    			succ=succ+1;
-    			if (succ>outlierParam.k){
-    				status="Safe";    				
-    				//return(Evidence(succ,lastSlid,temprev,checkOnLeave,status));
-    				loop.break;
-    			}
-    		}
-    	}
-    }
-    if (status!="Safe"){
+      temprev=Map[Int,Int]();
+    } else if (temprev.isEmpty){         
     	val loop1 = new Breaks;
+    	var totalNN=succ;
+    	var slidIdRang=ptSet.filter(_.slideID<pt.slideID).map(_.slideID).toArray.distinct.sortWith(_>_); 
     	loop1.breakable{
-    		for (i<-1 to (tempID-1)){    			
-    			if (!temprev.exists(_._1==tempID-i)){
-    			  var numOfNeig=0;
-    				var subWindowIt2=ptInWindow.filter(_._2.slideID==tempID-i).iterator;
-    				for (it1<-subWindowIt2){
-    					var distId1=it1._1+","+ptId;
-    					if (!distMap.exists(_._1==distId1)){
-    						var tempDist=eucDistance(ptInWindow(ptId).content,it1._2.content);
-    						distMap=distMap+(distId1->tempDist);
-    					}
-    					if ((distMap(distId1)<=outlierParam.R)){
-    						numOfNeig=numOfNeig+1;
-    					}
-    				}
-    				temprev=temprev+(tempID-i->numOfNeig);
-    			}
-    			if (succ+temprev.map(_._2).sum>outlierParam.k){
+    		for (x<-slidIdRang){
+    		  temprev=temprev+(x->knn(pt,ptSet.filter(_.slideID==x),outlierParam.k-succ));
+    			totalNN=totalNN+temprev(x);
+    			if (totalNN>=outlierParam.k){
     			  status="Unsafe";
-    			  checkOnLeave=tempID-i;
-    			  //return(Evidence(succ,lastSlid,temprev,checkOnLeave,status));
+    			  checkOnLeave=x;
     			  loop1.break;
     			}
     		}
     	}
-
-    }*/
-    return(Evidence(succ,lastSlid,temprev,checkOnLeave,status));
-  }
+    } else{      
+      checkOnLeave=temprev.map(_._1).min;
+      status = succ+temprev.size match {
+        case y if y>=outlierParam.k =>"Unsafe"
+        case default =>"Outlier"
+      }
+    }    
+    ptEvidence=ptEvidence+(pt.id->Evidence(succ,lastSlidId,temprev,checkOnLeave,status));        
+  }  
   
+  def knn(pt:LeapPtInfo,left:Array[LeapPtInfo],k:Int):Int={
+		  var nn=0;   
+		  val loop1 = new Breaks;
+		  loop1.breakable{
+			  for (x<-left if x.id!=pt.id ){      
+				  var dist1=eucDistance(pt.content,x.content);
+				  if (dist1<=outlierParam.R) {
+					  nn=nn+1;
+				  }
+				  if (nn>=k){
+				    loop1.break;
+				  }
+			  }
+		  }
+		  return nn;
+  }
 }

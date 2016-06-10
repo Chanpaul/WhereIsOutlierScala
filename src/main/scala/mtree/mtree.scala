@@ -1,14 +1,15 @@
 package mtree
 import whereIsOutLier._
+case class Point(content:Array[Double],ndId:String);
 case class Entry(obj:String,nextNdId:String,distance2ParentObj:Double,radius:Double);
 case class MtNd(id:String,parentObj:String,entries:Array[Entry],dist2ParentNd:Tuple2[String,Double],typ:String);
-case class Point(content:Array[Double],ndId:String);
+
 case class  QueryResult(ndId:String,objId:String);
 class mtree extends util {
-  var mtNdMap=Map[String,MtNd]();
-  var ptMap=Map[String,Point]();  
+  var mtNdMap=scala.collection.mutable.Map[String,MtNd]();
+  var ptMap=scala.collection.mutable.Map[String,Point]();  
   var ndCount=1;
-  var ndCapacity=100;
+  var ndCapacity=10;   //100
   implicit var rootNd=MtNd(ndCount.toString,"",Array[Entry](),("None",0.0),"leaf");
   implicit var colName=Array[String]();
 	implicit var colType=Array[(String,String)]();
@@ -31,8 +32,10 @@ class mtree extends util {
     mtNdMap=mtNdMap+(ndid->rootNd);
     ptMap=ptMap+(id->Point(content,ndid));    
   }
-  
-  def insert(objId:String,curContent:Array[Double])(implicit nd:MtNd){
+  def insert(objId:String,curContent:Array[Double]){
+	  privateInsert(objId,curContent)(rootNd);
+  }
+  def privateInsert(objId:String,curContent:Array[Double])(implicit nd:MtNd){
     if (!ptMap.contains(objId)){
     	ptMap=ptMap+(objId->Point(curContent,"None"));  
     }    
@@ -69,7 +72,7 @@ class mtree extends util {
       } else {
         objNdId=subNin.minBy(_._2)._1;
       }
-      insert(objId,curContent)(mtNdMap(objNdId));      
+      privateInsert(objId,curContent)(mtNdMap(objNdId));      
     }
     rootNd=mtNdMap(rootNd.id);
   }
@@ -179,8 +182,8 @@ class mtree extends util {
     }    
     return neig;
   }
-  def query(id:String,radius:Double)(implicit nd:MtNd):Array[String]={
-    var qr=rangeQuery(id,radius)(nd);    
+  def query(id:String,content:Array[Double],radius:Double):Array[String]={
+    var qr=rangeQuery(id,radius)(rootNd);    
     return(qr.map(_.objId));
   }
   /*
@@ -233,14 +236,14 @@ class mtree extends util {
     } 
   }
   */
-  def delUpdate(id:String,nd:MtNd,candidateEntry:Entry){
+  def delUpdate(id:String,content:Array[Double],nd:MtNd,candidateEntry:Entry){
     if (nd.typ=="leaf"){
       var parentNdId=nd.dist2ParentNd._1;
       var newEntries=nd.entries.filter(_.obj!=id);      
       mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
       var radius=getRadius(newEntries,nd.typ);
       if(parentNdId!="None")
-    	  delUpdate(id,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
+    	  delUpdate(id,content,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
       
     } else {
     	if (nd.dist2ParentNd._1=="None"){
@@ -251,30 +254,21 @@ class mtree extends util {
     		var newEntries=nd.entries.filter(_.obj!=candidateEntry.obj):+candidateEntry;      
     		mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
     		var radius=getRadius(newEntries,nd.typ);
-    		delUpdate(id,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
+    		delUpdate(id,content,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
     	}
     }
   }
-  def delete(id:String){
-	  //var masterNdId=ptMap(id).ndId; 	 
-	  //var masterNd=mtNdMap(masterNdId);
-	  //var newEntries=parentNd.entries.filter(_.obj!=id);	  
-	  //mtNdMap=mtNdMap-parentNdId+(parentNdId->MtNd(parentNdId,parentNd.parentObj,newEntries,parentNd.dist2ParentNd,parentNd.typ));
-    //println(ptMap.contains("1"));
-    //println(id);
-    //if (id=="385"){
-    //  println("debug here!");
-    //}
+  def delete(id:String,content:Array[Double]){
+    
     var masterNdId=rangeQuery(id,0.1)(mtNdMap(rootNd.id)).filter(_.objId==id).head.ndId;
 	  var masterNd=mtNdMap(masterNdId);
-	  
 	  var newEntries=masterNd.entries.filter(_.obj!=id);
-	  
 	  //delUpdate(id,masterNd,masterNd.entries.filter(_.obj==id).head);
 	  mtNdMap=mtNdMap-masterNdId+(masterNdId->MtNd(masterNd.id,masterNd.parentObj,newEntries,masterNd.dist2ParentNd,masterNd.typ));
+	  	  
     if (mtNdMap.filter(_._2.parentObj==id).isEmpty){
 		  ptMap=ptMap-id;  
 	  }
-	  
+	  rootNd=mtNdMap(rootNd.id);
   }
 }
