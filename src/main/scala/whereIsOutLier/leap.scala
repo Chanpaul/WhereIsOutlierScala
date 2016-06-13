@@ -88,7 +88,7 @@ class leap extends util{
 		  for (x<-notUsed){
 			  tempMsg=tempMsg+ptInWindow(pt._1).content.apply(x)+"-";
 		  }    	
-		  msg=msg+tempMsg+pt._2.status+"-"+(pt._2.succ+pt._2.prev.map(_._2).sum)+"\n";
+		  msg=msg+tempMsg+pt._2.status+"-"+(pt._2.succ+pt._2.prev.foldLeft(0)(_+_._2))+"\n";
 		  //println(msg);
 	  }
 	  msg=msg+s"memory usage is: $memUsage,"+s"cpu usage is: $cpuUsage"+"\n************************************\n";
@@ -200,6 +200,7 @@ class leap extends util{
     if (succ>=outlierParam.k){
       status="Safe";
       temprev=Map[Int,Int]();
+      checkOnLeave=pt.slideID;
     } else if (temprev.isEmpty){         
     	val loop1 = new Breaks;
     	var totalNN=succ;
@@ -212,12 +213,19 @@ class leap extends util{
     			  status="Unsafe";
     			  checkOnLeave=x;
     			  loop1.break;
-    			}
+    			} 
+    		}
+    	}
+    	if (totalNN<outlierParam.k){
+    		status="Outlier";
+    		checkOnLeave=temprev.isEmpty match {
+    		  case true => pt.slideID
+    		  case false =>temprev.map(_._1).min; 
     		}
     	}
     } else{      
       checkOnLeave=temprev.map(_._1).min;
-      status = succ+temprev.size match {
+      status = temprev.foldLeft(succ)(_+_._2) match {
         case y if y>=outlierParam.k =>"Unsafe"
         case default =>"Outlier"
       }

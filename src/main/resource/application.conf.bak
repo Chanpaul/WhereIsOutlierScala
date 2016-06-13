@@ -11,7 +11,7 @@ win {
 }
 dataset {
    directory="C://Users//wangc//DataSet//CleanedData"
-   middle="//Patient14.csv//";
+   middle="//Patient14.csv//"
    dataFile="part-00000"
    
 }
