@@ -19,7 +19,7 @@ name hashing:
 1 items
 0 -> true
 products:
-334 items
+337 items
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\dataClean.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\dataClean$$anonfun$cleanMultiple$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\dataClean.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\dataClean$$anonfun$cleanSingleFile$1$$anonfun$apply$1$$anonfun$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\dataClean.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\dataClean$$anonfun$cleanSingleFile$1$$anonfun$apply$1.class
@@ -239,16 +239,18 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala ->
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\mtree\mtree.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\DataItem$.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\DataItem.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\TimeUnit$.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\TimeUnit.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$2.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanMultiple$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanSingleFile$1$$anonfun$apply$1$$anonfun$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanSingleFile$1$$anonfun$apply$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanSingleFile$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$job4Clean$1.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$main$1.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$main$2.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$main$3.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$main$4.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$outlierdetectionmain$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$3.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$outlierdetectionmain$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$outlierdetectionmain$1$$anonfun$apply$mcVI$sp$1.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$outlierdetectionmain$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\cod.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\CodMeta$.class
@@ -298,20 +300,26 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$2.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$3.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$4.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$7.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$8.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$9.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$1$$anonfun$apply$mcVI$sp$1.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$1$$anonfun$apply$mcV$sp$2.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$1$$anonfun$apply$mcV$sp$3.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$1.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$2.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$3.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$1.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$4.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$5.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$6.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$10.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$11.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$12.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$13.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$14$$anonfun$apply$15.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$14$$anonfun$apply$16.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$14.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$17$$anonfun$apply$18.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$17.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$4.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$5.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$6.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$7.class
@@ -319,6 +327,7 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$9.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printAll$1$$anonfun$apply$2.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printAll$1$$anonfun$apply$3.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printAll$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printOutlier$1$$anonfun$apply$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printOutlier$1.class
@@ -327,19 +336,13 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$3.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$4.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$5.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$3$$anonfun$apply$mcV$sp$1$$anonfun$10.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$3$$anonfun$apply$mcV$sp$1$$anonfun$11.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$3$$anonfun$apply$mcV$sp$1.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$3.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$mcVI$sp$1.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$mcV$sp$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$2.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$3.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4$$anonfun$12.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2$$anonfun$13.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2$$anonfun$14.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2.class
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4$$anonfun$apply$4.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4.class
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$5.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\util$$anonfun$eucDistance$1.class
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\util$$anonfun$eucDistance$2.class
@@ -436,7 +439,7 @@ public inherited source dependencies:
 public inherited external dependencies:
 0 items
 member reference internal dependencies:
-35 items
+34 items
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\emtree\emtree.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\build\BuildAndSearchKdTree.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\box\BoundingBox.scala
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\build\BuildAndSearchKdTree.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\kdtree\CreateKdTree.scala
@@ -466,7 +469,6 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\partition\Par
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\split\RddToSplitRddFunctions.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\split\SplitRddFunctions.scala
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\util\CheckArgs.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\util\ParseArgs.scala
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\cod.scala
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\cod.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\cod.scala -> C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala
@@ -484,7 +486,7 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 inheritance external dependencies:
 0 items
 class names:
-334 items
+337 items
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\dataClean.scala -> dataClean
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\dataClean.scala -> dataClean$
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\dataClean.scala -> dataClean$$anonfun$cleanMultiple$1
@@ -704,6 +706,8 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala ->
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala -> mtree.mtree$$anonfun$split$2$$anonfun$9
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> DataItem
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> DataItem$
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> TimeUnit
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> TimeUnit$
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$2
@@ -712,10 +716,10 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.sca
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$cleanSingleFile$1$$anonfun$apply$1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$cleanSingleFile$1$$anonfun$apply$1$$anonfun$1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$job4Clean$1
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$main$1
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$main$2
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$main$3
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$main$4
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$outlierdetectionmain$1
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$outlierdetectionmain$1$$anonfun$apply$mcVI$sp$1
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$outlierdetectionmain$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection$$anonfun$outlierdetectionmain$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$3
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\cod.scala -> whereIsOutLier.CodMeta
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\cod.scala -> whereIsOutLier.CodMeta$
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\cod.scala -> whereIsOutLier.CodPt
@@ -764,21 +768,27 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$2
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$3
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$4
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$7
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$8
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$9
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$knn$1
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$knn$1$$anonfun$apply$mcVI$sp$1
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$knn$2
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$knn$3
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$knn$1$$anonfun$apply$mcV$sp$2
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$knn$1$$anonfun$apply$mcV$sp$3
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$4
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$5
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$6
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$10
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$11
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$12
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$13
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$14
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$14$$anonfun$apply$15
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$14$$anonfun$apply$16
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$17
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$17$$anonfun$apply$18
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$4
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$5
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$6
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$7
@@ -786,6 +796,7 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$leapMain$2$$anonfun$apply$9
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$printAll$1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$printAll$1$$anonfun$apply$2
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$printAll$1$$anonfun$apply$3
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$printOutlier$1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$printOutlier$1$$anonfun$apply$1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$setConfig$1
@@ -794,18 +805,12 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$setConfig$4
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$setConfig$5
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$1
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$1$$anonfun$apply$3
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$1$$anonfun$apply$3$$anonfun$apply$mcV$sp$1
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$1$$anonfun$apply$3$$anonfun$apply$mcV$sp$1$$anonfun$10
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$1$$anonfun$apply$3$$anonfun$apply$mcV$sp$1$$anonfun$11
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$1$$anonfun$apply$mcV$sp$1
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$mcVI$sp$1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$2
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$3
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$4
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$4$$anonfun$12
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$4$$anonfun$apply$4
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2$$anonfun$13
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2$$anonfun$14
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> whereIsOutLier.leap$$anonfun$thresh$5
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> whereIsOutLier.util
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> whereIsOutLier.util$$anonfun$eucDistance$1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> whereIsOutLier.util$$anonfun$eucDistance$2
@@ -820,7 +825,7 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> whereIsOutLier.util$Window$
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> whereIsOutLier.util$class
 used names:
-2170 items
+2168 items
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\dataClean.scala -> &&
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\dataClean.scala -> +
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\dataClean.scala -> <init>
@@ -2258,11 +2263,11 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala ->
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala -> x
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala -> ||
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> &&
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> *
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> +
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> <init>
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> ==
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> >
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> AbstractFunction2
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> AbstractFunction9
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> AnyRef
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> Array
@@ -2293,6 +2298,7 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.sca
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> Statics
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> String
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> StringContext
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> TimeUnit
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> Unit
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> X
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> Y
@@ -2308,14 +2314,13 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.sca
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> avg
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> bufferedSource
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> canBuildFrom
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> cast
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> catalyst
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> celsius
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> clean
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> cleanSingleFile
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> close
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> coalesce
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> cod
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> codMain
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> col
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> cols
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> com
@@ -2331,7 +2336,6 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.sca
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> dataFromText
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> day
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> df
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> doubleArrayOps
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> doubleHash
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> ds
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> eda
@@ -2355,15 +2359,17 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.sca
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> getName
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> groupBy
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> hour
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> i
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> implicits
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> int2bigInt
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> intArrayOps
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> intWrapper
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> io
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> isDirectory
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> isEmpty
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> isInstanceOf
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> java
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> job4Clean
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> k
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> leap
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> leapMain
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> line
@@ -2380,7 +2386,6 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.sca
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> mkString
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> month
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> myConfigFile
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> newConfigCod
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> newConfigLeap
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> newDf
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> newStringArrayEncoder
@@ -2394,12 +2399,16 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.sca
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> option2Iterable
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> orderBy
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> org
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetect
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierDetection
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> outlierR
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> package
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> parseFile
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> pattern1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> pattern2
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> println
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> quantity
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> r
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> read
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> refArrayOps
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> runtime
@@ -2412,7 +2421,6 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.sca
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> setConfig
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> setMaster
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> show
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> slidSz
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> sort
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> spark
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> spatial
@@ -2428,14 +2436,14 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.sca
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> subFileName
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> tDate
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> tPattern
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> tcod
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> tdf
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> tempDir
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> tempFiles
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> text
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> tf
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> thesamet
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> tleap
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> timeUnit
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> to
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> toDouble
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> toInt
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> toList
@@ -2444,9 +2452,12 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.sca
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> typedProductIterator
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> typesafe
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> unary_!
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> unite
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> util
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> whereIsOutLier
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> winRange
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> windSz
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> withColumn
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> withValue
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> write
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> writeHeader
@@ -2676,9 +2687,11 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> -
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> ->
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> /
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> <
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> <=
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> <init>
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> ==
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> >
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> >=
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> AbstractFunction4
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> AbstractFunction5
@@ -2726,7 +2739,6 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> arrayClass
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> asInstanceOf
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> augmentString
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> batchSucc
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> begTime
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> break
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> breakable
@@ -2746,33 +2758,28 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> contains
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> content
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> control
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> cor1
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> cor2
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> cpuUsage
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> create
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> curFreeMem
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> curPt
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> dataFile
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> delete
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> dist1
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> distMap
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> distinct
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> doubleHash
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> drop
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> dropRight
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> dtSet
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> dtSz
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> empty
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> emtree
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> encoders
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> eq
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> eucDistance
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> expIt
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> expPt
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> expSlidID
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> expTrigered
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> fallbackSystemCodec
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> filter
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> finalizeHash
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> findAllIn
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> foldLeft
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> foreach
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> freeMemory
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> from
@@ -2787,19 +2794,17 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> immutable
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> implicits
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> initialization
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> insert
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> intArrayOps
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> intWrapper
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> io
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> isEmpty
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> isInstanceOf
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> it
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> iterator
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> java
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> k
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> knn
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> lang
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> lastSlid
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> lastSlidId
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> leap
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> left
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> length
@@ -2820,7 +2825,6 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> mtree
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> mutable
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> nanoTime
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> newSlidID
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> nn
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> notUsed
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> notUsed_=
@@ -2829,6 +2833,7 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> outlierParam
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> outlierParam_=
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> outliers
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> p
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> package
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> parallel
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> pattern
@@ -2841,12 +2846,12 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> ptEvidence_=
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> ptInWindow
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> ptInWindow_=
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> ptSet
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> refArrayOps
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> resDataDir
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> resDataDir_=
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> resDataFileName
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> resDataFileName_=
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> reverse
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> runtime
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> s
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> scala
@@ -2857,6 +2862,7 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> slideId
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> slideLen
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> slideUnit
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> sortWith
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> spark
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> spatial
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> split
@@ -2872,9 +2878,8 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> status
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> succ
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> tPtInfo
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> tempEvidence
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> tempMsg
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> tempNN
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> tempSucc
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> tempUsed
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> temprev
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> thesamet
@@ -2891,7 +2896,6 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> typedProductIterator
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> typesafe
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> unary_!
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> update
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> used
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> used_=
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> util
@@ -2903,7 +2907,6 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> write
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> writer
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> x
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> y
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> ||
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> &&
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> +
@@ -2992,15 +2995,15 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> withFilter
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> ||
 product stamps:
-334 items
+337 items
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\dataClean$$anonfun$cleanMultiple$1.class -> lastModified(1465504589607)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\dataClean$$anonfun$cleanSingleFile$1$$anonfun$apply$1$$anonfun$1.class -> lastModified(1465504589622)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\dataClean$$anonfun$cleanSingleFile$1$$anonfun$apply$1.class -> lastModified(1465504589622)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\dataClean$$anonfun$cleanSingleFile$1.class -> lastModified(1465504589607)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\dataClean$.class -> lastModified(1465504589607)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\dataClean.class -> lastModified(1465504589544)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\DataItem$.class -> lastModified(1465566383632)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\DataItem.class -> lastModified(1465566383632)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\DataItem$.class -> lastModified(1466448287805)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\DataItem.class -> lastModified(1466448287800)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\emtree\emtree$$anonfun$1.class -> lastModified(1465504589841)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\emtree\emtree$$anonfun$10.class -> lastModified(1465504589841)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\emtree\emtree$$anonfun$11.class -> lastModified(1465504589841)
@@ -3212,108 +3215,111 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\mtree\Poi
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\mtree\Point.class -> lastModified(1465504590247)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\mtree\QueryResult$.class -> lastModified(1465504590278)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\mtree\QueryResult.class -> lastModified(1465504590278)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$2.class -> lastModified(1465566383694)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanMultiple$1.class -> lastModified(1465566383694)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanSingleFile$1$$anonfun$apply$1$$anonfun$1.class -> lastModified(1465566383710)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanSingleFile$1$$anonfun$apply$1.class -> lastModified(1465566383694)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanSingleFile$1.class -> lastModified(1465566383694)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$job4Clean$1.class -> lastModified(1465566383710)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$main$1.class -> lastModified(1465566383710)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$main$2.class -> lastModified(1465566383710)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$main$3.class -> lastModified(1465566383710)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$main$4.class -> lastModified(1465566383710)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$.class -> lastModified(1465566383694)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection.class -> lastModified(1465566383648)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$1.class -> lastModified(1465504590500)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$6.class -> lastModified(1465504590500)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$7.class -> lastModified(1465504590500)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$8.class -> lastModified(1465504590500)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$1.class -> lastModified(1465504590500)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$4.class -> lastModified(1465504590500)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$5.class -> lastModified(1465504590515)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$10.class -> lastModified(1465504590515)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$11.class -> lastModified(1465504590515)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$12.class -> lastModified(1465504590515)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$13.class -> lastModified(1465504590515)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$8.class -> lastModified(1465504590515)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$9.class -> lastModified(1465504590515)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2.class -> lastModified(1465504590500)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$2.class -> lastModified(1465504590515)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$3.class -> lastModified(1465504590515)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$4$$anonfun$3.class -> lastModified(1465504590547)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$4$$anonfun$apply$5.class -> lastModified(1465504590547)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$4$$anonfun$apply$6.class -> lastModified(1465504590547)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$4$$anonfun$apply$7.class -> lastModified(1465504590547)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$4.class -> lastModified(1465504590531)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1.class -> lastModified(1465504590515)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$printAll$1$$anonfun$apply$2.class -> lastModified(1465504590547)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$printAll$1.class -> lastModified(1465504590547)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$printOutlier$1$$anonfun$apply$1.class -> lastModified(1465504590562)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$printOutlier$1.class -> lastModified(1465504590547)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$searchNeighbor$1.class -> lastModified(1465504590562)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$searchNeighbor$2.class -> lastModified(1465504590562)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$searchNeighbor$3$$anonfun$apply$14.class -> lastModified(1465504590562)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$searchNeighbor$3.class -> lastModified(1465504590562)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$setConfig$1.class -> lastModified(1465504590562)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$setConfig$2.class -> lastModified(1465504590562)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$setConfig$3.class -> lastModified(1465504590562)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$setConfig$4.class -> lastModified(1465504590562)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$setConfig$5.class -> lastModified(1465504590562)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod.class -> lastModified(1465504590500)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\CodMeta$.class -> lastModified(1465504590469)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\CodMeta.class -> lastModified(1465504590469)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\CodPt$.class -> lastModified(1465504590469)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\CodPt.class -> lastModified(1465504590469)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\Evidence$.class -> lastModified(1465566383711)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\Evidence.class -> lastModified(1465566383711)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$1.class -> lastModified(1465566383758)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$2.class -> lastModified(1465566383773)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$3.class -> lastModified(1465566383773)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$7.class -> lastModified(1465566383773)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$8.class -> lastModified(1465566383789)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$9.class -> lastModified(1465566383789)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$1$$anonfun$apply$mcVI$sp$1.class -> lastModified(1465566383789)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$1.class -> lastModified(1465566383789)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$2.class -> lastModified(1465566383789)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$3.class -> lastModified(1465566383789)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$1.class -> lastModified(1465566383805)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$4.class -> lastModified(1465566383805)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$5.class -> lastModified(1465566383805)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$6.class -> lastModified(1465566383805)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$10.class -> lastModified(1465566383805)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$11.class -> lastModified(1465566383820)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$12.class -> lastModified(1465566383820)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$5.class -> lastModified(1465566383820)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$6.class -> lastModified(1465566383820)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$7.class -> lastModified(1465566383820)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$8.class -> lastModified(1465566383820)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$9.class -> lastModified(1465566383820)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2.class -> lastModified(1465566383805)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printAll$1$$anonfun$apply$2.class -> lastModified(1465566383836)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printAll$1.class -> lastModified(1465566383836)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printOutlier$1$$anonfun$apply$1.class -> lastModified(1465566383836)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printOutlier$1.class -> lastModified(1465566383836)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$1.class -> lastModified(1465566383836)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$2.class -> lastModified(1465566383836)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$3.class -> lastModified(1465566383851)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$4.class -> lastModified(1465566383851)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$5.class -> lastModified(1465566383851)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$3$$anonfun$apply$mcV$sp$1$$anonfun$10.class -> lastModified(1465566383867)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$3$$anonfun$apply$mcV$sp$1$$anonfun$11.class -> lastModified(1465566383867)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$3$$anonfun$apply$mcV$sp$1.class -> lastModified(1465566383851)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$3.class -> lastModified(1465566383851)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1.class -> lastModified(1465566383851)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$2.class -> lastModified(1465566383867)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$3.class -> lastModified(1465566383867)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4$$anonfun$12.class -> lastModified(1465566383867)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2$$anonfun$13.class -> lastModified(1465566383883)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2$$anonfun$14.class -> lastModified(1465566383883)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4$$anonfun$apply$4$$anonfun$apply$mcV$sp$2.class -> lastModified(1465566383883)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4$$anonfun$apply$4.class -> lastModified(1465566383867)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4.class -> lastModified(1465566383867)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap.class -> lastModified(1465566383758)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\LeapPtInfo$.class -> lastModified(1465566383727)
-C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\LeapPtInfo.class -> lastModified(1465566383711)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$2.class -> lastModified(1466448287863)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanMultiple$1.class -> lastModified(1466448287867)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanSingleFile$1$$anonfun$apply$1$$anonfun$1.class -> lastModified(1466448287880)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanSingleFile$1$$anonfun$apply$1.class -> lastModified(1466448287878)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$cleanSingleFile$1.class -> lastModified(1466448287870)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$job4Clean$1.class -> lastModified(1466448287883)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$outlierdetectionmain$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2$$anonfun$apply$mcVI$sp$3.class -> lastModified(1466448287898)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$outlierdetectionmain$1$$anonfun$apply$mcVI$sp$1$$anonfun$apply$mcVI$sp$2.class -> lastModified(1466448287892)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$outlierdetectionmain$1$$anonfun$apply$mcVI$sp$1.class -> lastModified(1466448287890)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$$anonfun$outlierdetectionmain$1.class -> lastModified(1466448287886)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection$.class -> lastModified(1466448287858)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\outlierDetection.class -> lastModified(1466448287820)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\TimeUnit$.class -> lastModified(1466448287809)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\TimeUnit.class -> lastModified(1466448287817)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$1.class -> lastModified(1466448288278)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$6.class -> lastModified(1466448288281)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$7.class -> lastModified(1466448288283)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$8.class -> lastModified(1466448288285)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$1.class -> lastModified(1466448288286)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$4.class -> lastModified(1466448288292)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$5.class -> lastModified(1466448288293)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$10.class -> lastModified(1466448288295)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$11.class -> lastModified(1466448288303)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$12.class -> lastModified(1466448288305)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$13.class -> lastModified(1466448288308)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$8.class -> lastModified(1466448288309)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2$$anonfun$apply$9.class -> lastModified(1466448288311)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$codMain$2.class -> lastModified(1466448288290)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$2.class -> lastModified(1466448288317)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$3.class -> lastModified(1466448288319)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$4$$anonfun$3.class -> lastModified(1466448288323)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$4$$anonfun$apply$5.class -> lastModified(1466448288325)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$4$$anonfun$apply$6.class -> lastModified(1466448288327)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$4$$anonfun$apply$7.class -> lastModified(1466448288328)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1$$anonfun$apply$4.class -> lastModified(1466448288322)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$depart$1.class -> lastModified(1466448288315)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$printAll$1$$anonfun$apply$2.class -> lastModified(1466448288332)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$printAll$1.class -> lastModified(1466448288330)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$printOutlier$1$$anonfun$apply$1.class -> lastModified(1466448288337)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$printOutlier$1.class -> lastModified(1466448288335)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$searchNeighbor$1.class -> lastModified(1466448288339)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$searchNeighbor$2.class -> lastModified(1466448288341)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$searchNeighbor$3$$anonfun$apply$14.class -> lastModified(1466448288346)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$searchNeighbor$3.class -> lastModified(1466448288343)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$setConfig$1.class -> lastModified(1466448288349)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$setConfig$2.class -> lastModified(1466448288350)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$setConfig$3.class -> lastModified(1466448288352)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$setConfig$4.class -> lastModified(1466448288353)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod$$anonfun$setConfig$5.class -> lastModified(1466448288354)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\cod.class -> lastModified(1466448288273)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\CodMeta$.class -> lastModified(1466448287902)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\CodMeta.class -> lastModified(1466448287910)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\CodPt$.class -> lastModified(1466448287920)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\CodPt.class -> lastModified(1466448287917)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\Evidence$.class -> lastModified(1466448287925)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\Evidence.class -> lastModified(1466448287933)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$1.class -> lastModified(1466448288370)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$2.class -> lastModified(1466448288372)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$3.class -> lastModified(1466448288374)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$4.class -> lastModified(1466448288375)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$7.class -> lastModified(1466448288377)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$8.class -> lastModified(1466448288378)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$9.class -> lastModified(1466448288379)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$1$$anonfun$apply$mcV$sp$2.class -> lastModified(1466448288383)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$1$$anonfun$apply$mcV$sp$3.class -> lastModified(1466448288385)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$knn$1.class -> lastModified(1466448288381)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$1.class -> lastModified(1466448288386)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$5.class -> lastModified(1466448288392)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$6.class -> lastModified(1466448288394)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$10.class -> lastModified(1466448288396)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$11.class -> lastModified(1466448288398)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$12.class -> lastModified(1466448288400)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$13.class -> lastModified(1466448288401)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$14$$anonfun$apply$15.class -> lastModified(1466448288406)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$14$$anonfun$apply$16.class -> lastModified(1466448288408)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$14.class -> lastModified(1466448288404)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$17$$anonfun$apply$18.class -> lastModified(1466448288412)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$17.class -> lastModified(1466448288410)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$4.class -> lastModified(1466448288414)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$5.class -> lastModified(1466448288416)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$6.class -> lastModified(1466448288417)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$7.class -> lastModified(1466448288419)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$8.class -> lastModified(1466448288420)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2$$anonfun$apply$9.class -> lastModified(1466448288422)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$leapMain$2.class -> lastModified(1466448288390)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printAll$1$$anonfun$apply$2.class -> lastModified(1466448288426)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printAll$1$$anonfun$apply$3.class -> lastModified(1466448288428)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printAll$1.class -> lastModified(1466448288424)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printOutlier$1$$anonfun$apply$1.class -> lastModified(1466448288432)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$printOutlier$1.class -> lastModified(1466448288430)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$1.class -> lastModified(1466448288434)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$2.class -> lastModified(1466448288435)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$3.class -> lastModified(1466448288436)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$4.class -> lastModified(1466448288437)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$setConfig$5.class -> lastModified(1466448288438)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$mcV$sp$1$$anonfun$apply$mcVI$sp$1.class -> lastModified(1466448288443)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1$$anonfun$apply$mcV$sp$1.class -> lastModified(1466448288441)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$1.class -> lastModified(1466448288440)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$2.class -> lastModified(1466448288444)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$3.class -> lastModified(1466448288445)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$4.class -> lastModified(1466448288447)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap$$anonfun$thresh$5.class -> lastModified(1466448288448)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\leap.class -> lastModified(1466448288368)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\LeapPtInfo$.class -> lastModified(1466448287935)
+C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\LeapPtInfo.class -> lastModified(1466448287940)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\util$$anonfun$eucDistance$1.class -> lastModified(1465504590797)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\util$$anonfun$eucDistance$2.class -> lastModified(1465504590797)
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\whereIsOutLier\util$$anonfun$eucDistanceWithRow$1$$anonfun$1.class -> lastModified(1465504590813)
@@ -3345,9 +3351,9 @@ C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\split\SplitRd
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\util\CheckArgs.scala -> hash(f8d5a06795c38aad2ed64774b38a20d73488f68b)
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\kdtree\util\ParseArgs.scala -> hash(0bc5f8e49197ad085a59ebb29bbc0dfae1c92496)
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala -> hash(d0704b783277244a1b70688ea56ab971f7b48aec)
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> hash(48ef90d7b299dd2e65cfbe7a24e1cfddb265c4de)
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\cod.scala -> hash(d554d5705f389540ab53aa48907fe424abc8c230)
-C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> hash(7865b9940f1403595168377f2a45ec1544d5105c)
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> hash(69f299652e09384d3077bfcad216867b4903b9f5)
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\cod.scala -> hash(4b154f917519af34baadff75109fcbe57139b868)
+C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> hash(0e6d941fb6bd49fc45bd06a512e6533df029c1d0)
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> hash(66ba41a357e7f1919607b64029672ba9ded608f6)
 binary stamps:
 11 items
@@ -3367,10 +3373,10 @@ class names:
 C:\Program Files\Java\jre1.8.0_91\lib\rt.jar -> java.lang.Object
 C:\Users\wangc\.ivy2\cache\com.typesafe\config\bundles\config-1.3.0.jar -> com.typesafe.config.Config
 C:\Users\wangc\.ivy2\cache\log4j\log4j\bundles\log4j-1.2.17.jar -> org.apache.log4j.Category
-C:\Users\wangc\.ivy2\cache\org.apache.spark\spark-catalyst_2.11\jars\spark-catalyst_2.11-1.6.1.jar -> org.apache.spark.sql.Encoders
-C:\Users\wangc\.ivy2\cache\org.apache.spark\spark-core_2.11\jars\spark-core_2.11-1.6.1.jar -> org.apache.spark.SparkConf$
+C:\Users\wangc\.ivy2\cache\org.apache.spark\spark-catalyst_2.11\jars\spark-catalyst_2.11-1.6.1.jar -> org.apache.spark.sql.Encoders$
+C:\Users\wangc\.ivy2\cache\org.apache.spark\spark-core_2.11\jars\spark-core_2.11-1.6.1.jar -> org.apache.spark.SparkContext
 C:\Users\wangc\.ivy2\cache\org.apache.spark\spark-sql_2.11\jars\spark-sql_2.11-1.6.1.jar -> org.apache.spark.sql.functions$
-C:\Users\wangc\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.11.8.jar -> scala.Serializable
+C:\Users\wangc\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.11.8.jar -> scala.runtime.AbstractFunction4
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\kdtree\kdtree\SearchKdTree.class -> kdtree.kdtree.SearchKdTree
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\kdtree\partition\PartitionViaScala.class -> kdtree.partition.PartitionViaScala
 C:\Users\wangc\workspace\WhereIsOutlierScala\target\scala-2.11\classes\kdtree\split\RddToSplitRddFunctions.class -> kdtree.split.RddToSplitRddFunctions
@@ -3410,11 +3416,11 @@ rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhf
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\mtree\mtree.scala -> 
 rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAup+LkAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAFc3IAIHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoWw71InY4V88CAAJJAARoYXNoTAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwR/9Rm3QABHVzZWRzcQB+AAuka+pNdAAHY29sVHlwZXNxAH4AC8+Robd0AAZyb290TmRzcQB+AAu89bNHdAAIY29sVHlwZUlzcQB+AAuYjwoudAAHY29sTmFtZXVxAH4ACQAAAE1zcQB+AAv4NUiXdAAGbm90aWZ5c3EAfgALjCxHP3QABUVudHJ5c3EAfgALcBCdI3QAB3VuYXBwbHlzcQB+AAsnPMikdAANcHJpdmF0ZUluc2VydHNxAH4AC/l0lxZ0AAdtdE5kTWFwc3EAfgAL90hZqHQAB2N1cnJpZWRzcQB+AAsXNQqedAAJZ2V0UmFkaXVzc3EAfgALBX7kinQACm5kQ2FwYWNpdHlzcQB+AAu+Iu4tdAAEd2FpdHNxAH4AC9HtE/F0AA5jb3B5JGRlZmF1bHQkMnNxAH4AC7DPNZ90AA0kYXNJbnN0YW5jZU9mc3EAfgAL+5j9l3QACnJhbmdlUXVlcnlzcQB+AAuPmgTAdAAOY29weSRkZWZhdWx0JDVzcQB+AAuRrF/+dAAETXROZHNxAH4AC2SEerF0AAZpbnNlcnRzcQB+AAs08VJqdAAMcHJvZHVjdEFyaXR5c3EAfgALuRfdmnQABmVxdWFsc3NxAH4ACxZ/KZd0AA5pbml0aWFsaXphdGlvbnNxAH4AC/I5Ocp0AAxPdXRsaWVyUGFyYW1zcQB+AAvODBsHdAAMYXNJbnN0YW5jZU9mc3EAfgAL3e9u/XQABVBvaW50c3EAfgALOGJm3XQADHN5bmNocm9uaXplZHNxAH4AC09GahJ0AA0kaXNJbnN0YW5jZU9mc3EAfgAL+s4ozHQABmNyZWF0ZXNxAH4ACzl2HOB0AAVxdWVyeXNxAH4ACwrZQ/p0AAZ0dXBsZWRzcQB+AAscmcBNdAAHZ2V0QXR0cnNxAH4ACyOfvcF0AANvYmpzcQB+AAuXW0w0dAAIY2FuRXF1YWxzcQB+AAtAOFRBdAAOY29weSRkZWZhdWx0JDRzcQB+AAvcJWQ0dAAJZGVsVXBkYXRlc3EAfgALWAdyDHQADXByb2R1Y3RQcmVmaXhzcQB+AAvfBV6TdAAGcmFkaXVzc3EAfgALkZEw9nQACW5vdGlmeUFsbHNxAH4ACyZqo4x0AAVtdHJlZXNxAH4AC3pQFcd0AA1kaXN0MlBhcmVudE5kc3EAfgAL3Yrc73QAC2V1Y0Rpc3RhbmNlc3EAfgALLgZ+qnQADGlzSW5zdGFuY2VPZnNxAH4AC5b4gZ90AAhuZXh0TmRJZHNxAH4AC1u6l0B0ABFlbnRyeURpc3RyaWJ1dGlvbnNxAH4AC+EUHSJ0AAY8aW5pdD5zcQB+AAvkHnrNdAACaWRzcQB+AAt/kwLIdAAHZW50cmllc3NxAH4ACw1u3dN0AAVhcHBseXNxAH4ACxUISMN0AAI9PXNxAH4AC9ku9PV0AAVzcGxpdHNxAH4ACyVSCWd0AAVjbG9uZXNxAH4AC91LcQV0AAduZENvdW50c3EAfgAL+LfTD3QAA3R5cHNxAH4AC674t2J0AAZkZWxldGVzcQB+AAugbedqdAAGJGluaXQkc3EAfgALCg6DiHQAB2NvbnRlbnRzcQB+AAsxXI9edAAIc2xpZGVMZW5zcQB+AAtFLpiGdAAOY29weSRkZWZhdWx0JDNzcQB+AAuHeqSjdAAEY29weXNxAH4ACzANXhJ0AAtRdWVyeVJlc3VsdHNxAH4ACyC/xxB0AAh0b1N0cmluZ3NxAH4ACxosxld0AAIhPXNxAH4AC7vUevN0AAhnZXRDbGFzc3NxAH4AC6XlK8t0AA5jb3B5JGRlZmF1bHQkMXNxAH4ACxgzCjV0AAFSc3EAfgALT+VOBHQAAm5lc3EAfgALNMqmH3QABldpbmRvd3NxAH4AC3elN2p0AAV3aWR0aHNxAH4ACwk6aOh0AAFrc3EAfgALSMWPmXQABW9iaklkc3EAfgALyTcwY3QAAmVxc3EAfgALEN2fJHQAD3Byb2R1Y3RJdGVyYXRvcnNxAH4AC2wv5D10AAlwYXJlbnRPYmpzcQB+AAvJMpjkdAACIyNzcQB+AAtQwdYOdAAIZmluYWxpemVzcQB+AAsSIpC/dAAOcHJvZHVjdEVsZW1lbnRzcQB+AAumdPRsdAAIaGFzaENvZGVzcQB+AAuYWhhKdAAEbmRJZHNxAH4AC/08J3F0ABJldWNEaXN0YW5jZVdpdGhSb3dzcQB+AAuvX0qidAAFcHRNYXBzcQB+AAvMKat6dAASZGlzdGFuY2UyUGFyZW50T2Jqc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAABXNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4Au3hyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AAx4cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzl+dh3BMme7MCAAFCAAVmbGFnc3hwAHQAC210cmVlLlBvaW50dXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAB+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cgAOamF2YS5sYW5nLkVudW0AAAAAAAAAABIAAHhwdAAIQ2xhc3NEZWZ1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAIXhzYnRpLmFwaS5BYnN0cmFjdExhenkkU3RyaWN0TGF6eQ1mHGspFiq4AgABTAAFdmFsdWV0ABJMamF2YS9sYW5nL09iamVjdDt4cHNyABN4c2J0aS5hcGkuRW1wdHlUeXBlvP2eRkk7iSQCAAB4cgAUeHNidGkuYXBpLlNpbXBsZVR5cGVyeGKIISO/QAIAAHhyAA54c2J0aS5hcGkuVHlwZT9q2SEWSarKAgAAeHBzcQB+ANNzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4Au0wACWluaGVyaXRlZHEAfgC7TAAHcGFyZW50c3EAfgC7eHEAfgDYc3EAfgDTdXEAfgC2AAAAAHNxAH4A03VxAH4AtgAAAABzcQB+ANN1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAABnNyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4ADEwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+ANd0AAxTZXJpYWxpemFibGVzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+ANdzcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAAJzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgAMeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQABXNjYWxhc3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+APFzcQB+AORxAH4A53NxAH4A6HNxAH4A63VxAH4A7gAAAANzcQB+APB0AARqYXZhc3EAfgDwdAACaW9xAH4A9XNxAH4A5HQAB1Byb2R1Y3RxAH4A6nNxAH4A5HQABkVxdWFsc3EAfgDqc3EAfgDkdAAGT2JqZWN0c3EAfgDoc3EAfgDrdXEAfgDuAAAAA3NxAH4A8HEAfgD7c3EAfgDwdAAEbGFuZ3EAfgD1c3EAfgDkdAADQW55cQB+AOpzcQB+ALhxAH4AxXVxAH4AxgAAAABzcQB+AMgAdAALbXRyZWUuRW50cnl1cQB+AMsAAAAAcQB+AM91cQB+ANEAAAAAc3EAfgDTcQB+ANlzcQB+ANNzcQB+ANtzcQB+ANN1cQB+ALYAAAAAc3EAfgDTdXEAfgC2AAAAAHNxAH4A03VxAH4A4gAAAAZzcQB+AORxAH4A53NxAH4A6HNxAH4A63VxAH4A7gAAAAJzcQB+APBxAH4A83EAfgD1c3EAfgDkcQB+AOdzcQB+AOhzcQB+AOt1cQB+AO4AAAADc3EAfgDwcQB+APtzcQB+APB0AAJpb3EAfgD1c3EAfgDkcQB+AP9xAH4BHHNxAH4A5HQABkVxdWFsc3EAfgEcc3EAfgDkcQB+AQNzcQB+AOhzcQB+AOt1cQB+AO4AAAADc3EAfgDwcQB+APtzcQB+APBxAH4BCXEAfgD1c3EAfgDkcQB+AQtxAH4BHHNxAH4AuHEAfgDFdXEAfgDGAAAAAHNxAH4AyAB0AAptdHJlZS5NdE5kdXEAfgDLAAAAAHEAfgDPdXEAfgDRAAAAAHNxAH4A03EAfgDZc3EAfgDTc3EAfgDbc3EAfgDTdXEAfgC2AAAAAHNxAH4A03VxAH4AtgAAAABzcQB+ANN1cQB+AOIAAAAGc3EAfgDkcQB+AOdzcQB+AOhzcQB+AOt1cQB+AO4AAAACc3EAfgDwcQB+APNxAH4A9XNxAH4A5HEAfgDnc3EAfgDoc3EAfgDrdXEAfgDuAAAAA3NxAH4A8HEAfgD7c3EAfgDwdAACaW9xAH4A9XNxAH4A5HEAfgD/cQB+AUFzcQB+AOR0AAZFcXVhbHNxAH4BQXNxAH4A5HEAfgEDc3EAfgDoc3EAfgDrdXEAfgDuAAAAA3NxAH4A8HEAfgD7c3EAfgDwcQB+AQlxAH4A9XNxAH4A5HEAfgELcQB+AUFzcQB+ALhxAH4AxXVxAH4AxgAAAABzcQB+AMgAdAARbXRyZWUuUXVlcnlSZXN1bHR1cQB+AMsAAAAAcQB+AM91cQB+ANEAAAAAc3EAfgDTcQB+ANlzcQB+ANNzcQB+ANtzcQB+ANN1cQB+ALYAAAAAc3EAfgDTdXEAfgC2AAAAAHNxAH4A03VxAH4A4gAAAAZzcQB+AORxAH4A53NxAH4A6HNxAH4A63VxAH4A7gAAAAJzcQB+APBxAH4A83EAfgD1c3EAfgDkcQB+AOdzcQB+AOhzcQB+AOt1cQB+AO4AAAADc3EAfgDwcQB+APtzcQB+APB0AAJpb3EAfgD1c3EAfgDkcQB+AP9xAH4BZnNxAH4A5HQABkVxdWFsc3EAfgFmc3EAfgDkcQB+AQNzcQB+AOhzcQB+AOt1cQB+AO4AAAADc3EAfgDwcQB+APtzcQB+APBxAH4BCXEAfgD1c3EAfgDkcQB+AQtxAH4BZnNxAH4AuHEAfgDFdXEAfgDGAAAAAHNxAH4AyAB0AAttdHJlZS5tdHJlZXVxAH4AywAAAABxAH4Az3VxAH4A0QAAAABzcQB+ANNxAH4A2XNxAH4A03NxAH4A23NxAH4A03VxAH4AtgAAAABzcQB+ANN1cQB+ALYAAAAAc3EAfgDTdXEAfgDiAAAAA3NxAH4A5HQABHV0aWxzcQB+AOhzcQB+AOt1cQB+AO4AAAACc3EAfgDwdAAOd2hlcmVJc091dExpZXJxAH4A9XNxAH4A5HEAfgEDc3EAfgDoc3EAfgDrdXEAfgDuAAAAA3NxAH4A8HEAfgD7c3EAfgDwcQB+AQlxAH4A9XNxAH4A5HEAfgELc3EAfgDoc3EAfgDrdXEAfgDuAAAAAnNxAH4A8HEAfgDzcQB+APV1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAXNyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgAMeHB0AAVtdHJlZXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABVTbhGeZ1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AAxMAA9zb3VyY2VEaXJlY3RvcnlxAH4ADHhwdABGQzpcVXNlcnNcd2FuZ2Ncd29ya3NwYWNlXFdoZXJlSXNPdXRsaWVyU2NhbGFcdGFyZ2V0XHNjYWxhLTIuMTFcY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFNBwS3gydyRKG3BojqVquXH3tIrs
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\outlierDetection.scala -> 
-rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHB3lP90AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAN3NyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cEQTQF90AAZub3RpZnlzcQB+AAzy9llEdAABWHNxAH4ADOCeKcp0AAR3YWl0c3EAfgAM/TjQMHQADmNvcHkkZGVmYXVsdCQyc3EAfgAMT7lVlnQADSRhc0luc3RhbmNlT2ZzcQB+AAxpjsjTdAAIRGF0YUl0ZW1zcQB+AAzKdIA4dAAOY29weSRkZWZhdWx0JDVzcQB+AAzRaElRdAAJam9iNENsZWFuc3EAfgAM5ZVy4HQAA2VkYXNxAH4ADOOUPCt0AApzb3J0QW5kQWdnc3EAfgAMLpbH/XQADHByb2R1Y3RBcml0eXNxAH4ADD4iBzV0AAZlcXVhbHNzcQB+AAzlzZ8XdAAOY29weSRkZWZhdWx0JDlzcQB+AAylQNU8dAABWXNxAH4ADAWfyHJ0AAxhc0luc3RhbmNlT2ZzcQB+AAzK0jjydAASY2xlYW5CaW9TZW5zb3JNYWluc3EAfgAM38VgXXQABWNsZWFuc3EAfgAMrZZ2eXQADHN5bmNocm9uaXplZHNxAH4ADOZZzaB0AA0kaXNJbnN0YW5jZU9mc3EAfgAMplJHt3QADmNvcHkkZGVmYXVsdCQ4c3EAfgAM7X2YY3QABHllYXJzcQB+AAy6M9G+dAAIY2FuRXF1YWxzcQB+AAyUfd8ddAAOY29weSRkZWZhdWx0JDRzcQB+AAwpgjixdAAEbWFpbnNxAH4ADFOIqlF0AA1wcm9kdWN0UHJlZml4c3EAfgAMgHU9eHQAEG91dGxpZXJEZXRlY3Rpb25zcQB+AAxWbBE0dAAJbm90aWZ5QWxsc3EAfgAM/LOI63QABGhvdXJzcQB+AAxIKH+tdAAMaXNJbnN0YW5jZU9mc3EAfgAMcyFklHQABjxpbml0PnNxAH4ADHTuS+l0AA1jbGVhbk11bHRpcGxlc3EAfgAM1TZVpXQABm15UmVhZHNxAH4ADKxga+B0AAI9PXNxAH4ADBBcPd90AAVjbG9uZXNxAH4ADLl4ML10AA5jb3B5JGRlZmF1bHQkN3NxAH4ADJ8NSuB0AAYkaW5pdCRzcQB+AAy9Z68YdAAOY29weSRkZWZhdWx0JDNzcQB+AAwIM0J0dAAEY29weXNxAH4ADIMGdpd0AAh0b1N0cmluZ3NxAH4ADKMdX8l0AAIhPXNxAH4ADAY0HM10AAhnZXRDbGFzc3NxAH4ADO4qIyl0AA5jb3B5JGRlZmF1bHQkMXNxAH4ADDAS74N0AA5jb3B5JGRlZmF1bHQkNnNxAH4ADALSs2p0AAJuZXNxAH4ADCmGwVV0AAdjZWxzaXVzc3EAfgAMbNO68HQAA2RheXNxAH4ADIM4gZF0AAJlcXNxAH4ADK6dGLx0AA9wcm9kdWN0SXRlcmF0b3JzcQB+AAxU/P87dAAPY2xlYW5TaW5nbGVGaWxlc3EAfgAM26KUEHQAAiMjc3EAfgAMpvgioXQAAVpzcQB+AAw0hQtKdAAIZmluYWxpemVzcQB+AAw0yDildAAOcHJvZHVjdEVsZW1lbnRzcQB+AAw3d4y0dAAIaGFzaENvZGVzcQB+AAyQs2FPdAAFbW9udGhzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAACc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgCFeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnOX52HcEyZ7swIAAUIABWZsYWdzeHAAcQB+ABl1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAhDbGFzc0RlZnVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgAheHNidGkuYXBpLkFic3RyYWN0TGF6eSRTdHJpY3RMYXp5DWYcaykWKrgCAAFMAAV2YWx1ZXQAEkxqYXZhL2xhbmcvT2JqZWN0O3hwc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHNxAH4AnHNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgCFTAAJaW5oZXJpdGVkcQB+AIVMAAdwYXJlbnRzcQB+AIV4cQB+AKFzcQB+AJx1cQB+AIAAAAAAc3EAfgCcdXEAfgCAAAAAAHNxAH4AnHVyABFbTHhzYnRpLmFwaS5UeXBlO3T/pVp7+elBAgAAeHAAAAAGc3IAFHhzYnRpLmFwaS5Qcm9qZWN0aW9u89KNVOlFpC0CAAJMAAJpZHEAfgANTAAGcHJlZml4dAAWTHhzYnRpL2FwaS9TaW1wbGVUeXBlO3hxAH4AoHQADFNlcmlhbGl6YWJsZXNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AoHNyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAAnNyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AA14cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAFc2NhbGFzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4AunNxAH4ArXEAfgCwc3EAfgCxc3EAfgC0dXEAfgC3AAAAA3NxAH4AuXQABGphdmFzcQB+ALl0AAJpb3EAfgC+c3EAfgCtdAAHUHJvZHVjdHEAfgCzc3EAfgCtdAAGRXF1YWxzcQB+ALNzcQB+AK10AAZPYmplY3RzcQB+ALFzcQB+ALR1cQB+ALcAAAADc3EAfgC5cQB+AMRzcQB+ALl0AARsYW5ncQB+AL5zcQB+AK10AANBbnlxAH4As3NxAH4AgnEAfgCPdXEAfgCQAAAAAHNxAH4AkgBxAH4AQXVxAH4AlAAAAAB+cQB+AJZ0AAZNb2R1bGV1cQB+AJoAAAAAc3EAfgCccQB+AKJzcQB+AJxzcQB+AKRzcQB+AJx1cQB+AIAAAAABc3IADXhzYnRpLmFwaS5EZWZSvp/ifLQ2aQIAAkwACnJldHVyblR5cGV0ABBMeHNidGkvYXBpL1R5cGU7WwAPdmFsdWVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvUGFyYW1ldGVyTGlzdDt4cQB+AIZxAH4Aj3VxAH4AkAAAAABzcQB+AJIAcQB+AD11cQB+AJQAAAAAc3EAfgCtdAAEVW5pdHNxAH4AsXNxAH4AtHVxAH4AtwAAAAJzcQB+ALlxAH4AvHEAfgC+dXIAGltMeHNidGkuYXBpLlBhcmFtZXRlckxpc3Q79dM6HfKzcO4CAAB4cAAAAAFzcgAXeHNidGkuYXBpLlBhcmFtZXRlckxpc3TWxbwcZEl04wIAAloACmlzSW1wbGljaXRbAApwYXJhbWV0ZXJzdAAcW0x4c2J0aS9hcGkvTWV0aG9kUGFyYW1ldGVyO3hwAHVyABxbTHhzYnRpLmFwaS5NZXRob2RQYXJhbWV0ZXI7z7jFXaXdtW0CAAB4cAAAAAFzcgAZeHNidGkuYXBpLk1ldGhvZFBhcmFtZXRlch9FrhfTSbDqAgAEWgAKaGFzRGVmYXVsdEwACG1vZGlmaWVydAAdTHhzYnRpL2FwaS9QYXJhbWV0ZXJNb2RpZmllcjtMAARuYW1lcQB+AA1MAAN0cGVxAH4A4nhwAH5yABt4c2J0aS5hcGkuUGFyYW1ldGVyTW9kaWZpZXIAAAAAAAAAABIAAHhxAH4Al3QABVBsYWludAAEYXJnc3NyABd4c2J0aS5hcGkuUGFyYW1ldGVyaXplZBZs7mkDybt/AgACTAAIYmFzZVR5cGVxAH4ArlsADXR5cGVBcmd1bWVudHN0ABFbTHhzYnRpL2FwaS9UeXBlO3hxAH4AoHNxAH4ArXQABUFycmF5cQB+AOp1cQB+AKsAAAABc3EAfgCtdAAGU3RyaW5nc3EAfgCxc3EAfgC0dXEAfgC3AAAAA3NxAH4AuXEAfgDEc3EAfgC5cQB+ANJxAH4AvnNxAH4AnHVxAH4AgAAAAABzcQB+AJx1cQB+AKsAAAACc3EAfgCtcQB+AMxxAH4BBHNxAH4ArXEAfgDUcQB+AOp1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAHNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABVTqQHG11cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AA1MAA9zb3VyY2VEaXJlY3RvcnlxAH4ADXhwdABGQzpcVXNlcnNcd2FuZ2Ncd29ya3NwYWNlXFdoZXJlSXNPdXRsaWVyU2NhbGFcdGFyZ2V0XHNjYWxhLTIuMTFcY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFEjvkNeymd0uZc++eiThz92yZcTe
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHBq7qdbAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAOnNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cIt9X6d0AAZub3RpZnlzcQB+AAzy9llEdAABWHNxAH4ADF0dtc50AAhxdWFudGl0eXNxAH4ADIvvnbd0AAR3YWl0c3EAfgAMBuptr3QADmNvcHkkZGVmYXVsdCQyc3EAfgAMxTE38HQADSRhc0luc3RhbmNlT2ZzcQB+AAxpjsjTdAAIRGF0YUl0ZW1zcQB+AAzKdIA4dAAOY29weSRkZWZhdWx0JDVzcQB+AAy8aCf3dAAJam9iNENsZWFuc3EAfgAM5ZVy4HQAA2VkYXNxAH4ADOOUPCt0AApzb3J0QW5kQWdnc3EAfgAM3viDfXQADHByb2R1Y3RBcml0eXNxAH4ADCUb7Gx0AAZlcXVhbHNzcQB+AAzlzZ8XdAAOY29weSRkZWZhdWx0JDlzcQB+AAylQNU8dAABWXNxAH4ADCvmR+10AAxhc0luc3RhbmNlT2ZzcQB+AAyeqG7TdAAFY2xlYW5zcQB+AAwZ/fUpdAAMc3luY2hyb25pemVkc3EAfgAMWFgeeHQADSRpc0luc3RhbmNlT2ZzcQB+AAymUke3dAAOY29weSRkZWZhdWx0JDhzcQB+AAztfZhjdAAEeWVhcnNxAH4ADHxEQFd0AAhjYW5FcXVhbHNxAH4ADJR93x10AA5jb3B5JGRlZmF1bHQkNHNxAH4ADCmCOLF0AARtYWluc3EAfgAMSRQg8nQADXByb2R1Y3RQcmVmaXhzcQB+AAyAdT14dAAQb3V0bGllckRldGVjdGlvbnNxAH4ADKa9fTR0AAlub3RpZnlBbGxzcQB+AAz8s4jrdAAEaG91cnNxAH4ADPVW6oB0ABRvdXRsaWVyZGV0ZWN0aW9ubWFpbnNxAH4ADEn6+MV0AAxpc0luc3RhbmNlT2ZzcQB+AAxSzYdJdAAGPGluaXQ+c3EAfgAMdO5L6XQADWNsZWFuTXVsdGlwbGVzcQB+AAzL8ERvdAAIVGltZVVuaXRzcQB+AAzVNlWldAAGbXlSZWFkc3EAfgAM4s/ucHQAAj09c3EAfgAMS7QWY3QABWNsb25lc3EAfgAMWeDcDnQABXVuaXRlc3EAfgAMuXgwvXQADmNvcHkkZGVmYXVsdCQ3c3EAfgAMBgdjxHQABiRpbml0JHNxAH4ADL1nrxh0AA5jb3B5JGRlZmF1bHQkM3NxAH4ADIumgtZ0AARjb3B5c3EAfgAMldSeE3QACHRvU3RyaW5nc3EAfgAMUs4edHQAAiE9c3EAfgAM4LYJiHQACGdldENsYXNzc3EAfgAM+tn4R3QADmNvcHkkZGVmYXVsdCQxc3EAfgAMMBLvg3QADmNvcHkkZGVmYXVsdCQ2c3EAfgAMpZ7tJXQAAm5lc3EAfgAMKYbBVXQAB2NlbHNpdXNzcQB+AAxs07rwdAADZGF5c3EAfgAM0tlbaHQAAmVxc3EAfgAMKjB1anQAD3Byb2R1Y3RJdGVyYXRvcnNxAH4ADFT8/zt0AA9jbGVhblNpbmdsZUZpbGVzcQB+AAxNAtGbdAACIyNzcQB+AAym+CKhdAABWnNxAH4ADKLEWR50AAhmaW5hbGl6ZXNxAH4ADMfEMRR0AA5wcm9kdWN0RWxlbWVudHNxAH4ADCXecEh0AAhoYXNoQ29kZXNxAH4ADJCzYU90AAVtb250aHNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAANzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+AIt4cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXEAfgANeHBzcgAQeHNidGkuYXBpLlB1YmxpY7pYPa5sLWBCAgAAeHIAEHhzYnRpLmFwaS5BY2Nlc3PdYpr4HWMxSAIAAHhwdXIAF1tMeHNidGkuYXBpLkFubm90YXRpb24765frGRD2jUgCAAB4cAAAAABzcgATeHNidGkuYXBpLk1vZGlmaWVyc5fnYdwTJnuzAgABQgAFZmxhZ3N4cABxAH4AG3VyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQACENsYXNzRGVmdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyACF4c2J0aS5hcGkuQWJzdHJhY3RMYXp5JFN0cmljdExhenkNZhxrKRYquAIAAUwABXZhbHVldAASTGphdmEvbGFuZy9PYmplY3Q7eHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgCic3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AItMAAlpbmhlcml0ZWRxAH4Ai0wAB3BhcmVudHNxAH4Ai3hxAH4Ap3NxAH4AonVxAH4AhgAAAABzcQB+AKJ1cQB+AIYAAAAAc3EAfgCidXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAZzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgCmdAAMU2VyaWFsaXphYmxlc3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgCmc3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAACc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4ADXhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AAVzY2FsYXNyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgDAc3EAfgCzcQB+ALZzcQB+ALdzcQB+ALp1cQB+AL0AAAADc3EAfgC/dAAEamF2YXNxAH4Av3QAAmlvcQB+AMRzcQB+ALN0AAdQcm9kdWN0cQB+ALlzcQB+ALN0AAZFcXVhbHNxAH4AuXNxAH4As3QABk9iamVjdHNxAH4At3NxAH4AunVxAH4AvQAAAANzcQB+AL9xAH4AynNxAH4Av3QABGxhbmdxAH4AxHNxAH4As3QAA0FueXEAfgC5c3EAfgCIcQB+AJV1cQB+AJYAAAAAc3EAfgCYAHEAfgBPdXEAfgCaAAAAAHEAfgCedXEAfgCgAAAAAHNxAH4AonEAfgCoc3EAfgCic3EAfgCqc3EAfgCidXEAfgCGAAAAAHNxAH4AonVxAH4AhgAAAABzcQB+AKJ1cQB+ALEAAAAGc3EAfgCzcQB+ALZzcQB+ALdzcQB+ALp1cQB+AL0AAAACc3EAfgC/cQB+AMJxAH4AxHNxAH4As3EAfgC2c3EAfgC3c3EAfgC6dXEAfgC9AAAAA3NxAH4Av3EAfgDKc3EAfgC/dAACaW9xAH4AxHNxAH4As3EAfgDOcQB+AOpzcQB+ALN0AAZFcXVhbHNxAH4A6nNxAH4As3EAfgDSc3EAfgC3c3EAfgC6dXEAfgC9AAAAA3NxAH4Av3EAfgDKc3EAfgC/cQB+ANhxAH4AxHNxAH4As3EAfgDacQB+AOpzcQB+AIhxAH4AlXVxAH4AlgAAAABzcQB+AJgAcQB+AEF1cQB+AJoAAAAAfnEAfgCcdAAGTW9kdWxldXEAfgCgAAAAAHNxAH4AonEAfgCoc3EAfgCic3EAfgCqc3EAfgCidXEAfgCGAAAAAXNyAA14c2J0aS5hcGkuRGVmUr6f4ny0NmkCAAJMAApyZXR1cm5UeXBldAAQTHhzYnRpL2FwaS9UeXBlO1sAD3ZhbHVlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1BhcmFtZXRlckxpc3Q7eHEAfgCMcQB+AJV1cQB+AJYAAAAAc3EAfgCYAHEAfgA9dXEAfgCaAAAAAHNxAH4As3QABFVuaXRzcQB+ALdzcQB+ALp1cQB+AL0AAAACc3EAfgC/cQB+AMJxAH4AxHVyABpbTHhzYnRpLmFwaS5QYXJhbWV0ZXJMaXN0O/XTOh3ys3DuAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5QYXJhbWV0ZXJMaXN01sW8HGRJdOMCAAJaAAppc0ltcGxpY2l0WwAKcGFyYW1ldGVyc3QAHFtMeHNidGkvYXBpL01ldGhvZFBhcmFtZXRlcjt4cAB1cgAcW0x4c2J0aS5hcGkuTWV0aG9kUGFyYW1ldGVyO8+4xV2l3bVtAgAAeHAAAAABc3IAGXhzYnRpLmFwaS5NZXRob2RQYXJhbWV0ZXIfRa4X00mw6gIABFoACmhhc0RlZmF1bHRMAAhtb2RpZmllcnQAHUx4c2J0aS9hcGkvUGFyYW1ldGVyTW9kaWZpZXI7TAAEbmFtZXEAfgANTAADdHBlcQB+AQx4cAB+cgAbeHNidGkuYXBpLlBhcmFtZXRlck1vZGlmaWVyAAAAAAAAAAASAAB4cQB+AJ10AAVQbGFpbnQABGFyZ3NzcgAXeHNidGkuYXBpLlBhcmFtZXRlcml6ZWQWbO5pA8m7fwIAAkwACGJhc2VUeXBlcQB+ALRbAA10eXBlQXJndW1lbnRzdAARW0x4c2J0aS9hcGkvVHlwZTt4cQB+AKZzcQB+ALN0AAVBcnJheXEAfgEUdXEAfgCxAAAAAXNxAH4As3QABlN0cmluZ3NxAH4At3NxAH4AunVxAH4AvQAAAANzcQB+AL9xAH4AynNxAH4Av3EAfgDYcQB+AMRzcQB+AKJ1cQB+AIYAAAAAc3EAfgCidXEAfgCxAAAAAnNxAH4As3EAfgDScQB+AS5zcQB+ALNxAH4A2nEAfgEUdXIAFFtMeHNidGkuYXBpLlBhY2thZ2U7WxMZN3CnJ6ECAAB4cAAAAABzcgAVeHNidGkuYXBpLkNvbXBpbGF0aW9u7frgw2rooEICAAJKAAlzdGFydFRpbWVbAAdvdXRwdXRzdAAaW0x4c2J0aS9hcGkvT3V0cHV0U2V0dGluZzt4cAAAAVVvIP1odXIAGltMeHNidGkuYXBpLk91dHB1dFNldHRpbmc7f2rC86eHpUICAAB4cAAAAAFzcgAXeHNidGkuYXBpLk91dHB1dFNldHRpbmd62ZpHdPsdewIAAkwAD291dHB1dERpcmVjdG9yeXEAfgANTAAPc291cmNlRGlyZWN0b3J5cQB+AA14cHQARkM6XFVzZXJzXHdhbmdjXHdvcmtzcGFjZVxXaGVyZUlzT3V0bGllclNjYWxhXHRhcmdldFxzY2FsYS0yLjExXGNsYXNzZXN0AAEvdXIAAltCrPMX+AYIVOACAAB4cAAAABRp8pllLgk4TTB3v8rSFoZ7SQO59Q==
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\cod.scala -> 
-rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAn8E6LAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAEc3IAIHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoWw71InY4V88CAAJJAARoYXNoTAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwFnLZaXQABHVzZWRzcQB+AAssS9o+dAAHY29sTmFtZXNxAH4AC9DpCi10AAhjb2xUeXBlSXNxAH4ACzrJFDN0AAdjb2xUeXBldXEAfgAJAAAAR3NxAH4AC/jXlup0AAZub3RpZnlzcQB+AAsPEEYHdAAKcmVzRGF0YURpcnNxAH4ACwoGKQt0AAd1bmFwcGx5c3EAfgALzd5/BHQAB25vdFVzZWRzcQB+AAuMevFrdAAHY3VycmllZHNxAH4AC7V3vOJ0AAZ3aW5kb3dzcQB+AAvMgPGXdAAPcmVzRGF0YUZpbGVOYW1lc3EAfgALm5ub63QABHdhaXRzcQB+AAvG1A8GdAAJc3RhcnRUaW1lc3EAfgALrre/dHQADmNvcHkkZGVmYXVsdCQyc3EAfgALX+QDlXQADSRhc0luc3RhbmNlT2ZzcQB+AAvvNVVTdAACbXRzcQB+AAvD1OwKdAAHZXhwVGltZXNxAH4ACwFBPoh0AAxwcm9kdWN0QXJpdHlzcQB+AAsfLCXNdAAGZXF1YWxzc3EAfgALdtCn8XQADE91dGxpZXJQYXJhbXNxAH4AC+xV1Dh0AARzdWNjc3EAfgALC6PYZnQADGFzSW5zdGFuY2VPZnNxAH4AC3Azyz10AAxzeW5jaHJvbml6ZWRzcQB+AAukiB6UdAAIcHJpbnRBbGxzcQB+AAtamm8FdAANJGlzSW5zdGFuY2VPZnNxAH4AC+XZTCx0AAlzcmNNaWRkbGVzcQB+AAuZvHfUdAAGdHVwbGVkc3EAfgALoZdFmnQAB2dldEF0dHJzcQB+AAv0SLtZdAAIY2FuRXF1YWxzcQB+AAvcarcpdAAHQ29kTWV0YXNxAH4AC1SrdIx0AA5jb3B5JGRlZmF1bHQkNHNxAH4AC2GNLox0AAVDb2RQdHNxAH4AC/o5W4Z0AA1wcm9kdWN0UHJlZml4c3EAfgAL5Yv3jnQACW5vdGlmeUFsbHNxAH4ACxSRKa50AAtldWNEaXN0YW5jZXNxAH4AC8XW7wt0AAxpc0luc3RhbmNlT2ZzcQB+AAtkDgnKdAAMb3V0bGllclBhcmFtc3EAfgALKBRWQXQABjxpbml0PnNxAH4AC/FSypp0AAlzZXRDb25maWdzcQB+AAuulYkadAACaWRzcQB+AAsNbOVDdAAHY29kTWFpbnNxAH4ACzkPV1d0AAVhcHBseXNxAH4AC0skBo50AAI9PXNxAH4AC+ZMTtR0AAxjaGVja09uTGVhdmVzcQB+AAtb2g7GdAAFY2xvbmVzcQB+AAs9nosedAAGc3RhdHVzc3EAfgALE37UvHQAB3ByZU5laWdzcQB+AAtX2SFDdAADdHlwc3EAfgALi/D/MnQABiRpbml0JHNxAH4ACxbwhC10AA5zZWFyY2hOZWlnaGJvcnNxAH4AC+ctLBJ0AAdjb250ZW50c3EAfgAL8OXIW3QADHByaW50T3V0bGllcnNxAH4AC5ta2FZ0AAhzbGlkZUxlbnNxAH4ACxnwZO50AA5jb3B5JGRlZmF1bHQkM3NxAH4AC5k2fvh0AARjb3B5c3EAfgALwunR+nQACHRvU3RyaW5nc3EAfgALMhfg2HQABmRlcGFydHNxAH4ACxwXQNR0AAIhPXNxAH4AC8VO7wx0AAhnZXRDbGFzc3NxAH4AC2L7WUx0AA5jb3B5JGRlZmF1bHQkMXNxAH4AC6nLTs90AAFSc3EAfgALea6eN3QAAm5lc3EAfgALaAbS3HQABldpbmRvd3NxAH4AC7uw2890AAV3aWR0aHNxAH4AC1gVj2l0AAFrc3EAfgALBr9Kx3QAAmVxc3EAfgALU767oHQAD3Byb2R1Y3RJdGVyYXRvcnNxAH4AC3/t1Nh0AAIjI3NxAH4AC2M1+SV0AAhmaW5hbGl6ZXNxAH4AC7aqg8J0AA5wcm9kdWN0RWxlbWVudHNxAH4AC2/nkSJ0AAhoYXNoQ29kZXNxAH4AC5w2pcN0AApzcmNEYXRhRGlyc3EAfgALq8lQxHQAEmV1Y0Rpc3RhbmNlV2l0aFJvd3NxAH4AC5k3A6N0AA9zcmNEYXRhRmlsZU5hbWVzcQB+AAtm8NB1dAADY29kc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAA3NyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4ArXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AAx4cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzl+dh3BMme7MCAAFCAAVmbGFnc3hwAHQAFndoZXJlSXNPdXRMaWVyLkNvZE1ldGF1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAhDbGFzc0RlZnVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgAheHNidGkuYXBpLkFic3RyYWN0TGF6eSRTdHJpY3RMYXp5DWYcaykWKrgCAAFMAAV2YWx1ZXQAEkxqYXZhL2xhbmcvT2JqZWN0O3hwc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHNxAH4AxXNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgCtTAAJaW5oZXJpdGVkcQB+AK1MAAdwYXJlbnRzcQB+AK14cQB+AMpzcQB+AMV1cQB+AKgAAAAAc3EAfgDFdXEAfgCoAAAAAHNxAH4AxXVyABFbTHhzYnRpLmFwaS5UeXBlO3T/pVp7+elBAgAAeHAAAAAGc3IAFHhzYnRpLmFwaS5Qcm9qZWN0aW9u89KNVOlFpC0CAAJMAAJpZHEAfgAMTAAGcHJlZml4dAAWTHhzYnRpL2FwaS9TaW1wbGVUeXBlO3hxAH4AyXQADFNlcmlhbGl6YWJsZXNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AyXNyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAAnNyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AAx4cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAFc2NhbGFzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4A43NxAH4A1nEAfgDZc3EAfgDac3EAfgDddXEAfgDgAAAAA3NxAH4A4nQABGphdmFzcQB+AOJ0AAJpb3EAfgDnc3EAfgDWdAAHUHJvZHVjdHEAfgDcc3EAfgDWdAAGRXF1YWxzcQB+ANxzcQB+ANZ0AAZPYmplY3RzcQB+ANpzcQB+AN11cQB+AOAAAAADc3EAfgDicQB+AO1zcQB+AOJ0AARsYW5ncQB+AOdzcQB+ANZ0AANBbnlxAH4A3HNxAH4AqnEAfgC3dXEAfgC4AAAAAHNxAH4AugB0ABR3aGVyZUlzT3V0TGllci5Db2RQdHVxAH4AvQAAAABxAH4AwXVxAH4AwwAAAABzcQB+AMVxAH4Ay3NxAH4AxXNxAH4AzXNxAH4AxXVxAH4AqAAAAABzcQB+AMV1cQB+AKgAAAAAc3EAfgDFdXEAfgDUAAAABnNxAH4A1nEAfgDZc3EAfgDac3EAfgDddXEAfgDgAAAAAnNxAH4A4nEAfgDlcQB+AOdzcQB+ANZxAH4A2XNxAH4A2nNxAH4A3XVxAH4A4AAAAANzcQB+AOJxAH4A7XNxAH4A4nQAAmlvcQB+AOdzcQB+ANZxAH4A8XEAfgEOc3EAfgDWdAAGRXF1YWxzcQB+AQ5zcQB+ANZxAH4A9XNxAH4A2nNxAH4A3XVxAH4A4AAAAANzcQB+AOJxAH4A7XNxAH4A4nEAfgD7cQB+AOdzcQB+ANZxAH4A/XEAfgEOc3EAfgCqcQB+ALd1cQB+ALgAAAAAc3EAfgC6AHQAEndoZXJlSXNPdXRMaWVyLmNvZHVxAH4AvQAAAABxAH4AwXVxAH4AwwAAAABzcQB+AMVxAH4Ay3NxAH4AxXNxAH4AzXNxAH4AxXVxAH4AqAAAAABzcQB+AMV1cQB+AKgAAAAAc3EAfgDFdXEAfgDUAAAAA3NxAH4A1nQABHV0aWxzcQB+ANpzcQB+AN11cQB+AOAAAAACc3EAfgDidAAOd2hlcmVJc091dExpZXJxAH4A53NxAH4A1nEAfgD1c3EAfgDac3EAfgDddXEAfgDgAAAAA3NxAH4A4nEAfgDtc3EAfgDicQB+APtxAH4A53NxAH4A1nEAfgD9c3EAfgDac3EAfgDddXEAfgDgAAAAAnNxAH4A4nEAfgDlcQB+AOd1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAXNyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgAMeHB0AA53aGVyZUlzT3V0TGllcnNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABVTbhGeZ1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AAxMAA9zb3VyY2VEaXJlY3RvcnlxAH4ADHhwdABGQzpcVXNlcnNcd2FuZ2Ncd29ya3NwYWNlXFdoZXJlSXNPdXRsaWVyU2NhbGFcdGFyZ2V0XHNjYWxhLTIuMTFcY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFNVU1XBfOJVAq1OqSJB/5CSryMIw
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHAn8E6LAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAEc3IAIHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoWw71InY4V88CAAJJAARoYXNoTAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwFnLZaXQABHVzZWRzcQB+AAssS9o+dAAHY29sTmFtZXNxAH4AC9DpCi10AAhjb2xUeXBlSXNxAH4ACzrJFDN0AAdjb2xUeXBldXEAfgAJAAAAR3NxAH4AC/jXlup0AAZub3RpZnlzcQB+AAsPEEYHdAAKcmVzRGF0YURpcnNxAH4ACwoGKQt0AAd1bmFwcGx5c3EAfgALzd5/BHQAB25vdFVzZWRzcQB+AAuMevFrdAAHY3VycmllZHNxAH4AC7V3vOJ0AAZ3aW5kb3dzcQB+AAvMgPGXdAAPcmVzRGF0YUZpbGVOYW1lc3EAfgALm5ub63QABHdhaXRzcQB+AAvG1A8GdAAJc3RhcnRUaW1lc3EAfgALrre/dHQADmNvcHkkZGVmYXVsdCQyc3EAfgALX+QDlXQADSRhc0luc3RhbmNlT2ZzcQB+AAvvNVVTdAACbXRzcQB+AAvD1OwKdAAHZXhwVGltZXNxAH4ACwFBPoh0AAxwcm9kdWN0QXJpdHlzcQB+AAsfLCXNdAAGZXF1YWxzc3EAfgALdtCn8XQADE91dGxpZXJQYXJhbXNxAH4AC+xV1Dh0AARzdWNjc3EAfgALC6PYZnQADGFzSW5zdGFuY2VPZnNxAH4AC3Azyz10AAxzeW5jaHJvbml6ZWRzcQB+AAukiB6UdAAIcHJpbnRBbGxzcQB+AAtamm8FdAANJGlzSW5zdGFuY2VPZnNxAH4AC+XZTCx0AAlzcmNNaWRkbGVzcQB+AAuZvHfUdAAGdHVwbGVkc3EAfgALoZdFmnQAB2dldEF0dHJzcQB+AAv0SLtZdAAIY2FuRXF1YWxzcQB+AAvcarcpdAAHQ29kTWV0YXNxAH4AC1SrdIx0AA5jb3B5JGRlZmF1bHQkNHNxAH4AC2GNLox0AAVDb2RQdHNxAH4AC/o5W4Z0AA1wcm9kdWN0UHJlZml4c3EAfgAL5Yv3jnQACW5vdGlmeUFsbHNxAH4ACxSRKa50AAtldWNEaXN0YW5jZXNxAH4AC8XW7wt0AAxpc0luc3RhbmNlT2ZzcQB+AAtkDgnKdAAMb3V0bGllclBhcmFtc3EAfgALKBRWQXQABjxpbml0PnNxAH4AC/FSypp0AAlzZXRDb25maWdzcQB+AAuulYkadAACaWRzcQB+AAsNbOVDdAAHY29kTWFpbnNxAH4ACzkPV1d0AAVhcHBseXNxAH4AC0skBo50AAI9PXNxAH4AC+ZMTtR0AAxjaGVja09uTGVhdmVzcQB+AAtb2g7GdAAFY2xvbmVzcQB+AAs9nosedAAGc3RhdHVzc3EAfgALE37UvHQAB3ByZU5laWdzcQB+AAtX2SFDdAADdHlwc3EAfgALi/D/MnQABiRpbml0JHNxAH4ACxbwhC10AA5zZWFyY2hOZWlnaGJvcnNxAH4AC+ctLBJ0AAdjb250ZW50c3EAfgAL8OXIW3QADHByaW50T3V0bGllcnNxAH4AC5ta2FZ0AAhzbGlkZUxlbnNxAH4ACxnwZO50AA5jb3B5JGRlZmF1bHQkM3NxAH4AC5k2fvh0AARjb3B5c3EAfgALwunR+nQACHRvU3RyaW5nc3EAfgALMhfg2HQABmRlcGFydHNxAH4ACxwXQNR0AAIhPXNxAH4AC8VO7wx0AAhnZXRDbGFzc3NxAH4AC2L7WUx0AA5jb3B5JGRlZmF1bHQkMXNxAH4AC6nLTs90AAFSc3EAfgALea6eN3QAAm5lc3EAfgALaAbS3HQABldpbmRvd3NxAH4AC7uw2890AAV3aWR0aHNxAH4AC1gVj2l0AAFrc3EAfgALBr9Kx3QAAmVxc3EAfgALU767oHQAD3Byb2R1Y3RJdGVyYXRvcnNxAH4AC3/t1Nh0AAIjI3NxAH4AC2M1+SV0AAhmaW5hbGl6ZXNxAH4AC7aqg8J0AA5wcm9kdWN0RWxlbWVudHNxAH4AC2/nkSJ0AAhoYXNoQ29kZXNxAH4AC5w2pcN0AApzcmNEYXRhRGlyc3EAfgALq8lQxHQAEmV1Y0Rpc3RhbmNlV2l0aFJvd3NxAH4AC5k3A6N0AA9zcmNEYXRhRmlsZU5hbWVzcQB+AAtm8NB1dAADY29kc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAA3NyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4ArXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AAx4cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzl+dh3BMme7MCAAFCAAVmbGFnc3hwAHQAFndoZXJlSXNPdXRMaWVyLkNvZE1ldGF1cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAhDbGFzc0RlZnVyABNbTGphdmEubGFuZy5TdHJpbmc7rdJW5+kde0cCAAB4cAAAAABzcgAheHNidGkuYXBpLkFic3RyYWN0TGF6eSRTdHJpY3RMYXp5DWYcaykWKrgCAAFMAAV2YWx1ZXQAEkxqYXZhL2xhbmcvT2JqZWN0O3hwc3IAE3hzYnRpLmFwaS5FbXB0eVR5cGW8/Z5GSTuJJAIAAHhyABR4c2J0aS5hcGkuU2ltcGxlVHlwZXJ4YoghI79AAgAAeHIADnhzYnRpLmFwaS5UeXBlP2rZIRZJqsoCAAB4cHNxAH4AxXNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgCtTAAJaW5oZXJpdGVkcQB+AK1MAAdwYXJlbnRzcQB+AK14cQB+AMpzcQB+AMV1cQB+AKgAAAAAc3EAfgDFdXEAfgCoAAAAAHNxAH4AxXVyABFbTHhzYnRpLmFwaS5UeXBlO3T/pVp7+elBAgAAeHAAAAAGc3IAFHhzYnRpLmFwaS5Qcm9qZWN0aW9u89KNVOlFpC0CAAJMAAJpZHEAfgAMTAAGcHJlZml4dAAWTHhzYnRpL2FwaS9TaW1wbGVUeXBlO3hxAH4AyXQADFNlcmlhbGl6YWJsZXNyABN4c2J0aS5hcGkuU2luZ2xldG9u/Kdf+M9W5EYCAAFMAARwYXRodAAQTHhzYnRpL2FwaS9QYXRoO3hxAH4AyXNyAA54c2J0aS5hcGkuUGF0aJs9XAjOpSeEAgABWwAKY29tcG9uZW50c3QAGltMeHNidGkvYXBpL1BhdGhDb21wb25lbnQ7eHB1cgAaW0x4c2J0aS5hcGkuUGF0aENvbXBvbmVudDtD2gl0LWcWdAIAAHhwAAAAAnNyAAx4c2J0aS5hcGkuSWSYMmyLN1PEQAIAAUwAAmlkcQB+AAx4cgAXeHNidGkuYXBpLlBhdGhDb21wb25lbnRfmiJbLoafvAIAAHhwdAAFc2NhbGFzcgAOeHNidGkuYXBpLlRoaXPbCe2mzFpAXAIAAHhxAH4A43NxAH4A1nEAfgDZc3EAfgDac3EAfgDddXEAfgDgAAAAA3NxAH4A4nQABGphdmFzcQB+AOJ0AAJpb3EAfgDnc3EAfgDWdAAHUHJvZHVjdHEAfgDcc3EAfgDWdAAGRXF1YWxzcQB+ANxzcQB+ANZ0AAZPYmplY3RzcQB+ANpzcQB+AN11cQB+AOAAAAADc3EAfgDicQB+AO1zcQB+AOJ0AARsYW5ncQB+AOdzcQB+ANZ0AANBbnlxAH4A3HNxAH4AqnEAfgC3dXEAfgC4AAAAAHNxAH4AugB0ABR3aGVyZUlzT3V0TGllci5Db2RQdHVxAH4AvQAAAABxAH4AwXVxAH4AwwAAAABzcQB+AMVxAH4Ay3NxAH4AxXNxAH4AzXNxAH4AxXVxAH4AqAAAAABzcQB+AMV1cQB+AKgAAAAAc3EAfgDFdXEAfgDUAAAABnNxAH4A1nEAfgDZc3EAfgDac3EAfgDddXEAfgDgAAAAAnNxAH4A4nEAfgDlcQB+AOdzcQB+ANZxAH4A2XNxAH4A2nNxAH4A3XVxAH4A4AAAAANzcQB+AOJxAH4A7XNxAH4A4nQAAmlvcQB+AOdzcQB+ANZxAH4A8XEAfgEOc3EAfgDWdAAGRXF1YWxzcQB+AQ5zcQB+ANZxAH4A9XNxAH4A2nNxAH4A3XVxAH4A4AAAAANzcQB+AOJxAH4A7XNxAH4A4nEAfgD7cQB+AOdzcQB+ANZxAH4A/XEAfgEOc3EAfgCqcQB+ALd1cQB+ALgAAAAAc3EAfgC6AHQAEndoZXJlSXNPdXRMaWVyLmNvZHVxAH4AvQAAAABxAH4AwXVxAH4AwwAAAABzcQB+AMVxAH4Ay3NxAH4AxXNxAH4AzXNxAH4AxXVxAH4AqAAAAABzcQB+AMV1cQB+AKgAAAAAc3EAfgDFdXEAfgDUAAAAA3NxAH4A1nQABHV0aWxzcQB+ANpzcQB+AN11cQB+AOAAAAACc3EAfgDidAAOd2hlcmVJc091dExpZXJxAH4A53NxAH4A1nEAfgD1c3EAfgDac3EAfgDddXEAfgDgAAAAA3NxAH4A4nEAfgDtc3EAfgDicQB+APtxAH4A53NxAH4A1nEAfgD9c3EAfgDac3EAfgDddXEAfgDgAAAAAnNxAH4A4nEAfgDlcQB+AOd1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAXNyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgAMeHB0AA53aGVyZUlzT3V0TGllcnNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABVW8g/Wh1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AAxMAA9zb3VyY2VEaXJlY3RvcnlxAH4ADHhwdABGQzpcVXNlcnNcd2FuZ2Ncd29ya3NwYWNlXFdoZXJlSXNPdXRsaWVyU2NhbGFcdGFyZ2V0XHNjYWxhLTIuMTFcY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFEsVT5F1Ga80uq3/dRCfy+VxObho
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\leap.scala -> 
-rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHDesgQjAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAEc3IAIHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoWw71InY4V88CAAJJAARoYXNoTAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwuYDtyHQABHVzZWRzcQB+AAtKo1csdAAHY29sTmFtZXNxAH4AC/Xkx8N0AAhjb2xUeXBlSXNxAH4AC0cLrZh0AAdjb2xUeXBldXEAfgAJAAAAQ3NxAH4AC4433M50AAZub3RpZnlzcQB+AAtSFL6fdAAHdW5hcHBseXNxAH4AC5QrBEd0AAdub3RVc2Vkc3EAfgALuxxu83QAB2N1cnJpZWRzcQB+AAtvc8PNdAAEd2FpdHNxAH4AC4gi55N0AAlzdGFydFRpbWVzcQB+AAuFjimNdAAOY29weSRkZWZhdWx0JDJzcQB+AAskLVK9dAANJGFzSW5zdGFuY2VPZnNxAH4ACy1MskR0AAhFdmlkZW5jZXNxAH4AC+dXNRt0AAJtdHNxAH4AC3Yzeq50AA5jb3B5JGRlZmF1bHQkNXNxAH4ACxvNgpB0AAZ0aHJlc2hzcQB+AAtinEQgdAAMcHJvZHVjdEFyaXR5c3EAfgAL4FyBWHQACGxlYXBNYWluc3EAfgALbx/NS3QABmVxdWFsc3NxAH4AC3dZIFB0AAxPdXRsaWVyUGFyYW1zcQB+AAt87mUadAAEc3VjY3NxAH4AC0nKwKl0AAxhc0luc3RhbmNlT2ZzcQB+AAtLlue3dAADa25uc3EAfgALcAPILnQADHN5bmNocm9uaXplZHNxAH4AC7Vt26h0AAhwcmludEFsbHNxAH4ACwvtj+R0AA0kaXNJbnN0YW5jZU9mc3EAfgALFnQc0XQACXNyY01pZGRsZXNxAH4AC98LbZt0AAZ0dXBsZWRzcQB+AAugZD6QdAAEcHJldnNxAH4AC1JHeXB0AAdnZXRBdHRyc3EAfgALtqktEXQACGNhbkVxdWFsc3EAfgAL6MUpn3QADmNvcHkkZGVmYXVsdCQ0c3EAfgALYCjh43QADXByb2R1Y3RQcmVmaXhzcQB+AAvR4VsudAAJbm90aWZ5QWxsc3EAfgAL75XDJnQAC2V1Y0Rpc3RhbmNlc3EAfgALTAfoZXQADGlzSW5zdGFuY2VPZnNxAH4ACztnvRt0AAY8aW5pdD5zcQB+AAvtcbKPdAAJc2V0Q29uZmlnc3EAfgALunK45XQAAmlkc3EAfgALOqV6a3QABWFwcGx5c3EAfgALewV0WnQABGxlYXBzcQB+AAsTDe1UdAACPT1zcQB+AAsEBsQsdAAMY2hlY2tPbkxlYXZlc3EAfgALJU3XLHQABWNsb25lc3EAfgAL7aoI13QABnN0YXR1c3NxAH4AC6/zMeN0AAN0eXBzcQB+AAu/arvLdAAGJGluaXQkc3EAfgALn9B7LHQAB2NvbnRlbnRzcQB+AAu4Th6QdAAMcHJpbnRPdXRsaWVyc3EAfgALpaoNo3QACHNsaWRlTGVuc3EAfgAL6q44bHQADmNvcHkkZGVmYXVsdCQzc3EAfgALeuMR43QABGNvcHlzcQB+AAv1JA0xdAAIdG9TdHJpbmdzcQB+AAsXwWmGdAACIT1zcQB+AAseA69YdAAIZ2V0Q2xhc3NzcQB+AAv+bClmdAAKTGVhcFB0SW5mb3NxAH4AC5Odfpx0AA5jb3B5JGRlZmF1bHQkMXNxAH4AC6Kdeqx0AAFSc3EAfgALcdavFHQAAm5lc3EAfgALbGZ29nQABldpbmRvd3NxAH4AC+xsVrh0AAV3aWR0aHNxAH4AC981m8h0AAFrc3EAfgALeJ/riXQAAmVxc3EAfgALH0G5pHQAD3Byb2R1Y3RJdGVyYXRvcnNxAH4AC/CTuJJ0AAdzbGlkZUlEc3EAfgALqHL4tnQAAiMjc3EAfgALFt5eWXQACGZpbmFsaXplc3EAfgALVYyftHQADnByb2R1Y3RFbGVtZW50c3EAfgALnmtcQHQACGhhc2hDb2Rlc3EAfgALCsVTGXQAEmV1Y0Rpc3RhbmNlV2l0aFJvd3NxAH4AC/RhUGV0AAhsYXN0U2xpZHNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAANzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+AKV4cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXEAfgAMeHBzcgAQeHNidGkuYXBpLlB1YmxpY7pYPa5sLWBCAgAAeHIAEHhzYnRpLmFwaS5BY2Nlc3PdYpr4HWMxSAIAAHhwdXIAF1tMeHNidGkuYXBpLkFubm90YXRpb24765frGRD2jUgCAAB4cAAAAABzcgATeHNidGkuYXBpLk1vZGlmaWVyc5fnYdwTJnuzAgABQgAFZmxhZ3N4cAB0ABd3aGVyZUlzT3V0TGllci5FdmlkZW5jZXVyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQACENsYXNzRGVmdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyACF4c2J0aS5hcGkuQWJzdHJhY3RMYXp5JFN0cmljdExhenkNZhxrKRYquAIAAUwABXZhbHVldAASTGphdmEvbGFuZy9PYmplY3Q7eHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgC9c3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AKVMAAlpbmhlcml0ZWRxAH4ApUwAB3BhcmVudHNxAH4ApXhxAH4AwnNxAH4AvXVxAH4AoAAAAABzcQB+AL11cQB+AKAAAAAAc3EAfgC9dXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAZzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AAxMAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgDBdAAMU2VyaWFsaXphYmxlc3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgDBc3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAACc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4ADHhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AAVzY2FsYXNyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgDbc3EAfgDOcQB+ANFzcQB+ANJzcQB+ANV1cQB+ANgAAAADc3EAfgDadAAEamF2YXNxAH4A2nQAAmlvcQB+AN9zcQB+AM50AAdQcm9kdWN0cQB+ANRzcQB+AM50AAZFcXVhbHNxAH4A1HNxAH4AznQABk9iamVjdHNxAH4A0nNxAH4A1XVxAH4A2AAAAANzcQB+ANpxAH4A5XNxAH4A2nQABGxhbmdxAH4A33NxAH4AznQAA0FueXEAfgDUc3EAfgCicQB+AK91cQB+ALAAAAAAc3EAfgCyAHQAGXdoZXJlSXNPdXRMaWVyLkxlYXBQdEluZm91cQB+ALUAAAAAcQB+ALl1cQB+ALsAAAAAc3EAfgC9cQB+AMNzcQB+AL1zcQB+AMVzcQB+AL11cQB+AKAAAAAAc3EAfgC9dXEAfgCgAAAAAHNxAH4AvXVxAH4AzAAAAAZzcQB+AM5xAH4A0XNxAH4A0nNxAH4A1XVxAH4A2AAAAAJzcQB+ANpxAH4A3XEAfgDfc3EAfgDOcQB+ANFzcQB+ANJzcQB+ANV1cQB+ANgAAAADc3EAfgDacQB+AOVzcQB+ANp0AAJpb3EAfgDfc3EAfgDOcQB+AOlxAH4BBnNxAH4AznQABkVxdWFsc3EAfgEGc3EAfgDOcQB+AO1zcQB+ANJzcQB+ANV1cQB+ANgAAAADc3EAfgDacQB+AOVzcQB+ANpxAH4A83EAfgDfc3EAfgDOcQB+APVxAH4BBnNxAH4AonEAfgCvdXEAfgCwAAAAAHNxAH4AsgB0ABN3aGVyZUlzT3V0TGllci5sZWFwdXEAfgC1AAAAAHEAfgC5dXEAfgC7AAAAAHNxAH4AvXEAfgDDc3EAfgC9c3EAfgDFc3EAfgC9dXEAfgCgAAAAAHNxAH4AvXVxAH4AoAAAAABzcQB+AL11cQB+AMwAAAADc3EAfgDOdAAEdXRpbHNxAH4A0nNxAH4A1XVxAH4A2AAAAAJzcQB+ANp0AA53aGVyZUlzT3V0TGllcnEAfgDfc3EAfgDOcQB+AO1zcQB+ANJzcQB+ANV1cQB+ANgAAAADc3EAfgDacQB+AOVzcQB+ANpxAH4A83EAfgDfc3EAfgDOcQB+APVzcQB+ANJzcQB+ANV1cQB+ANgAAAACc3EAfgDacQB+AN1xAH4A33VyABRbTHhzYnRpLmFwaS5QYWNrYWdlO1sTGTdwpyehAgAAeHAAAAABc3IAEXhzYnRpLmFwaS5QYWNrYWdlflmP9q7OOVgCAAFMAARuYW1lcQB+AAx4cHQADndoZXJlSXNPdXRMaWVyc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAFVOpAcbXVyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADEwAD3NvdXJjZURpcmVjdG9yeXEAfgAMeHB0AEZDOlxVc2Vyc1x3YW5nY1x3b3Jrc3BhY2VcV2hlcmVJc091dGxpZXJTY2FsYVx0YXJnZXRcc2NhbGEtMi4xMVxjbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAUeGW5lA8UA1lRaDd/KkXsFUTVEFw=
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHDQJ7dzAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAEc3IAIHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoWw71InY4V88CAAJJAARoYXNoTAAEbmFtZXQAEkxqYXZhL2xhbmcvU3RyaW5nO3hwuYDtyHQABHVzZWRzcQB+AAtKo1csdAAHY29sTmFtZXNxAH4AC/Xkx8N0AAhjb2xUeXBlSXNxAH4AC0cLrZh0AAdjb2xUeXBldXEAfgAJAAAAQ3NxAH4AC4433M50AAZub3RpZnlzcQB+AAtSFL6fdAAHdW5hcHBseXNxAH4AC5QrBEd0AAdub3RVc2Vkc3EAfgALuxxu83QAB2N1cnJpZWRzcQB+AAtvc8PNdAAEd2FpdHNxAH4AC4gi55N0AAlzdGFydFRpbWVzcQB+AAuFjimNdAAOY29weSRkZWZhdWx0JDJzcQB+AAskLVK9dAANJGFzSW5zdGFuY2VPZnNxAH4ACy1MskR0AAhFdmlkZW5jZXNxAH4AC+dXNRt0AAJtdHNxAH4AC3Yzeq50AA5jb3B5JGRlZmF1bHQkNXNxAH4AC2L0Ue90AAZ0aHJlc2hzcQB+AAtinEQgdAAMcHJvZHVjdEFyaXR5c3EAfgAL4FyBWHQACGxlYXBNYWluc3EAfgALbx/NS3QABmVxdWFsc3NxAH4AC3dZIFB0AAxPdXRsaWVyUGFyYW1zcQB+AAt87mUadAAEc3VjY3NxAH4AC0nKwKl0AAxhc0luc3RhbmNlT2ZzcQB+AAtXpjKsdAADa25uc3EAfgALcAPILnQADHN5bmNocm9uaXplZHNxAH4AC7Vt26h0AAhwcmludEFsbHNxAH4ACwvtj+R0AA0kaXNJbnN0YW5jZU9mc3EAfgALFnQc0XQACXNyY01pZGRsZXNxAH4AC98LbZt0AAZ0dXBsZWRzcQB+AAugZD6QdAAEcHJldnNxAH4AC1JHeXB0AAdnZXRBdHRyc3EAfgALtqktEXQACGNhbkVxdWFsc3EAfgAL6MUpn3QADmNvcHkkZGVmYXVsdCQ0c3EAfgALYCjh43QADXByb2R1Y3RQcmVmaXhzcQB+AAvR4VsudAAJbm90aWZ5QWxsc3EAfgAL75XDJnQAC2V1Y0Rpc3RhbmNlc3EAfgALTAfoZXQADGlzSW5zdGFuY2VPZnNxAH4ACztnvRt0AAY8aW5pdD5zcQB+AAvtcbKPdAAJc2V0Q29uZmlnc3EAfgALunK45XQAAmlkc3EAfgALOqV6a3QABWFwcGx5c3EAfgALewV0WnQABGxlYXBzcQB+AAsTDe1UdAACPT1zcQB+AAsEBsQsdAAMY2hlY2tPbkxlYXZlc3EAfgALJU3XLHQABWNsb25lc3EAfgAL7aoI13QABnN0YXR1c3NxAH4AC6/zMeN0AAN0eXBzcQB+AAu/arvLdAAGJGluaXQkc3EAfgALn9B7LHQAB2NvbnRlbnRzcQB+AAu4Th6QdAAMcHJpbnRPdXRsaWVyc3EAfgALpaoNo3QACHNsaWRlTGVuc3EAfgAL6q44bHQADmNvcHkkZGVmYXVsdCQzc3EAfgALeuMR43QABGNvcHlzcQB+AAv1JA0xdAAIdG9TdHJpbmdzcQB+AAsXwWmGdAACIT1zcQB+AAseA69YdAAIZ2V0Q2xhc3NzcQB+AAv+bClmdAAKTGVhcFB0SW5mb3NxAH4AC5Odfpx0AA5jb3B5JGRlZmF1bHQkMXNxAH4AC6Kdeqx0AAFSc3EAfgALcdavFHQAAm5lc3EAfgALbGZ29nQABldpbmRvd3NxAH4AC+xsVrh0AAV3aWR0aHNxAH4AC981m8h0AAFrc3EAfgALeJ/riXQAAmVxc3EAfgALH0G5pHQAD3Byb2R1Y3RJdGVyYXRvcnNxAH4AC/CTuJJ0AAdzbGlkZUlEc3EAfgALqHL4tnQAAiMjc3EAfgALFt5eWXQACGZpbmFsaXplc3EAfgALVYyftHQADnByb2R1Y3RFbGVtZW50c3EAfgALnmtcQHQACGhhc2hDb2Rlc3EAfgALCsVTGXQAEmV1Y0Rpc3RhbmNlV2l0aFJvd3NxAH4AC/RhUGV0AAhsYXN0U2xpZHNyABN4c2J0aS5hcGkuU291cmNlQVBJuV6n+SkjOKQCAAJbAAtkZWZpbml0aW9uc3QAF1tMeHNidGkvYXBpL0RlZmluaXRpb247WwAIcGFja2FnZXN0ABRbTHhzYnRpL2FwaS9QYWNrYWdlO3hwdXIAF1tMeHNidGkuYXBpLkRlZmluaXRpb247iMlc57TjXg4CAAB4cAAAAANzcgATeHNidGkuYXBpLkNsYXNzTGlrZYM0HKHfsJdsAgAETAAOZGVmaW5pdGlvblR5cGV0ABpMeHNidGkvYXBpL0RlZmluaXRpb25UeXBlO1sAEHNhdmVkQW5ub3RhdGlvbnN0ABNbTGphdmEvbGFuZy9TdHJpbmc7TAAIc2VsZlR5cGV0ABBMeHNidGkvYXBpL0xhenk7TAAJc3RydWN0dXJlcQB+AKV4cgAheHNidGkuYXBpLlBhcmFtZXRlcml6ZWREZWZpbml0aW9u+RFusdVQPOICAAFbAA50eXBlUGFyYW1ldGVyc3QAGltMeHNidGkvYXBpL1R5cGVQYXJhbWV0ZXI7eHIAFHhzYnRpLmFwaS5EZWZpbml0aW9uhyob6HFC40YCAARMAAZhY2Nlc3N0ABJMeHNidGkvYXBpL0FjY2VzcztbAAthbm5vdGF0aW9uc3QAF1tMeHNidGkvYXBpL0Fubm90YXRpb247TAAJbW9kaWZpZXJzdAAVTHhzYnRpL2FwaS9Nb2RpZmllcnM7TAAEbmFtZXEAfgAMeHBzcgAQeHNidGkuYXBpLlB1YmxpY7pYPa5sLWBCAgAAeHIAEHhzYnRpLmFwaS5BY2Nlc3PdYpr4HWMxSAIAAHhwdXIAF1tMeHNidGkuYXBpLkFubm90YXRpb24765frGRD2jUgCAAB4cAAAAABzcgATeHNidGkuYXBpLk1vZGlmaWVyc5fnYdwTJnuzAgABQgAFZmxhZ3N4cAB0ABd3aGVyZUlzT3V0TGllci5FdmlkZW5jZXVyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQACENsYXNzRGVmdXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyACF4c2J0aS5hcGkuQWJzdHJhY3RMYXp5JFN0cmljdExhenkNZhxrKRYquAIAAUwABXZhbHVldAASTGphdmEvbGFuZy9PYmplY3Q7eHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgC9c3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AKVMAAlpbmhlcml0ZWRxAH4ApUwAB3BhcmVudHNxAH4ApXhxAH4AwnNxAH4AvXVxAH4AoAAAAABzcQB+AL11cQB+AKAAAAAAc3EAfgC9dXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAZzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AAxMAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgDBdAAMU2VyaWFsaXphYmxlc3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgDBc3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAACc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4ADHhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AAVzY2FsYXNyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgDbc3EAfgDOcQB+ANFzcQB+ANJzcQB+ANV1cQB+ANgAAAADc3EAfgDadAAEamF2YXNxAH4A2nQAAmlvcQB+AN9zcQB+AM50AAdQcm9kdWN0cQB+ANRzcQB+AM50AAZFcXVhbHNxAH4A1HNxAH4AznQABk9iamVjdHNxAH4A0nNxAH4A1XVxAH4A2AAAAANzcQB+ANpxAH4A5XNxAH4A2nQABGxhbmdxAH4A33NxAH4AznQAA0FueXEAfgDUc3EAfgCicQB+AK91cQB+ALAAAAAAc3EAfgCyAHQAGXdoZXJlSXNPdXRMaWVyLkxlYXBQdEluZm91cQB+ALUAAAAAcQB+ALl1cQB+ALsAAAAAc3EAfgC9cQB+AMNzcQB+AL1zcQB+AMVzcQB+AL11cQB+AKAAAAAAc3EAfgC9dXEAfgCgAAAAAHNxAH4AvXVxAH4AzAAAAAZzcQB+AM5xAH4A0XNxAH4A0nNxAH4A1XVxAH4A2AAAAAJzcQB+ANpxAH4A3XEAfgDfc3EAfgDOcQB+ANFzcQB+ANJzcQB+ANV1cQB+ANgAAAADc3EAfgDacQB+AOVzcQB+ANp0AAJpb3EAfgDfc3EAfgDOcQB+AOlxAH4BBnNxAH4AznQABkVxdWFsc3EAfgEGc3EAfgDOcQB+AO1zcQB+ANJzcQB+ANV1cQB+ANgAAAADc3EAfgDacQB+AOVzcQB+ANpxAH4A83EAfgDfc3EAfgDOcQB+APVxAH4BBnNxAH4AonEAfgCvdXEAfgCwAAAAAHNxAH4AsgB0ABN3aGVyZUlzT3V0TGllci5sZWFwdXEAfgC1AAAAAHEAfgC5dXEAfgC7AAAAAHNxAH4AvXEAfgDDc3EAfgC9c3EAfgDFc3EAfgC9dXEAfgCgAAAAAHNxAH4AvXVxAH4AoAAAAABzcQB+AL11cQB+AMwAAAADc3EAfgDOdAAEdXRpbHNxAH4A0nNxAH4A1XVxAH4A2AAAAAJzcQB+ANp0AA53aGVyZUlzT3V0TGllcnEAfgDfc3EAfgDOcQB+AO1zcQB+ANJzcQB+ANV1cQB+ANgAAAADc3EAfgDacQB+AOVzcQB+ANpxAH4A83EAfgDfc3EAfgDOcQB+APVzcQB+ANJzcQB+ANV1cQB+ANgAAAACc3EAfgDacQB+AN1xAH4A33VyABRbTHhzYnRpLmFwaS5QYWNrYWdlO1sTGTdwpyehAgAAeHAAAAABc3IAEXhzYnRpLmFwaS5QYWNrYWdlflmP9q7OOVgCAAFMAARuYW1lcQB+AAx4cHQADndoZXJlSXNPdXRMaWVyc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAFVbyD9aHVyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADEwAD3NvdXJjZURpcmVjdG9yeXEAfgAMeHB0AEZDOlxVc2Vyc1x3YW5nY1x3b3Jrc3BhY2VcV2hlcmVJc091dGxpZXJTY2FsYVx0YXJnZXRcc2NhbGEtMi4xMVxjbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAUDm2UH7a9SfxFvQalEuZTPfApwdA=
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> 
 rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHBFWfuZAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAALXNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cKnCro50AAZub3RpZnlzcQB+AAw60lqUdAAHdW5hcHBseXNxAH4ADHnhGw50AAdjdXJyaWVkc3EAfgAMjSd+43QABHdhaXRzcQB+AAxD8grIdAAOY29weSRkZWZhdWx0JDJzcQB+AAwUOTb0dAANJGFzSW5zdGFuY2VPZnNxAH4ADAF7Ebd0AAR1dGlsc3EAfgAMCvfzWXQADHByb2R1Y3RBcml0eXNxAH4ADEk0hj10AAZlcXVhbHNzcQB+AAysXIENdAAMT3V0bGllclBhcmFtc3EAfgAMyRf54nQADGFzSW5zdGFuY2VPZnNxAH4ADLRxNyB0AAxzeW5jaHJvbml6ZWRzcQB+AAw3ltj9dAANJGlzSW5zdGFuY2VPZnNxAH4ADDWW8ad0AAZ0dXBsZWRzcQB+AAyE33ZJdAAHZ2V0QXR0cnNxAH4ADJpXvVd0AAhjYW5FcXVhbHNxAH4ADJ5muCR0AA1wcm9kdWN0UHJlZml4c3EAfgAMPYPJFXQACW5vdGlmeUFsbHNxAH4ADDQjZP50AAtldWNEaXN0YW5jZXNxAH4ADAZDb2Z0AAxpc0luc3RhbmNlT2ZzcQB+AAxnAUWzdAAGPGluaXQ+c3EAfgAMhRQbGHQABWFwcGx5c3EAfgAMoOtTB3QAAj09c3EAfgAMKKRgnnQABWNsb25lc3EAfgAMkEjTyHQAA3R5cHNxAH4ADGZr/7t0AAYkaW5pdCRzcQB+AAyERg85dAAIc2xpZGVMZW5zcQB+AAzVfRNKdAAOY29weSRkZWZhdWx0JDNzcQB+AAwim0i5dAAEY29weXNxAH4ADDr7G/d0AAh0b1N0cmluZ3NxAH4ADAeNU/t0AAIhPXNxAH4ADK5MV5p0AAhnZXRDbGFzc3NxAH4ADMSdu0t0AA5jb3B5JGRlZmF1bHQkMXNxAH4ADFfMxkl0AAFSc3EAfgAMjdBQi3QAAm5lc3EAfgAM5wIEK3QABldpbmRvd3NxAH4ADIlttYp0AAV3aWR0aHNxAH4ADCjwctd0AAFrc3EAfgAMhwBfDnQAAmVxc3EAfgAMVM98+3QAD3Byb2R1Y3RJdGVyYXRvcnNxAH4ADFa+aHp0AAIjI3NxAH4ADOPyE4N0AAhmaW5hbGl6ZXNxAH4ADI/jlZN0AA5wcm9kdWN0RWxlbWVudHNxAH4ADEnN+MZ0AAhoYXNoQ29kZXNxAH4ADEHlPF90ABJldWNEaXN0YW5jZVdpdGhSb3dzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAABc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgBxeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnOX52HcEyZ7swIAAUIABWZsYWdzeHABdAATd2hlcmVJc091dExpZXIudXRpbHVyABpbTHhzYnRpLmFwaS5UeXBlUGFyYW1ldGVyO9ltJg8onfK2AgAAeHAAAAAAfnIAGHhzYnRpLmFwaS5EZWZpbml0aW9uVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQABVRyYWl0dXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyACF4c2J0aS5hcGkuQWJzdHJhY3RMYXp5JFN0cmljdExhenkNZhxrKRYquAIAAUwABXZhbHVldAASTGphdmEvbGFuZy9PYmplY3Q7eHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgCJc3IAE3hzYnRpLmFwaS5TdHJ1Y3R1cmWpqvmAk2/YAAIAA0wACGRlY2xhcmVkcQB+AHFMAAlpbmhlcml0ZWRxAH4AcUwAB3BhcmVudHNxAH4AcXhxAH4AjnNxAH4AiXVxAH4AbAAAAABzcQB+AIl1cQB+AGwAAAAAc3EAfgCJdXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAAJzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgCNdAAGT2JqZWN0c3IAE3hzYnRpLmFwaS5TaW5nbGV0b278p1/4z1bkRgIAAUwABHBhdGh0ABBMeHNidGkvYXBpL1BhdGg7eHEAfgCNc3IADnhzYnRpLmFwaS5QYXRomz1cCM6lJ4QCAAFbAApjb21wb25lbnRzdAAaW0x4c2J0aS9hcGkvUGF0aENvbXBvbmVudDt4cHVyABpbTHhzYnRpLmFwaS5QYXRoQ29tcG9uZW50O0PaCXQtZxZ0AgAAeHAAAAADc3IADHhzYnRpLmFwaS5JZJgybIs3U8RAAgABTAACaWRxAH4ADXhyABd4c2J0aS5hcGkuUGF0aENvbXBvbmVudF+aIlsuhp+8AgAAeHB0AARqYXZhc3EAfgCmdAAEbGFuZ3NyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgCnc3EAfgCadAADQW55c3EAfgCec3EAfgChdXEAfgCkAAAAAnNxAH4ApnQABXNjYWxhcQB+AK11cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAXNyABF4c2J0aS5hcGkuUGFja2FnZX5Zj/auzjlYAgABTAAEbmFtZXEAfgANeHB0AA53aGVyZUlzT3V0TGllcnNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABVTbhGeZ1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AA1MAA9zb3VyY2VEaXJlY3RvcnlxAH4ADXhwdABGQzpcVXNlcnNcd2FuZ2Ncd29ya3NwYWNlXFdoZXJlSXNPdXRsaWVyU2NhbGFcdGFyZ2V0XHNjYWxhLTIuMTFcY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFGa6QaNX5/GRlge2QClnK6ne1gj2
 external apis:
@@ -3462,7 +3468,8 @@ AAAAAAAAAAA=
 C:\Users\wangc\workspace\WhereIsOutlierScala\src\main\scala\whereIsOutLier\util.scala -> 
 AAAAAAAAAAA=
 compilations:
-3 items
+4 items
 0 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABVDuRHTN1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQATEQ6XFdhbmdqaW5cVW1hc3NNZWRcQ29kZVxzY2FsYVxXaGVyZUlzT3V0bGllclNjYWxhXHRhcmdldFxzY2FsYS0yLjExXGNsYXNzZXN0AAEv
 1 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABVTbhGeZ1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQARkM6XFVzZXJzXHdhbmdjXHdvcmtzcGFjZVxXaGVyZUlzT3V0bGllclNjYWxhXHRhcmdldFxzY2FsYS0yLjExXGNsYXNzZXN0AAEv
 2 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABVTqQHG11cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQARkM6XFVzZXJzXHdhbmdjXHdvcmtzcGFjZVxXaGVyZUlzT3V0bGllclNjYWxhXHRhcmdldFxzY2FsYS0yLjExXGNsYXNzZXN0AAEv
+3 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABVW8g/Wh1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQARkM6XFVzZXJzXHdhbmdjXHdvcmtzcGFjZVxXaGVyZUlzT3V0bGllclNjYWxhXHRhcmdldFxzY2FsYS0yLjExXGNsYXNzZXN0AAEv

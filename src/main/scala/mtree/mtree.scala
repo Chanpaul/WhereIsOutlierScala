@@ -12,18 +12,18 @@ class mtree extends util {
   var ndCapacity=10;   //100
   implicit var rootNd=MtNd(ndCount.toString,"",Array[Entry](),("None",0.0),"leaf");
   implicit var colName=Array[String]();
-	implicit var colType=Array[(String,String)]();
-	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;
-	implicit var used=Array[Int]();
+	implicit var colAttr=Array[(String,String,String,String)]();
+	//implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;
+	//implicit var used=Array[Int]();
 	
   //var rootNd=MtNd("",Array[Double](),Array[String](),0.0,("None",0.0),"leaf");
 	def initialization(capacity:Int,pcolName:Array[String],
-      pcolType:Array[(String,String)],pcolTypeI:Array[(String,Int)],pused:Array[Int]){
+      pcolAttr:Array[(String,String,String,String)]){
 	  colName=pcolName;
-    colType=pcolType;
-    colTypeI=pcolTypeI;
+    colAttr=pcolAttr;
+    
     ndCapacity=capacity;
-    used=pused;
+    //used=pused;
 	}
   
   def create(id:String,content:Array[Double]){

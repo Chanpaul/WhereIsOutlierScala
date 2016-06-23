@@ -26,7 +26,7 @@ import whereIsOutLier._
  
 case class DataItem(year:String,month:String,day:String,hour:String,
 		Z:Double,Y:Double,X:Double,celsius:Double,eda:Double);
-
+case class TimeUnit(quantity:Int,unite:String);
 //case class OutlierParam(R:Double,k:Int);    //R radius, k number of neighbors;
 
 object outlierDetection {
@@ -41,14 +41,14 @@ object outlierDetection {
 			  //.setJars(Seq("/a/b/x.jar", "/c/d/y.jar"));
 	  val sc = new SparkContext(conf);
 	  val sqlContext = new org.apache.spark.sql.SQLContext(sc);
-	  //var confFileName="ForestCover.conf";
-	  var confFileName="application.conf";
+	  var confFileName="ForestCover.conf";
+	  //var confFileName="application.conf";
 	  var confDir="C://Users//wangc//workspace//WhereIsOutlierScala//src//main//resource//";
 	  val myConfigFile = new File(confDir+confFileName);
 	  
 	  val fileConfig = ConfigFactory.parseFile(myConfigFile);
 	  val config = ConfigFactory.load(fileConfig);
-	  /*
+	  
 	  for (slidSz<-Array(0.5,1,5,10,25,50).map(_*1000)){
 	    var newConfigLeap = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(slidSz))
 				  .withValue("win.width", ConfigValueFactory.fromAnyRef(100000))   //100000
@@ -82,27 +82,47 @@ object outlierDetection {
 		  tcod.setConfig(newConfigCod);
 		  tcod.codMain(sqlContext);
 	    }	  
-	  */
-	  
+	  /*
+	  var timeUnit=Array("1second","30second","1minute","10minute","30minute","1hour");
+	  var unitPattern=new Regex("[a-zA-Z]+");
+	  var objDir="C://Users//wangc//Results//WhereIsOutlierScala";
 	  var winRange=3 to 24;
-	  var outlierR=1 to 12;	  
-	  for (i<-1 to 15){		  
-		  for (windSz<-winRange){
-			  for (r<-outlierR;k<-2 to windSz){
-				  var newConfigLeap = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(1))
-						  .withValue("win.width", ConfigValueFactory.fromAnyRef(windSz))
-						  .withValue("outlier.R", ConfigValueFactory.fromAnyRef(r))
-						  .withValue("outlier.k", ConfigValueFactory.fromAnyRef(k))
-						  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef(s"patient$i"+s"r_$r"+s"k_$k"+"leap_windowSize_"+windSz))
-						  .withValue("dataset.middle",ConfigValueFactory.fromAnyRef("//Patient"+i+".csv//"));				  
-				  println(s"Running window size $windSz");
-				  var outlierDetect=new leap;
-				  outlierDetect.setConfig(newConfigLeap);
-				  outlierDetect.leapMain(sqlContext);	
-			  }
-		  }  
-	  }
-    
+	  var outlierR=1 to 12;	 
+	  for (tu<-timeUnit){	    
+	    var tempObjDir=new File(objDir+"//"+tu)
+	    if (tempObjDir.exists==false){
+	      var tempFlag=tempObjDir.mkdir();
+	      tempFlag match {
+	      case false => println("directory was created successfully")
+	      case true => println(s"failed trying to create the directory:$tempObjDir.getFileName")
+	      }
+	    }
+		  for (i<-1 to 15){		  
+			  for (windSz<-winRange){
+				  for (r<-outlierR;k<-2 to windSz){
+					  var newConfigLeap = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(1))
+							  .withValue("win.width", ConfigValueFactory.fromAnyRef(windSz))
+							  .withValue("outlier.R", ConfigValueFactory.fromAnyRef(r))
+							  .withValue("outlier.k", ConfigValueFactory.fromAnyRef(k))
+							  .withValue("outlier.directory", ConfigValueFactory.fromAnyRef(objDir+"//"+tu))
+							  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef(s"patient$i"+s"r_$r"+s"k_$k"+"leap_windowSize_"+windSz))
+							  .withValue("dataset.middle",ConfigValueFactory.fromAnyRef("//"+tu+"//Patient"+i+".csv//"));		
+					  unitPattern.findFirstIn(tu).getOrElse(" ") match {
+					    case "second" => newConfigLeap.withValue("dataattr.notUsed",ConfigValueFactory.fromAnyRef("year,month,day,hour,minute,second"))
+					    		.withValue("dataattr.used",ConfigValueFactory.fromAnyRef("Z_axis,Y_axis,X_axis,Celsius,EDA"));
+					    case "minute" => newConfigLeap.withValue("dataattr.notUsed",ConfigValueFactory.fromAnyRef("year,month,day,hour,minute"))
+					    		.withValue("dataattr.used",ConfigValueFactory.fromAnyRef("Z_axis,Y_axis,X_axis,Celsius,EDA"));
+					    case "hour" => newConfigLeap.withValue("dataattr.notUsed",ConfigValueFactory.fromAnyRef("year,month,day,hour"))
+					    		.withValue("dataattr.used",ConfigValueFactory.fromAnyRef("Z_axis,Y_axis,X_axis,Celsius,EDA"))
+					  }
+					  println(s"Running window size $windSz");
+					  var outlierDetect=new leap;
+					  outlierDetect.setConfig(newConfigLeap);
+					  outlierDetect.leapMain(sqlContext);	
+				  }
+			  }  
+		  }
+	  }*/
   }
   def cleanBioSensorMain(args:Array[String]){      //cleanBioSensorMain
     val conf = new SparkConf().setAppName("WhereIsOutlier")
@@ -117,21 +137,37 @@ object outlierDetection {
 	  cleanMultiple(srcDir,objDir,objPrefix);
 	  * */
 	  //aggregate and sort
-	  job4Clean(sqlContext);
+	  var timeUnit=Array(TimeUnit(1,"second"),TimeUnit(30,"second"),TimeUnit(1,"minute"),
+	      TimeUnit(10,"minute"),TimeUnit(30,"minute"),TimeUnit(1,"hour"));    
+	  for (tu<-timeUnit){
+		  job4Clean(sqlContext,tu);  
+	  }	  
   }
   
-  def job4Clean(sqlContext:SQLContext){
-    val srcDirName="C://Users//wangc//DataSet//CleanedData//temp";
-	  var objDir="C://Users//wangc//DataSet//CleanedData";
+  def job4Clean(sqlContext:SQLContext,timeUnit:TimeUnit){
+	  val srcDirName="C://Users//wangc//DataSet//CleanedData//temp";
+	  var objDir="C://Users//wangc//DataSet//CleanedData"+"//"+timeUnit.quantity+timeUnit.unite;
+	  var tempObjDir=new File(objDir);
+	  if (tempObjDir.exists==false){
+		  var tempFlag=tempObjDir.mkdir();
+		  tempFlag match {
+		  case false => println("directory was created successfully")
+		  case true =>println(s"failed trying to create the directory:$objDir")
+		  };
+
+	  }
 	  val tempDir=new File(srcDirName);
 	  if (tempDir.exists && tempDir.isDirectory){
+		  val tpattern1=new Regex("ReadMe");					  
 		  for (curDir<- tempDir.listFiles){
-			  var curDirName=curDir.getName;    
-			  val srcFile=srcDirName+"//"+ curDirName;  //curDir.getName;			  
-			  val objFile=objDir+"//"+curDirName;    //curDir.getName;
-			  clean(srcFile,objFile,sqlContext); 
+			  var curDirName=curDir.getName;
+			  val tFileFlag=tpattern1.findFirstIn(curDirName);
+			  if (tFileFlag.isEmpty==true){
+				  val srcFile=srcDirName+"//"+ curDirName;  //curDir.getName;			  
+				  val objFile=objDir+"//"+curDirName;    //curDir.getName;
+				  clean(srcFile,objFile,sqlContext,timeUnit);  
+			  }
 		  }
-
 	  }
   }
     
@@ -234,19 +270,33 @@ object outlierDetection {
   } 
    
   
-  def clean(srcFile:String,objFile:String,sqlContext:SQLContext){	  
-	  val df = sqlContext.read
+  def clean(srcFile:String,objFile:String,sqlContext:SQLContext,timeUnit:TimeUnit){    
+	  var df = sqlContext.read
 			  .format("com.databricks.spark.csv")
 			  .option("delimiter",",")
 			  .option("header", "true") // Use first line of all files as header
 			  .option("inferSchema", "true") // Automatically infer data types
 			  .load(srcFile);   //"cars.csv"
-	  val newDf=df.filter("Celsius >30 and Celsius <45 and EDA>0 and EDA<500")
-			  .groupBy("year","month","day","hour")
-			  .agg(avg(col("Z-axis")), avg(col("Y-axis")),avg(col("X-axis")),
-	      avg(col("Celsius")),avg(col("EDA")),avg(col("Battery")),avg(col("Event")))
-	      .sort("year", "month","day","hour");
+	  df=df.withColumnRenamed("Z-axis","Z_axis")
+			  .withColumnRenamed("Y-axis","Y_axis")
+			  .withColumnRenamed("X-axis","X_axis")
+			  .filter("Celsius >30 and Celsius <45 and EDA>0 and EDA<500 and Z_axis>-10");
+	  var newDf= timeUnit.unite match {
+	    case "second" => df.withColumn("newSecond",(df("seconds")/timeUnit.quantity).cast("Int")).drop("seconds").withColumnRenamed("newSecond","second")	    
+	    		.groupBy("year","month","day","hour","minute","second")	    		
+	    		.agg(avg("Z_axis").alias("Z_axis"), avg("Y_axis").alias("Y_axis"),avg("X_axis").alias("X_axis"),avg("Celsius").alias("Celsius"),avg("EDA").alias("EDA"),avg("Battery"),avg("Event"))
+	    		.sort("year", "month","day","hour","minute","second");
+	    case "minute" => df.withColumn("newMinute",(df("minute")/timeUnit.quantity).cast("Int")).drop("minute").withColumnRenamed("newMinute","minute")
+	    		.groupBy("year","month","day","hour","minute")
+	    		.agg(avg("Z_axis").alias("Z_axis"), avg("Y_axis").alias("Y_axis"),avg("X_axis").alias("X_axis"),avg("Celsius").alias("Celsius"),avg("EDA").alias("EDA"),avg(col("Battery")),avg(col("Event")))
+	    		.sort("year", "month","day","hour","minute");
+	    case "hour"  => df.withColumn("newHour",(df("hour")/timeUnit.quantity).cast("Int")).drop("hour").withColumnRenamed("newHour","hour")
+	    		.groupBy("year","month","day","hour")	    			    		
+	    		.agg(avg("Z_axis").alias("Z_axis"), avg("Y_axis").alias("Y_axis"),avg("X_axis").alias("X_axis"),avg(col("Celsius")),avg(col("EDA")),avg(col("Battery")),avg(col("Event")))
+	    		.sort("year", "month","day","hour");
+ 	  } 
 	  
+	  	  
 	  newDf.coalesce(1)
 	  .write
 	  .format("com.databricks.spark.csv")	  

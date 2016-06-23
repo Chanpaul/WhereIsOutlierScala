@@ -20,9 +20,11 @@ import collection.JavaConverters._
 import scala.collection.parallel._
 import mtree._
 import emtree._
-
+import breeze.linalg._
 case class CodMeta(preNeig:Seq[String],succ:Int,checkOnLeave:Double,status:String);
 case class CodPt(id:String,startTime:Double,expTime:Double,content:Array[Double]);
+case class CodSlide(id:Int,eleMx:DenseMatrix[Double],expTriger:Array[Tuple2[String,Int]],
+    ptMap:scala.collection.mutable.Map[String,Tuple2[LeapPtInfo,Evidence]]);
 //case class Event(time:Double,id:String);
 class cod extends util{ 
   var window=Window(12.0,1);  //width=12.0,slide=1;	  
@@ -32,11 +34,10 @@ class cod extends util{
   private var ptMeta=scala.collection.mutable.Map[String,CodMeta]();
   private var curWindowStart=0;
   implicit var colName=Array[String]();
-	implicit var colType=Array[(String,String)]();
-	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;
-	var mt=new mtree.mtree;
-	var notUsed=Array[Int]();
-	implicit var used=Array[Int]();
+  implicit var columeAttr=Array[(String,String,String,String)]();  //name, attribute type, data type,label (used, not used, label)
+  
+	
+	var mt=new mtree.mtree;	
 	var srcDataDir="";
 	var srcDataFileName="";
 	var resDataDir="";
@@ -54,14 +55,24 @@ class cod extends util{
     srcDataFileName=config.getString("dataset.dataFile")
     resDataDir=config.getString("outlier.directory")
     resDataFileName=config.getString("outlier.fileName");   
-    colTypeI=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0).trim,x(1).toInt));
-    notUsed=config.getString("dataattr.notUsed").split(",").map(_.toInt);
+    var label=config.getString("dataattr.label");
+    var colType=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0),x(1),x(2)));
+    //var colType=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0).trim,x(1).toInt));
+    var notUsed=config.getString("dataattr.notUsed").split(",").map(_.toInt);
     var tempUsed=config.getString("dataattr.used");
-    used=tempUsed match{
-      case " "=> (0 to (colTypeI.length-1)).toArray.filter(x=>(!notUsed.contains(x)))
+    var used=tempUsed match{
+      case " "=> (0 to (colType.length-1)).toArray.filter(x=>(!notUsed.contains(x)))
       case default =>tempUsed.split(",").map(_.toInt)
     };
-    
+    for (cols <- colType){
+      if (used.contains(cols._1)) {
+        columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"used")
+      } else if (notUsed.contains(cols._1)){
+        columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"unUsed")
+      } else if (label==cols._1){
+        columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"label")
+      }      
+    }
   }
   def depart():scala.collection.mutable.Map[String,CodPt]={
 		  curWindowStart=curWindowStart+window.slideLen;
@@ -129,7 +140,7 @@ class cod extends util{
 	  var totalMem=runtime.totalMemory();
 	  /******************end of setup*********************/
 	  //var mt=new emtree.emtree;
-	  mt.initialization(10,colName,colType,colTypeI,used);
+	  mt.initialization(10,colName,columeAttr);
 	  val pattern=new Regex("^[\\s]+\n");
 	  for(line<-lines if (pattern.findAllIn(line).isEmpty)) {
 		  println(ptCount);
@@ -190,11 +201,12 @@ class cod extends util{
   
   def printOutlier(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){        
     var outliers=ptMeta.filter(_._2.status=="Outlier").map(_._1).map(x=>ptInWindow(x).content);
-    var msg=s"From $from to $to, the outliers are:\n";    
+    var msg=s"From $from to $to, the outliers are:\n";   
+    var notUsed=columeAttr.filter(x=>x._4=="unUsed").map(_._1);
     for (otly<-outliers){      
       var tempMsg="----------"
       for (x<-notUsed){
-        tempMsg=tempMsg+otly.apply(x)+"-";
+        tempMsg=tempMsg+otly.apply(colName.indexOf(x))+"-";
       }
       msg=msg+tempMsg+"\n";
     }   
@@ -204,10 +216,11 @@ class cod extends util{
   }
   def printAll(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){
 	  var msg=s"From $from to $to:\n";
+	  var notUsed=columeAttr.filter(x=>x._4=="unUsed").map(_._1);
 	  for (pt <-ptMeta){    	      
 		  var tempMsg="----------";
 		  for (x<-notUsed){
-			  tempMsg=tempMsg+ptInWindow(pt._1).content.apply(x)+"-";
+			  tempMsg=tempMsg+ptInWindow(pt._1).content.apply(colName.indexOf(x))+"-";
 		  }    	
 		  msg=msg+tempMsg+pt._2.status+"-"+(pt._2.succ+pt._2.preNeig.size)+"\n";
 		  //println(msg);

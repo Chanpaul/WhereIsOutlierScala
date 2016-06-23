@@ -24,29 +24,27 @@ import emtree._
 import breeze.linalg._
 //import org.github.jamm
 
-//case class Slide(slidId:Int,element:Seq[String],expTriger:Seq[String]);
-case class Evidence(succ:Int,lastSlid:Int,prev:Map[Int,Int],checkOnLeave:Int,status:String);
+
+case class Evidence(succ:Int,lastSlid:Int,prev:Map[Int,Int],status:String);
 case class LeapPtInfo(id:String,slideID:Int,startTime:Double,content:Array[Double]);
+case class Slide(id:Int,eleMx:DenseMatrix[Double],expTriger:Array[Tuple2[String,Int]],
+    ptMap:scala.collection.mutable.Map[String,Tuple2[LeapPtInfo,Evidence]]);
 
 class leap extends util{
   private var window=Window(12.0,1);  //width=12.0,slide=1;	  
   private var outlierParam=OutlierParam("ThreshOutlier",12.62,6); 
-  private var distMap=scala.collection.mutable.Map[String,Double]();   //global variable
-  private var ptInWindow=scala.collection.mutable.Map[String,LeapPtInfo]();
-  private var ptEvidence=scala.collection.mutable.Map[String,Evidence]();
-  
-  
+     
   var mt=new mtree.mtree;
   implicit var colName=Array[String]();
-	implicit var colType=Array[(String,String)](); 
-	implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;	
-	implicit var used=Array[Int]();
-	var notUsed=Array[Int]();
+  implicit var columeAttr=Array[(String,String,String,String)]();  //name, attribute type, data type,label (used, not used, label)
+	
 	private var srcDataDir="";
 	private var srcDataFileName="";
 	var srcMiddle="";
 	private var resDataDir="";
 	private var resDataFileName="";
+	
+	var slides=scala.collection.mutable.Map[Int,Slide]();   //slide id slide, data item matrix
   def setConfig(config:Config){
     outlierParam=OutlierParam(config.getString("outlier.typ"),
         config.getDouble("outlier.R"),
@@ -58,23 +56,38 @@ class leap extends util{
     srcDataFileName=config.getString("dataset.dataFile")
     resDataDir=config.getString("outlier.directory")
     resDataFileName=config.getString("outlier.fileName");
-    colTypeI=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0),x(1).toInt));
-    notUsed=config.getString("dataattr.notUsed").split(",").map(_.toInt);
-    var tempUsed=config.getString("dataattr.used");
-    used=tempUsed match{
-      case " "=> (0 to (colTypeI.length-1)).toArray.filter(x=>(!notUsed.contains(x)))
-      case default =>tempUsed.split(",").map(_.toInt)
-    };
     
+    var colType=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0),x(1),x(2)));
+    var label=config.getString("dataattr.label");
+    var notUsed=config.getString("dataattr.notUsed").split(",");
+    var tempUsed=config.getString("dataattr.used");
+    var used=tempUsed match{
+      case " "=> colType.map(_._1).filter(x=>notUsed.contains(x)==false & label!=x)
+      case default =>tempUsed.split(",")
+    };    
+    for (cols <- colType){
+      if (used.contains(cols._1)) {
+        columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"used")
+      } else if (notUsed.contains(cols._1)){
+        columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"unUsed")
+      } else if (label==cols._1){
+        columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"label")
+      }  else {
+        columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"unUsed")
+      }    
+    }
   }
   
-  def printOutlier(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){        
-    var outliers=ptEvidence.seq.filter(_._2.status=="Outlier").map(_._1).map(x=>ptInWindow(x).content);
+  def printOutlier(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){
+    var outliers=Array[Array[Double]]();
+    slides.foreach(x=>outliers=outliers++:x._2.ptMap.filter(_._2._2.status=="Outlier").map(_._2._1.content).toArray);
+    
     var msg=s"From $from to $to, the outliers are:\n";
+    var notUsed=columeAttr.filter(x=>x._4=="unUsed").map(_._1)
     for (otly<-outliers){      
       var tempMsg="----------"
       for (x<-notUsed){
-        tempMsg=tempMsg+otly.apply(x)+"-";
+        tempMsg=tempMsg+otly.apply(colName.indexOf(x))+"-";
       }
       msg=msg+tempMsg+"\n";
     }
@@ -83,12 +96,14 @@ class leap extends util{
   }
   def printAll(writer:PrintWriter,from:String,to:String,memUsage:Double,cpuUsage:Double){
 	  var msg=s"From $from to $to:\n";
-	  for (pt <-ptEvidence){    	      
-		  var tempMsg="----------";
-		  for (x<-notUsed){
-			  tempMsg=tempMsg+ptInWindow(pt._1).content.apply(x)+"-";
-		  }    	
-		  msg=msg+tempMsg+pt._2.status+"-"+(pt._2.succ+pt._2.prev.foldLeft(0)(_+_._2))+"\n";
+	  var notUsed=columeAttr.filter(x=>x._4=="unUsed").map(_._1);
+	  for (s <-slides){
+	    var tempMsg="----------";
+	    for (pt<-s._2.ptMap){
+	      notUsed.foreach(xx=>tempMsg=tempMsg+pt._2._1.content.apply(colName.indexOf(xx))+"-");	      
+	      tempMsg=tempMsg+pt._2._2.status+"-"+(pt._2._2.succ+pt._2._2.prev.foldLeft(0)(_+_._2))+"\n";
+	    }   		  		      	
+		  msg=msg+tempMsg;
 		  //println(msg);
 	  }
 	  msg=msg+s"memory usage is: $memUsage,"+s"cpu usage is: $cpuUsage"+"\n************************************\n";
@@ -111,13 +126,14 @@ class leap extends util{
     var firstDataItem=df.first;
     * */         
 	  var ptCount=0;	
-    var id="1";	  
-	  var slideUnit=Map[String,LeapPtInfo]();
+    var id="1";
+    
+	  var slideUnit=scala.collection.mutable.Map[String,Tuple2[LeapPtInfo,Evidence]]();
 	  var slideId=1;
 	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
 	  var lines=scala.io.Source.fromFile(dataFile).getLines;
 	  //var mt=new emtree.emtree;
-	  mt.initialization(10,colName,colType,colTypeI,used);
+	  mt.initialization(10,colName,columeAttr);
 	  //initialize profile;
 	  var begTime=System.nanoTime;
 	  //var meter=new MemoryMeter;
@@ -131,106 +147,113 @@ class leap extends util{
 		  id=ptCount.toString;
 		  var curPt=Array[Double]();
 		  if (ptCount==0){
-			  colName=line.split(",").map(_.trim).filter(_!="ID");
+			  colName=line.split(",").map(_.trim)//.filter(_!="ID");
 		  } else{
 		    curPt=line.split(",").map(_.trim).map(x=>{x match {
 		    case y if x.contains(".") =>x.toDouble
 		    case z if !x.contains(".") =>x.toInt.toDouble
 		    }
-			    });			    
+		    });			    
 		    var tPtInfo=LeapPtInfo(id,slideId,ptCount.toDouble,curPt);	  	    
-		    slideUnit=slideUnit+(id->tPtInfo);
+		    slideUnit=slideUnit+(id->Tuple2(tPtInfo,Evidence(0,0,Map[Int,Int](),"Outlier")));		    
 		  }
 	    ptCount=ptCount+1;
 	    
-	    if (slideUnit.size==window.slideLen){
+	    if (slideUnit.size==window.slideLen){	      
+	      	      
 	      var expSlidID=0;
-	      if ((ptInWindow.size+slideUnit.size)>window.width){
+	      var expTrigered=Array[Tuple2[String,Int]]();
+	      var curWindowSz=slideUnit.size;
+	      slides.foreach(x=>curWindowSz=curWindowSz+x._2.ptMap.size)
+	      if (curWindowSz>window.width){
+	    	  var from=slides.minBy(_._1)._2.ptMap.minBy(_._2._1.startTime)._2._1.startTime.toString;
+	    	  var to=slides.maxBy(_._1)._2.ptMap.maxBy(_._2._1.startTime)._2._1.startTime.toString;
 	        var curFreeMem=runtime.freeMemory();
 	    		var cpuUsage=(System.nanoTime-begTime)/1000000000.0;
-	    		var memUsage=math.abs(totalMem-curFreeMem)/(1024*1024);    
-	    		var from=ptInWindow.map(_._2.startTime).min.toString;
-	    		var to=ptInWindow.map(_._2.startTime).max.toString;
-	    		printAll(writer,from,to,memUsage,cpuUsage);
-	    		
-	    		expSlidID=ptInWindow.map(_._2.slideID).min;	    		
-	    		ptInWindow=ptInWindow.filter(_._2.slideID!=expSlidID);
-	    		ptEvidence=ptEvidence.filter(x=>ptInWindow.contains(x._1));	    			    		
-	    		
+	    		var memUsage=math.abs(totalMem-curFreeMem)/(1024*1024);  	    		
+	    		printAll(writer,from,to,memUsage,cpuUsage);	    		
+	    		expSlidID=slides.minBy(_._1)._1;
+	    			 
+	    		expTrigered=slides.apply(expSlidID).expTriger;
+	    		slides=slides-expSlidID;
 	    		//printOutlier(writer,from,to,memUsage,cpuUsage);
 	    		//reset profile;
 	    		begTime=System.nanoTime;
 	      }
-	      ptInWindow=ptInWindow++slideUnit;     //current Window
+	      var tempSlideMx=DenseMatrix.zeros[Double](1,colName.length);      //record data item of each slide.
+	      
+	      slideUnit.foreach(s=>{tempSlideMx=DenseMatrix.vertcat(tempSlideMx,DenseMatrix(s._2._1.content.toSeq))});	      
+	      slides=slides+(slideId->Slide(slideId,tempSlideMx(1 to -1,::),Array[Tuple2[String,Int]](),slideUnit));
+	      
 	    	
-	      var expTrigered=Array[LeapPtInfo]();
-	      ptEvidence.filter(_._2.checkOnLeave==expSlidID).map(_._1).foreach(x=>expTrigered=expTrigered++Array(ptInWindow(x)));
-	      for (p<-expTrigered){
-	        var tempEvidence=ptEvidence(p.id)
-	        ptEvidence=ptEvidence-p.id+(p.id->Evidence(tempEvidence.succ,tempEvidence.lastSlid,tempEvidence.prev-expSlidID,
-	            tempEvidence.checkOnLeave,tempEvidence.status));
-	    		  var lastSlidId=ptEvidence(p.id).lastSlid;
-	    			thresh(p,ptInWindow.filter(_._2.slideID>lastSlidId).map(_._2).toArray);  
-	    		}	      
-	      for (p<-slideUnit){
-	    	  thresh(p._2,ptInWindow.map(_._2).toArray); 
+	     
+	      if (expTrigered.isEmpty==false){
+	    	  for (p<-expTrigered){
+	    		  var tempPt=slides.apply(p._2).ptMap(p._1);
+	    		  var tempEvidence=tempPt._2;
+	    		  var tempPtInfo=tempPt._1;
+	    		  
+	    		  var lastSlidId=tempEvidence.lastSlid;	    		  
+	    		  
+	    		  thresh(tempPt,slides.filter(_._1>lastSlidId));
+	    		    
+	    	  }  
 	      }
+	      
+	      slideUnit.foreach(s=>thresh(s._2,slides));
+	      
 	      slideUnit=slideUnit.empty;
 	      slideId=slideId+1;	    	    		            	       
 	    }	    	    
 	  }
 	  writer.close;
   }
-  def thresh(pt:LeapPtInfo,ptSet:Array[LeapPtInfo]){
-	  var succ=0;
-	  var temprev=Map[Int,Int]();
-	  var status="Outlier";
-	  var checkOnLeave=pt.slideID;
-	  var lastSlidId=pt.slideID;
-	  if (ptEvidence.contains(pt.id)){
-		  succ=ptEvidence(pt.id).succ;
-		  temprev=ptEvidence(pt.id).prev;
-		  status=ptEvidence(pt.id).status;
-		  checkOnLeave=ptEvidence(pt.id).checkOnLeave;
-		  lastSlidId=ptEvidence(pt.id).lastSlid+1;
-		  ptEvidence=ptEvidence-pt.id;
-    }    
-    succ=succ+knn(pt,ptSet.filter(_.slideID>=lastSlidId),outlierParam.k-succ);
-    lastSlidId=ptSet.map(_.slideID).max;
+  
+  def thresh(pt:Tuple2[LeapPtInfo,Evidence],slidSet:scala.collection.mutable.Map[Int,Slide]){
+	  var succ=pt._2.succ;
+	  var temprev=pt._2.prev;
+	  var status=pt._2.status;	  
+	  var lastSlidId=pt._2.lastSlid;
+	  var checkOnLeave=0;    
+    
+	  succ=succ+knn(pt._1.content,slidSet.filter(_._1>=lastSlidId),outlierParam.k-succ);
+    lastSlidId=slidSet.maxBy(_._1)._1;
     if (succ>=outlierParam.k){
       status="Safe";
-      temprev=Map[Int,Int]();
-      checkOnLeave=pt.slideID;
-    } else if (temprev.isEmpty){         
-    	val loop1 = new Breaks;
-    	var totalNN=succ;
-    	var slidIdRang=ptSet.filter(_.slideID<pt.slideID).map(_.slideID).toArray.distinct.sortWith(_>_); 
-    	loop1.breakable{
-    		for (x<-slidIdRang){
-    		  temprev=temprev+(x->knn(pt,ptSet.filter(_.slideID==x),outlierParam.k-succ));
-    			totalNN=totalNN+temprev(x);
-    			if (totalNN>=outlierParam.k){
-    			  status="Unsafe";
-    			  checkOnLeave=x;
-    			  loop1.break;
-    			} 
-    		}
+      temprev=Map[Int,Int]();      
+    } else {
+    	if (temprev.isEmpty){  
+    		val loop1 = new Breaks;
+    		var totalNN=succ; 
+    		
+    		var slidIdRang=slidSet.filter(_._1<pt._1.slideID).map(_._1).toArray.distinct.sortWith(_>_);
+    		loop1.breakable{
+    			for (x<-slidIdRang){
+    				
+    				temprev=temprev+(x->knn(pt._1.content,slidSet.filter(_._1==x),outlierParam.k-succ));
+    				totalNN=totalNN+temprev(x);
+    				if (totalNN>=outlierParam.k){    					
+    					loop1.break;
+    				} 
+    			}
+    		}    		
     	}
-    	if (totalNN<outlierParam.k){
-    		status="Outlier";
-    		checkOnLeave=temprev.isEmpty match {
-    		  case true => pt.slideID
-    		  case false =>temprev.map(_._1).min; 
-    		}
-    	}
-    } else{      
-      checkOnLeave=temprev.map(_._1).min;
-      status = temprev.foldLeft(succ)(_+_._2) match {
-        case y if y>=outlierParam.k =>"Unsafe"
-        case default =>"Outlier"
-      }
+    	
+    	if (temprev.foldLeft(succ)((a1,a2)=>a1+a2._2)>=outlierParam.k){
+    		status="Unsafe";    		
+    		checkOnLeave=temprev.minBy(_._1)._1;
+    		var tempSlide=slides.apply(checkOnLeave);
+    		slides=slides-checkOnLeave+(checkOnLeave->Slide(tempSlide.id,tempSlide.eleMx,
+    				tempSlide.expTriger:+Tuple2(pt._1.id,pt._1.slideID),tempSlide.ptMap));  
+    	} else {
+    			status="Outlier";    			 
+    	} 
+    	  	
     }    
-    ptEvidence=ptEvidence+(pt.id->Evidence(succ,lastSlidId,temprev,checkOnLeave,status));        
+    var tempSlide2=slides.apply(pt._1.slideID)
+    slides=slides-pt._1.slideID+(pt._1.slideID->Slide(pt._1.slideID,tempSlide2.eleMx,
+          tempSlide2.expTriger,tempSlide2.ptMap-pt._1.id+(pt._1.id->Tuple2(pt._1,Evidence(succ,lastSlidId,temprev,status)))));
+    
   }  
   
   def knn(pt:LeapPtInfo,left:Array[LeapPtInfo],k:Int):Int={
@@ -242,6 +265,21 @@ class leap extends util{
 				  if (dist1<=outlierParam.R) {
 					  nn=nn+1;
 				  }
+				  if (nn>=k){
+				    loop1.break;
+				  }
+			  }
+		  }
+		  return nn;
+  }
+  def knn(pt:Array[Double],left:scala.collection.mutable.Map[Int,Slide],k:Int):Int={
+    var ptDenseVector=new DenseVector(pt);
+    var nn=0;   
+		  val loop1 = new Breaks;
+		  loop1.breakable{
+			  for (x<-left){      
+				  var distVec=eucDistance(ptDenseVector,x._2.eleMx);
+				  nn=nn+breeze.linalg.sum(distVec.map(x=>x match {case z if z<=outlierParam.R =>1  case _ => 0}))				  
 				  if (nn>=k){
 				    loop1.break;
 				  }
