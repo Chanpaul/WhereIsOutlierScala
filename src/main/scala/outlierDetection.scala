@@ -50,6 +50,7 @@ object outlierDetection {
 	  val config = ConfigFactory.load(fileConfig);
 	  
 	  for (slidSz<-Array(0.5,1,5,10,25,50).map(_*1000)){
+	    /*
 	    var newConfigLeap = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(slidSz))
 				  .withValue("win.width", ConfigValueFactory.fromAnyRef(100000))   //100000
 				  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef("leap_slideSize_"+slidSz));
@@ -58,6 +59,8 @@ object outlierDetection {
 		  println(s"Running slide size $slidSz");
 		  tleap.setConfig(newConfigLeap);
 		  tleap.leapMain(sqlContext);
+		  */
+		  
 		  var newConfigCod = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(slidSz))
 				  .withValue("win.width", ConfigValueFactory.fromAnyRef(100000))
 				  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef("cod_slideSize_"+slidSz));

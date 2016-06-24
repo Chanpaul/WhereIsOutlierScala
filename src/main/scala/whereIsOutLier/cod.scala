@@ -21,22 +21,23 @@ import scala.collection.parallel._
 import mtree._
 import emtree._
 import breeze.linalg._
-case class CodMeta(preNeig:Seq[String],succ:Int,checkOnLeave:Double,status:String);
+import heap._
+case class CodMeta(preNeig:Seq[String],succ:Int,status:String);
 case class CodPt(id:String,startTime:Double,expTime:Double,content:Array[Double]);
-case class CodSlide(id:Int,eleMx:DenseMatrix[Double],expTriger:Array[Tuple2[String,Int]],
-    ptMap:scala.collection.mutable.Map[String,Tuple2[LeapPtInfo,Evidence]]);
+
 //case class Event(time:Double,id:String);
 class cod extends util{ 
   var window=Window(12.0,1);  //width=12.0,slide=1;	  
   var outlierParam=OutlierParam("ThreshOutlier",12.62,6);
-  private var distMap=scala.collection.mutable.Map[String,Double]();
+  //private var distMap=scala.collection.mutable.Map[String,Double]();
   private var ptInWindow=scala.collection.mutable.Map[String,CodPt]();
   private var ptMeta=scala.collection.mutable.Map[String,CodMeta]();
   private var curWindowStart=0;
   implicit var colName=Array[String]();
   implicit var columeAttr=Array[(String,String,String,String)]();  //name, attribute type, data type,label (used, not used, label)
   
-	
+	var ptQueue=new heap.FibonacciHeap[String];
+	var evtQueue=new heap.FibonacciHeap[String];
 	var mt=new mtree.mtree;	
 	var srcDataDir="";
 	var srcDataFileName="";
@@ -55,15 +56,14 @@ class cod extends util{
     srcDataFileName=config.getString("dataset.dataFile")
     resDataDir=config.getString("outlier.directory")
     resDataFileName=config.getString("outlier.fileName");   
-    var label=config.getString("dataattr.label");
     var colType=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0),x(1),x(2)));
-    //var colType=config.getString("dataattr.type").split(" ").map(_.drop(1).dropRight(1).split(",")).map(x=>(x(0).trim,x(1).toInt));
-    var notUsed=config.getString("dataattr.notUsed").split(",").map(_.toInt);
+    var label=config.getString("dataattr.label");
+    var notUsed=config.getString("dataattr.notUsed").split(",");
     var tempUsed=config.getString("dataattr.used");
     var used=tempUsed match{
-      case " "=> (0 to (colType.length-1)).toArray.filter(x=>(!notUsed.contains(x)))
-      case default =>tempUsed.split(",").map(_.toInt)
-    };
+      case " "=> colType.map(_._1).filter(x=>notUsed.contains(x)==false & label!=x)
+      case default =>tempUsed.split(",")
+    };    
     for (cols <- colType){
       if (used.contains(cols._1)) {
         columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"used")
@@ -71,37 +71,33 @@ class cod extends util{
         columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"unUsed")
       } else if (label==cols._1){
         columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"label")
-      }      
+      }  else {
+        columeAttr=columeAttr:+(cols._1,cols._2,cols._3,"unUsed")
+      }    
     }
   }
-  def depart():scala.collection.mutable.Map[String,CodPt]={
-		  curWindowStart=curWindowStart+window.slideLen;
-		  var expired=ptInWindow.filter(_._2.startTime<=curWindowStart);		
-		  
-		  for (expIt<-expired.iterator){
-			  ptInWindow=ptInWindow-expIt._1;
-			  
-			  if (ptMeta.exists(_._1==expIt._1)){
-				  ptMeta=ptMeta-expIt._1;  
-			  }
-			  
-			  var temp=ptMeta.filter(_._2.preNeig.contains(expIt._1)).iterator;
-			  
-			  for (it3<-temp){				 
-				  ptMeta=ptMeta-it3._1;
-				  var status=it3._2.status;
-				  var tempNeig=it3._2.preNeig.filter(_!=expIt._1);			  
-				 var checkOnLeave=0.0;
-				  if (it3._2.succ+tempNeig.length<outlierParam.k){
-				    status="outlier";
-				  } else if (!ptInWindow.filter(x=>tempNeig.contains(x._1)).isEmpty){
-					  checkOnLeave=ptInWindow.filter(x=>tempNeig.contains(x._1)).map(_._2.expTime).min;
+  def depart():Array[String]={
+		  var expired=Array[String]();
+		  for (t<-1 to window.slideLen){
+			  var expPt=ptQueue.removeMin();
+			  expired=expired:+expPt;
+			  if (evtQueue.minNode.value==ptInWindow(expPt).expTime){			    
+				  var checkPtId=evtQueue.removeMin();
+				  var tempMeta=ptMeta(checkPtId);
+				  var status=tempMeta.status;
+				  var preNeig=tempMeta.preNeig.diff(Seq(expPt));
+				  if (tempMeta.succ+preNeig.length<outlierParam.k) {
+					  status="Outlier";
+				  } else {
+					  var timeStampSet=Array[Double]();
+					  preNeig.foreach(x=>timeStampSet=timeStampSet:+ptInWindow(x).expTime);
+					  evtQueue.insert(checkPtId,timeStampSet.min);
 				  }
-				  
-				  ptMeta=ptMeta+(it3._1->CodMeta(tempNeig,it3._2.succ,checkOnLeave,status));				  
+				  ptMeta=ptMeta-checkPtId+(checkPtId->CodMeta(preNeig,tempMeta.succ,status))			    
 			  }
-		  }		 
-		  return(expired.seq);
+			  ptInWindow=ptInWindow-expPt;
+		  }		  
+		  return(expired);
   }
   
   def codMain(sqlContext:SQLContext){
@@ -140,7 +136,7 @@ class cod extends util{
 	  var totalMem=runtime.totalMemory();
 	  /******************end of setup*********************/
 	  //var mt=new emtree.emtree;
-	  mt.initialization(10,colName,columeAttr);
+	  //mt.initialization(10,colName,columeAttr);
 	  val pattern=new Regex("^[\\s]+\n");
 	  for(line<-lines if (pattern.findAllIn(line).isEmpty)) {
 		  println(ptCount);
@@ -148,7 +144,7 @@ class cod extends util{
 		  id=ptCount.toString;
 		  var curPt=Array[Double]();
 		  if (ptCount==0){
-			  colName=line.split(",").map(_.trim).filter(_!="ID");
+			  colName=line.split(",").map(_.trim)//.filter(_!="ID");			  
 		  } else {
 			  curPt=line.split(",").map(_.trim).map(x=>{x match {
 			    case y if x.contains(".") =>x.toDouble
@@ -174,7 +170,7 @@ class cod extends util{
 				  /*********************end of collection*********************/				  
 				  var expired=depart();
 				  for (expIt<-expired.iterator){				    
-				    mt.delete(expIt._1,expIt._2.content);
+				    mt.delete(expIt,ptInWindow(expIt).content);
 				  }
 				  /****************renew metrics measure***********************/
 				  begTime=System.nanoTime;				  
@@ -182,14 +178,16 @@ class cod extends util{
 			  }
 			  
 			  ptInWindow=ptInWindow+(id->CodPt(id,ptCount,ptCount+window.width,curPt));	 
-			  if (id=="1"){
+			  if (id=="1"){			    
+			    mt.initialization(10,colName,columeAttr);
 				  mt.create(id,curPt);  //creating m-tree  
+				  ptQueue.insert(id,id.toDouble);
 			  } else if (id!="0") {
 			     mt.insert(id,curPt);
-			  }
-			  
+			     ptQueue.insert(id,id.toDouble);
+			  }			  
 			  if(!ptMeta.exists(_._1==id)){
-				  ptMeta=ptMeta+(id->CodMeta(Seq[String](),0,0.0,"Outlier"));
+				  ptMeta=ptMeta+(id->CodMeta(Seq[String](),0,"Outlier"));
 			  }			    
 			  searchNeighbor(id);	 
 			  
@@ -229,29 +227,32 @@ class cod extends util{
 	  writer.write(msg);     
   }
   def searchNeighbor(id:String){    
-	    var strPat=new Regex(id);
-	    var idCheckTime=ptInWindow(id).expTime;	 
-	    var tempPreNeig=ptMeta(id).preNeig;
-	    var succ=ptMeta(id).succ;
-	    var checkOnLeave=ptMeta(id).checkOnLeave;
-	    var status=ptMeta(id).status;	    
-	    
-	    tempPreNeig=mt.query(id,ptInWindow(id).content,outlierParam.R);
-	    
-	    if (tempPreNeig.length>outlierParam.k){
-	      status="Unsafe";
-	      checkOnLeave=ptInWindow.filter(x=>tempPreNeig.contains(x._1)).map(_._2.expTime).min;	      
-	    }
-	    ptMeta=ptMeta-id+(id->CodMeta(tempPreNeig,succ,checkOnLeave,status));
-	    for (it1<-tempPreNeig.iterator)
-	    tempPreNeig.foreach{(x:String)=>{
-	      var tStatus= (ptMeta(x).preNeig.length+ptMeta(x).succ+1) match{
-	        case y if y<outlierParam.k  =>"Outlier"
-	        case z if z>=outlierParam.k =>"Unsafe"	          
-	      }	      
-	      var tcodMeta=CodMeta(ptMeta(x).preNeig,ptMeta(x).succ+1,ptMeta(x).checkOnLeave,tStatus);
-	      ptMeta=ptMeta-x+(x->tcodMeta);
-	      }
-	    };	    	  
+	  //var strPat=new Regex(id);
+	  var idCheckTime=ptInWindow(id).expTime;	 
+	  var tempPreNeig=ptMeta(id).preNeig;
+	  var succ=ptMeta(id).succ;	    
+	  var status=ptMeta(id).status;	    
+
+	  tempPreNeig=mt.query(id,ptInWindow(id).content,outlierParam.R);	    
+	  if (tempPreNeig.length>outlierParam.k){
+		  status="Unsafe";
+		  var timeStampSet=Array[Double]();
+		  tempPreNeig.foreach(x=>timeStampSet=timeStampSet:+ptInWindow(x).expTime);
+		  evtQueue.insert(id,timeStampSet.min);	      	      
+	  }
+	  ptMeta=ptMeta-id+(id->CodMeta(tempPreNeig,succ,status));	    
+	  tempPreNeig.foreach(x=>{
+	    var tStatus=ptMeta(x).status;
+	    var tempNumNeig=ptMeta(x).preNeig.length+ptMeta(x).succ+1;
+	    if (tStatus=="Outlier" && tempNumNeig>=outlierParam.k){
+	      tStatus="Unsafe";
+	      var timeStampSet=Array[Double]();
+	      ptMeta(x).preNeig.foreach(x=>timeStampSet=timeStampSet:+ptInWindow(x).expTime);
+	      evtQueue.insert(x,timeStampSet.min);
+	    }		        
+		  var tcodMeta=CodMeta(ptMeta(x).preNeig,ptMeta(x).succ+1,tStatus);
+		  ptMeta=ptMeta-x+(x->tcodMeta);
+	  })	    	    	  
   }
+
 }

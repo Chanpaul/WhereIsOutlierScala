@@ -1,5 +1,216 @@
-package mtree
 import whereIsOutLier._
+import breeze.linalg._
+package mtree {
+
+class mtree[T >: Null <: AnyRef] {
+
+  type Node = mtree.Node[T]
+
+  private[mtree] var root = null: Node
+
+  /** The root node in the mtree. */
+  def rootNode = root
+
+  private[mtree] var n = 0
+
+  /** Number of nodes in the mtree. */
+  def size = n
+
+  /**
+   * Removes all elements from this root.
+   */
+  def clear() {
+    root = null
+    n = 0
+  }
+
+  /**
+   * Deletes a node from the heap given the reference to the node.
+   * The trees in the heap will be consolidated, if necessary.
+   *
+   * @param  x  node to remove from heap.
+   */
+  def delete(x: Node) {
+    val y = x.parent
+    if (y != null) {
+      y.cut(x, min)
+      y.cascadingCut(min)
+    }
+    min = x
+    removeMin()
+  }
+
+  def isEmpty = (root == null)
+
+  /**
+   * Inserts a new data element into the heap. No heap consolidation
+   * is performed at this time, the new node is simply inserted into
+   * the root list of this heap.
+   *
+   * @param  x    data object to insert into heap.
+   * @param  key  key value associated with data object.
+   * @return newly created heap node.
+   */
+  def insert(x: T, key: Double) = {
+    val node = new Node(x, key)
+    if (min != null) {
+      node.right = min
+      node.left = min.left
+      min.left = node
+      node.left.right = node
+      if (key < min.key) {
+        min = node
+      }
+    } else {
+      min = node
+    }
+    n += 1
+    node
+  }
+
+  /**
+   * Removes the smallest element from the heap. This will cause
+   * the trees in the heap to be consolidated, if necessary.
+   *
+   * @return  data object with the smallest key.
+   */
+  def removeMin() = {
+    val z = min
+    if (z == null) {
+      null: T
+    } else {
+      if (z.child != null) {
+        z.child.parent = null
+        var x = z.child.right
+        while (x != z.child) {
+          x.parent = null
+          x = x.right
+        }
+        val minleft = min.left
+        val zchildleft = z.child.left
+        min.left = zchildleft
+        zchildleft.right = min
+        z.child.left = minleft
+        minleft.right = z.child
+      }
+      z.left.right = z.right
+      z.right.left = z.left
+      if (z == z.right) {
+        min = null
+      } else {
+        min = z.right
+        consolidate()
+      }
+      n -= 1
+      z.data
+    }
+  }
+
+  private[this] def consolidate() {
+    val A = new Array[Node](45)
+
+    var start = min
+    var w = min
+    do {
+      var x = w
+      var nextW = w.right
+      var d = x.degree
+      while (A(d) != null) {
+        var y = A(d)
+        if (x.key > y.key) {
+          val tmp = y
+          y = x
+          x = tmp
+        }
+        if (y == start) {
+          start = start.right
+        }
+        if (y == nextW) {
+          nextW = nextW.right
+        }
+        y.link(x)
+        A(d) = null
+        d += 1
+      }
+      A(d) = x
+      w = nextW
+    } while (w != start)
+
+    min = start
+    for (a <- A; if a != null) {
+      if (a.key < min.key) min = a
+    }
+  }
+
+}
+
+object mtree {
+
+  /** Implements a node of the mtree. */
+  class Node[T](val data: T) {   
+
+    private[mtree] var parent = null: Node[T]
+    private[mtree] var anchor = null: DenseVector[Double]
+    
+    private[mtree] var children = null: Array[Node[T]]
+    
+    private[mtree] var degree = 0
+    private[mtree] var mark = false
+
+    private[mtree] def split(min: Node[T]) {
+      val z = parent
+      if (z != null) {
+        if (mark) {
+          z.cut(this, min)
+          z.cascadingCut(min)
+        } else {
+          mark = true
+        }
+      }
+    }
+
+    private[heap] def cut(x: Node[T], min: Node[T]) {
+      x.left.right = x.right
+      x.right.left = x.left
+      degree -= 1
+      if (degree == 0) {
+        child = null
+      } else if (child == x) {
+        child = x.right
+      }
+      x.right = min
+      x.left = min.left
+      min.left = x
+      x.left.right = x
+      x.parent = null
+      x.mark = false
+    }
+
+    private[heap] def link(prt: Node[T]) {
+      left.right = right
+      right.left = left
+      parent = prt
+      if (prt.child == null) {
+        prt.child = this
+        right = this
+        left = this
+      } else {
+        left = prt.child
+        right = prt.child.right
+        prt.child.right = this
+        right.left = this
+      }
+      prt.degree += 1
+      mark = false
+    }
+  }  
+  
+}
+
+}
+
+
+/*
 case class Point(content:Array[Double],ndId:String);
 case class Entry(obj:String,nextNdId:String,distance2ParentObj:Double,radius:Double);
 case class MtNd(id:String,parentObj:String,entries:Array[Entry],dist2ParentNd:Tuple2[String,Double],typ:String);
@@ -13,17 +224,12 @@ class mtree extends util {
   implicit var rootNd=MtNd(ndCount.toString,"",Array[Entry](),("None",0.0),"leaf");
   implicit var colName=Array[String]();
 	implicit var colAttr=Array[(String,String,String,String)]();
-	//implicit var colTypeI=Array[(String,Int)]();     //category  orginal numberic;
-	//implicit var used=Array[Int]();
 	
-  //var rootNd=MtNd("",Array[Double](),Array[String](),0.0,("None",0.0),"leaf");
 	def initialization(capacity:Int,pcolName:Array[String],
       pcolAttr:Array[(String,String,String,String)]){
 	  colName=pcolName;
-    colAttr=pcolAttr;
-    
-    ndCapacity=capacity;
-    //used=pused;
+    colAttr=pcolAttr;    
+    ndCapacity=capacity;    
 	}
   
   def create(id:String,content:Array[Double]){
@@ -186,56 +392,7 @@ class mtree extends util {
     var qr=rangeQuery(id,radius)(rootNd);    
     return(qr.map(_.objId));
   }
-  /*
-  def delUpdate(id:String,nd:MtNd,candidateEntry:Entry){
-    if (nd.dist2ParentNd._1=="None"){
-      var newEntries=nd.entries.filter(_.obj!=id):+candidateEntry;      
-      if (nd.parentObj==id){
-        var minDist=newEntries.map(_.distance2ParentObj).min;
-        var candidate=newEntries.filter(_.distance2ParentObj==minDist).head.obj; 
-        newEntries=newEntries.map(x=>Entry(x.obj,x.nextNdId,eucDistance(ptMap(candidate).content,ptMap(x.obj).content),x.radius));
-        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,candidate,newEntries,nd.dist2ParentNd,nd.typ));
-      } else {
-        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
-      }
-    } else if(nd.typ=="leaf") {
-      var parentNdId=nd.dist2ParentNd._1;
-      var newEntries=nd.entries.filter(_.obj!=id);
-      if (nd.parentObj==id){
-        var minDist=newEntries.map(_.distance2ParentObj).min;
-        var candidate=newEntries.filter(_.distance2ParentObj==minDist).head.obj;        
-        newEntries=newEntries
-        		.map(x=>Entry(x.obj,x.nextNdId,eucDistance(ptMap(candidate).content,ptMap(x.obj).content),0.0));
-        var dist2ParentNd=eucDistance(ptMap(candidate).content,ptMap(mtNdMap(parentNdId).parentObj).content);
-        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,candidate,newEntries,(parentNdId,dist2ParentNd),nd.typ));
-        var radius=getRadius(newEntries,nd.typ);
-        delUpdate(id,mtNdMap(parentNdId),Entry(candidate,nd.id,dist2ParentNd,radius));  
-      } else {
-        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
-        var radius=getRadius(newEntries,nd.typ);
-        delUpdate(id,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
-      }    
-      
-    } else {
-      var newEntries=nd.entries.filter(_.obj==id):+candidateEntry;
-      var parentNdId=nd.dist2ParentNd._1;
-      if (nd.parentObj==id){
-        var minDist=newEntries.map(_.distance2ParentObj).min;
-        var candidate=newEntries.filter(_.distance2ParentObj==minDist).head.obj;        
-        newEntries=newEntries
-        		.map(x=>Entry(x.obj,x.nextNdId,eucDistance(ptMap(candidate).content,ptMap(x.obj).content),x.radius));
-        var dist2ParentNd=eucDistance(ptMap(candidate).content,ptMap(mtNdMap(parentNdId).parentObj).content);        
-        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,id,nd.entries.filter(_.obj!=id):+candidateEntry,(parentNdId,dist2ParentNd),nd.typ));
-        var radius=getRadius(newEntries,nd.typ);
-        delUpdate(id,mtNdMap(parentNdId),Entry(candidate,nd.id,dist2ParentNd,radius));
-      } else {
-        mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
-        var radius=getRadius(newEntries,nd.typ);
-        delUpdate(id,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
-      }
-    } 
-  }
-  */
+  
   def delUpdate(id:String,content:Array[Double],nd:MtNd,candidateEntry:Entry){
     if (nd.typ=="leaf"){
       var parentNdId=nd.dist2ParentNd._1;
@@ -272,3 +429,4 @@ class mtree extends util {
 	  rootNd=mtNdMap(rootNd.id);
   }
 }
+*/
