@@ -34,7 +34,7 @@ class leap extends util{
   private var window=Window(12.0,1);  //width=12.0,slide=1;	  
   private var outlierParam=OutlierParam("ThreshOutlier",12.62,6); 
      
-  var mt=new mtree.mtree;
+  //var mt=new mtree.mtree;
   implicit var colName=Array[String]();
   implicit var columeAttr=Array[(String,String,String,String)]();  //name, attribute type, data type,label (used, not used, label)
 	
@@ -133,7 +133,7 @@ class leap extends util{
 	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
 	  var lines=scala.io.Source.fromFile(dataFile).getLines;
 	  //var mt=new emtree.emtree;
-	  mt.initialization(10,colName,columeAttr);
+	  //mt.initialization(10,colName,columeAttr);
 	  //initialize profile;
 	  var begTime=System.nanoTime;
 	  //var meter=new MemoryMeter;

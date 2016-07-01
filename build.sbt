@@ -34,7 +34,8 @@ libraryDependencies ++= Seq(
   "com.github.scopt" %% "scopt" % "3.2.0",
   "org.scalatest" %% "scalatest" % "2.2.1" % "test",
   //"com.holdenkarau" %% "spark-testing-base" % "0.0.1" % "test" 
-  "com.thesamet" %% "kdtree" % "1.0.4"
+  "com.thesamet" %% "kdtree" % "1.0.4",
+  "com.github.tototoshi" %% "scala-csv" % "1.3.3"
 )
 
 resolvers ++= Seq(

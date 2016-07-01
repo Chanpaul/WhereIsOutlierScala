@@ -1,12 +1,17 @@
 import whereIsOutLier._
 import breeze.linalg._
-package mtree {
+import operators._
+import breeze.numerics._
+import scala.util.control._     //break need
 
-class mtree[T >: Null <: AnyRef] {
-
+package mtree  {  
+//class mtree[T >: Null <: AnyRef,T1 >: Null <: AnyRef] {
+class mtree[T >: Null <: AnyRef] () extends util {  
+	implicit var colName=null:Array[String];
+	implicit var colAttr=null:Array[(String,String,String,String)];
   type Node = mtree.Node[T]
 
-  private[mtree] var root = null: Node
+  private[mtree] implicit var root = null: Node
 
   /** The root node in the mtree. */
   def rootNode = root
@@ -15,7 +20,11 @@ class mtree[T >: Null <: AnyRef] {
 
   /** Number of nodes in the mtree. */
   def size = n
-
+  def init(capacity:Int,pcolName:Array[String],
+      pcolAttr:Array[(String,String,String,String)]){
+	  colName=pcolName;
+	  colAttr=pcolAttr;
+  }
   /**
    * Removes all elements from this root.
    */
@@ -23,22 +32,30 @@ class mtree[T >: Null <: AnyRef] {
     root = null
     n = 0
   }
-
   /**
-   * Deletes a node from the heap given the reference to the node.
-   * The trees in the heap will be consolidated, if necessary.
-   *
-   * @param  x  node to remove from heap.
-   */
-  def delete(x: Node) {
-    val y = x.parent
-    if (y != null) {
-      y.cut(x, min)
-      y.cascadingCut(min)
-    }
-    min = x
-    removeMin()
+   * Achieve range query with radius given.
+   * @data the center of query   
+   * @R  radius of query
+   * Return IDs of the neighbors found 
+   */   
+   
+  def query(item:Tuple2[T,DenseVector[Double]],R:Double):Array[Tuple2[T,DenseVector[Double]]]={    
+   var queryResult=root.query(item,R,root);
+   return queryResult;
   }
+  
+  /**
+   * Deletes a item from the tree.
+   *
+   * @param  item  data to remove from mtree.
+   */
+  def delete(item:Tuple2[T,DenseVector[Double]]):Array[Tuple2[T,DenseVector[Double]]]={		  
+    var deleted=root.delete(item)(root);   
+    
+    return(deleted);
+  }
+  
+ 
 
   def isEmpty = (root == null)
 
@@ -51,95 +68,13 @@ class mtree[T >: Null <: AnyRef] {
    * @param  key  key value associated with data object.
    * @return newly created heap node.
    */
-  def insert(x: T, key: Double) = {
-    val node = new Node(x, key)
-    if (min != null) {
-      node.right = min
-      node.left = min.left
-      min.left = node
-      node.left.right = node
-      if (key < min.key) {
-        min = node
-      }
-    } else {
-      min = node
-    }
-    n += 1
-    node
-  }
-
-  /**
-   * Removes the smallest element from the heap. This will cause
-   * the trees in the heap to be consolidated, if necessary.
-   *
-   * @return  data object with the smallest key.
-   */
-  def removeMin() = {
-    val z = min
-    if (z == null) {
-      null: T
-    } else {
-      if (z.child != null) {
-        z.child.parent = null
-        var x = z.child.right
-        while (x != z.child) {
-          x.parent = null
-          x = x.right
-        }
-        val minleft = min.left
-        val zchildleft = z.child.left
-        min.left = zchildleft
-        zchildleft.right = min
-        z.child.left = minleft
-        minleft.right = z.child
-      }
-      z.left.right = z.right
-      z.right.left = z.left
-      if (z == z.right) {
-        min = null
-      } else {
-        min = z.right
-        consolidate()
-      }
-      n -= 1
-      z.data
-    }
-  }
-
-  private[this] def consolidate() {
-    val A = new Array[Node](45)
-
-    var start = min
-    var w = min
-    do {
-      var x = w
-      var nextW = w.right
-      var d = x.degree
-      while (A(d) != null) {
-        var y = A(d)
-        if (x.key > y.key) {
-          val tmp = y
-          y = x
-          x = tmp
-        }
-        if (y == start) {
-          start = start.right
-        }
-        if (y == nextW) {
-          nextW = nextW.right
-        }
-        y.link(x)
-        A(d) = null
-        d += 1
-      }
-      A(d) = x
-      w = nextW
-    } while (w != start)
-
-    min = start
-    for (a <- A; if a != null) {
-      if (a.key < min.key) min = a
-    }
+  def insert(item:Tuple2[T,DenseVector[Double]]){    
+   if (root==null){
+			  root = new Node(item);
+			  root.insert(item);
+		  } else {
+		    root.insert(item);
+		  }
   }
 
 }
@@ -147,286 +82,165 @@ class mtree[T >: Null <: AnyRef] {
 object mtree {
 
   /** Implements a node of the mtree. */
-  class Node[T](val data: T) {   
+  class Node[T](val anchor:Tuple2[T,DenseVector[Double]])(implicit pcolName:Array[String],
+      pcolAttr:Array[(String,String,String,String)]) extends util{  
+	  
+	  private[mtree] var parent = null: Node[T] ;
+	  private[mtree] var capacity = 20;
+	  private[mtree] implicit var minRange=0;     //The minimum checking range for query;
 
-    private[mtree] var parent = null: Node[T]
-    private[mtree] var anchor = null: DenseVector[Double]
-    
-    private[mtree] var children = null: Array[Node[T]]
-    
-    private[mtree] var degree = 0
-    private[mtree] var mark = false
-
-    private[mtree] def split(min: Node[T]) {
-      val z = parent
-      if (z != null) {
-        if (mark) {
-          z.cut(this, min)
-          z.cascadingCut(min)
-        } else {
-          mark = true
-        }
+	  private[mtree] var children = new Array[Tuple3[Double,Tuple2[T,DenseVector[Double]],Node[T]]](capacity); //null: Tuple2[Double,Node] ;   
+	  private[mtree] var idleSlot = (0 to capacity-1 ).toArray;
+	  private[mtree] var mark = false;  //leaf or route
+	  private[mtree] var radius:Double=0.0; 
+	  
+	  private[mtree] def insert(item:Tuple2[T,DenseVector[Double]]):DenseVector[Double]={
+	    var objectiveAnchor=DenseVector[Double]();
+		  if (mark==false){
+			  insertItem(item);
+		  } else {      
+			  var busySlot=(0 to capacity-1).toArray.diff(idleSlot.toSeq);
+			  var dists=busySlot.map(x=>Tuple2(x,eucDistance(children(x)._2._2,item._2)));
+			  var obj1= dists.filter(x=>x._2<=children(x._1)._3.radius);
+					  if (obj1.isEmpty==false){
+						  children(obj1.minBy(_._2)._1)._3.insert(item);
+					  } else {
+						  var obj2= dists.minBy(x=>x._2-children(x._1)._3.radius);
+						  children(obj2._1)._3.insert(item);
+					  }
+		  }
+		  return objectiveAnchor;
+	  }
+	  
+    private[mtree] def insertItem(item: Tuple2[T,DenseVector[Double]]) {      
+      var dist=eucDistance(item._2,this.anchor._2);
+      children(idleSlot.head)=Tuple3(dist,item,null);
+      idleSlot=idleSlot.diff(Seq(idleSlot.head));
+      radius=getRadius();
+      if (idleSlot.isEmpty==true){        
+        this.split();        
+      }      
+    }
+   
+     private[mtree] def insertItem(item: Node[T]) {       
+      var dist=eucDistance(item.anchor._2,this.anchor._2);
+      children(idleSlot.head)=Tuple3(dist,item.anchor,item);
+      idleSlot=idleSlot.diff(Seq(idleSlot.head)); 
+      radius=getRadius();
+      if (idleSlot.isEmpty==true){
+        this.split();        
       }
     }
-
-    private[heap] def cut(x: Node[T], min: Node[T]) {
-      x.left.right = x.right
-      x.right.left = x.left
-      degree -= 1
-      if (degree == 0) {
-        child = null
-      } else if (child == x) {
-        child = x.right
-      }
-      x.right = min
-      x.left = min.left
-      min.left = x
-      x.left.right = x
-      x.parent = null
-      x.mark = false
+     private[mtree] def split(){  
+       
+       var z=parent;       
+       var busySlot=(0 to capacity-1 ).toArray.diff(idleSlot.toSeq);
+       var tChildren=busySlot.map(x=>this.children(x));
+       if (z==null){
+         var altNd1=new Node(tChildren.minBy(_._1)._2);
+         altNd1.parent=this
+         altNd1.mark=this.mark;
+         var altNd2=new Node(tChildren.maxBy(_._1)._2);
+         altNd2.parent=this
+         altNd2.mark=this.mark;
+         for (s<-busySlot){
+           var dist1=eucDistance(children(s)._2._2,altNd1.anchor._2);
+           var dist2=eucDistance(children(s)._2._2,altNd2.anchor._2);
+           (dist1>=dist2) match {
+             case true  => mark match {case true => altNd2.insertItem(children(s)._3); case false=> altNd2.insertItem(children(s)._2);};
+             case false => mark match {case true => altNd1.insertItem(children(s)._3); case false=> altNd1.insertItem(children(s)._2);};
+           }              
+         }
+         this.idleSlot = (0 to capacity-1 ).toArray;
+         this.insertItem(altNd1);
+         this.insertItem(altNd2); 
+         this.mark=true;
+       } else {            
+    	   var altNd=new Node(tChildren.maxBy(_._1)._2);    	   
+    	   altNd.parent=this.parent;
+    	   altNd.mark=this.mark;
+    	   
+    	   for (s<-busySlot){
+    		   var dist1=eucDistance(children(s)._2._2,altNd.anchor._2);  
+    		   if (dist1<children(s)._1){  
+    		     this.mark match {case true => altNd.insertItem(children(s)._3); case false=> altNd.insertItem(children(s)._2);};
+    			   //altNd.insertItem(children(s)._2);
+    			   this.idleSlot=this.idleSlot:+s;    			   
+    		   }              
+    	   }
+    	   this.parent.insertItem(altNd);    	   
+       }
     }
-
-    private[heap] def link(prt: Node[T]) {
-      left.right = right
-      right.left = left
-      parent = prt
-      if (prt.child == null) {
-        prt.child = this
-        right = this
-        left = this
-      } else {
-        left = prt.child
-        right = prt.child.right
-        prt.child.right = this
-        right.left = this
+     private[mtree] def query(item:Tuple2[T,DenseVector[Double]],R:Double,nd:Node[T]):Array[Tuple2[T,DenseVector[Double]]]={
+    		 var queryRes=Array[Tuple2[T,DenseVector[Double]]]();
+    		 var busySlot=(0 to nd.capacity-1).toArray.diff(nd.idleSlot.toSeq);
+    		 var dist=eucDistance(item._2,nd.anchor._2);
+    		 if (nd.mark==true){
+    			 for (s<-busySlot){  
+    				 var tt= nd.children(s);
+    				 if (abs(dist-tt._1)<=R+tt._3.radius){
+    					 var dist1=eucDistance(item._2,tt._2._2);
+    					 if (dist1<=R+tt._3.radius){
+    						 queryRes= queryRes++tt._3.query(item,R,tt._3);  
+    					 }
+    				 }  
+    			 }
+    		 } else {
+    			 for (s<-busySlot){  
+    				 var tt= nd.children(s);
+    				 if (abs(dist-tt._1)<=R){
+    					 var dist1=eucDistance(item._2,tt._2._2);
+    					 if (dist1<=R){
+    						 queryRes=queryRes:+tt._2;  
+    					 }
+    				 }  
+    			 }
+    		 }
+    		 return queryRes
+     }
+     
+    private[mtree] def getRadius():Double={
+      var busySlot=(0 to capacity-1).toArray.diff(idleSlot.toSeq)
+      var r= mark match {
+        case true => busySlot.map(x=>children(x)._1+children(x)._3.radius).max
+        case false => busySlot.map(x=>children(x)._1).max
       }
-      prt.degree += 1
-      mark = false
-    }
+      return r;
+    } 
+    private[mtree] def delete(item:Tuple2[T,DenseVector[Double]])(implicit nd:Node[T]):Array[Tuple2[T,DenseVector[Double]]]={      
+    	
+      var deleted=Array[Tuple2[T,DenseVector[Double]]]();      
+    	var busySlot=(0 to nd.capacity-1).toArray.diff(nd.idleSlot.toSeq);
+    	var dist=eucDistance(item._2,nd.anchor._2);    	
+    		if (nd.mark==true){
+    			for (s<-busySlot){  
+    				var tt= nd.children(s);
+    				if (abs(dist-tt._1)<=tt._3.radius){
+    					var dist1=eucDistance(item._2,tt._2._2);
+    					if (dist1<=tt._3.radius){
+    						deleted= deleted++tt._3.delete(item)(tt._3);      						
+    					}
+    				}  
+    			}
+    		} else {
+    			for (s<-busySlot){  
+    				if (item._1==nd.children(s)._2._1){
+    					nd.idleSlot=nd.idleSlot:+s;
+    					deleted=deleted:+nd.children(s)._2;    					
+    				}    		  
+    			}
+    			if ((0 to nd.capacity-1).toArray.diff(nd.idleSlot.toSeq).isEmpty==true){
+    				radius=0.0;
+    			} else {
+    				nd.radius=getRadius();  
+    			}
+
+    		  
+    	}   	
+    	return deleted;
+    } 
   }  
   
 }
 
 }
-
-
-/*
-case class Point(content:Array[Double],ndId:String);
-case class Entry(obj:String,nextNdId:String,distance2ParentObj:Double,radius:Double);
-case class MtNd(id:String,parentObj:String,entries:Array[Entry],dist2ParentNd:Tuple2[String,Double],typ:String);
-
-case class  QueryResult(ndId:String,objId:String);
-class mtree extends util {
-  var mtNdMap=scala.collection.mutable.Map[String,MtNd]();
-  var ptMap=scala.collection.mutable.Map[String,Point]();  
-  var ndCount=1;
-  var ndCapacity=10;   //100
-  implicit var rootNd=MtNd(ndCount.toString,"",Array[Entry](),("None",0.0),"leaf");
-  implicit var colName=Array[String]();
-	implicit var colAttr=Array[(String,String,String,String)]();
-	
-	def initialization(capacity:Int,pcolName:Array[String],
-      pcolAttr:Array[(String,String,String,String)]){
-	  colName=pcolName;
-    colAttr=pcolAttr;    
-    ndCapacity=capacity;    
-	}
-  
-  def create(id:String,content:Array[Double]){
-    var ndid=ndCount.toString;
-    rootNd=MtNd(ndid,id,Array(Entry(id,"None",0.0,0.0)),("None",0.0),"leaf");
-    mtNdMap=mtNdMap+(ndid->rootNd);
-    ptMap=ptMap+(id->Point(content,ndid));    
-  }
-  def insert(objId:String,curContent:Array[Double]){
-	  privateInsert(objId,curContent)(rootNd);
-  }
-  def privateInsert(objId:String,curContent:Array[Double])(implicit nd:MtNd){
-    if (!ptMap.contains(objId)){
-    	ptMap=ptMap+(objId->Point(curContent,"None"));  
-    }    
-    if (nd.typ=="leaf"){
-      var dist2ParentObj=eucDistance(ptMap(nd.parentObj).content,curContent);
-      var entryItem=Entry(objId,"None",dist2ParentObj,0.0);
-    	if(nd.entries.size<ndCapacity){
-    		mtNdMap=mtNdMap-nd.id;
-    		mtNdMap=mtNdMap+(nd.id->MtNd(nd.id,nd.parentObj,nd.entries:+entryItem,nd.dist2ParentNd,nd.typ));    		
-    		//Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,nd.entries.map(_.distance2ParentObj).max);
-    		//ptMap=ptMap-objId+(objId->Point(curContent,nd.id));
-    	} else {
-    		split(nd,entryItem);
-    	}  
-    } else {    
-      var objNdId=""; 
-      var Nin=Map[String,Double]();   
-      var subNin=Map[String,Double]();
-      
-      for (entry<-nd.entries){
-        var tempDist=eucDistance(ptMap(entry.obj).content,curContent);  
-    	  
-    	  Nin=Nin+(entry.nextNdId->tempDist);
-    	  if (tempDist<=entry.radius){
-    	    subNin=subNin+(entry.nextNdId->tempDist);
-    	  }
-      }     
-      if (subNin.isEmpty){  
-        objNdId=Nin.minBy(x=>(x._2-nd.entries.filter(_.nextNdId==x._1).head.radius))._1;    	  
-    	  mtNdMap=mtNdMap-nd.id;
-    	  var tEntryItem=nd.entries.filter(_.nextNdId==objNdId).head;
-    	  var tentry=nd.entries.filter(_.nextNdId!=objNdId):+Entry(tEntryItem.obj,tEntryItem.nextNdId,tEntryItem.distance2ParentObj,Nin(objNdId));
-    	  mtNdMap=mtNdMap+(nd.id->MtNd(nd.id,nd.parentObj,tentry,nd.dist2ParentNd,nd.typ));
-      } else {
-        objNdId=subNin.minBy(_._2)._1;
-      }
-      privateInsert(objId,curContent)(mtNdMap(objNdId));      
-    }
-    rootNd=mtNdMap(rootNd.id);
-  }
-  def split(nd:MtNd,entry:Entry){        
-    if (nd.dist2ParentNd._1=="None"){     //root node
-      var tempDistSet=nd.entries.map(_.distance2ParentObj);
-      var minDist=tempDistSet.min;
-      var maxDist=tempDistSet.max;
-      
-      var sonObjs=nd.entries.filter(x=>x.distance2ParentObj==maxDist||x.distance2ParentObj==minDist).map(_.obj);
-      
-      var separatedEntry=entryDistribution(sonObjs(0),sonObjs(1),nd.entries:+entry); 
-      var newEntry=Array[Entry]();
-      for (x <-sonObjs){
-        var dist2parentObj=nd.entries.filter(_.obj==x).head.distance2ParentObj;
-    	  var tempEntries=separatedEntry(x);
-    	  var newRadius=getRadius(tempEntries,nd.typ);
-    	  ndCount=ndCount+1;
-    	  var newNd=ndCount.toString;
-    	  mtNdMap=mtNdMap+(newNd->MtNd(newNd,x,tempEntries,(nd.id,dist2parentObj),nd.typ));    	  
-    	  newEntry=newEntry:+Entry(x,newNd,dist2parentObj,newRadius);    	  
-      }; 
-      mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntry,("None",0.0),"route"));   //register new route objectives to the parent node;
-            
-    } else {
-    	var parentNdId=nd.dist2ParentNd._1;     
-    	var parentNd=mtNdMap(parentNdId);
-    	var tempDistSet=nd.entries.map(_.distance2ParentObj);    	  
-    	var maxDist=tempDistSet.max;
-    	var candidate=nd.entries.filter(_.distance2ParentObj==maxDist).head.obj; 
-    	var newEntry=Array[Entry]();
-    	
-    	var separatedEntry=entryDistribution(candidate,nd.parentObj,nd.entries:+entry);    	
-    	for (x<-Array(candidate,nd.parentObj)){    	  
-    		var dist2ParentNd= x match{
-    		  case nd.parentObj => nd.dist2ParentNd._2
-    		  case default => eucDistance(ptMap(mtNdMap(parentNdId).parentObj).content,ptMap(x).content)
-    		};    		
-    	  var tempEntries=separatedEntry(x);
-    	  var newRadius=getRadius(tempEntries,nd.typ);
-    	  if (x==nd.parentObj){
-    	    mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,x,tempEntries,nd.dist2ParentNd,nd.typ));
-    	    var newParentEntries=parentNd.entries.filter(_.obj!=x):+Entry(x,nd.id,newRadius,nd.dist2ParentNd._2);
-    	    mtNdMap=mtNdMap-parentNdId+(parentNdId->MtNd(parentNdId,parentNd.parentObj,newParentEntries,parentNd.dist2ParentNd,parentNd.typ));
-    	  } else {
-    		  ndCount=ndCount+1;
-    		  var newNd=ndCount.toString;
-    		  mtNdMap=mtNdMap+(newNd->MtNd(newNd,x,tempEntries,(parentNdId,dist2ParentNd),nd.typ));
-    		  newEntry=newEntry:+Entry(x,newNd,dist2ParentNd,newRadius); 
-    	  }    		
-    	}    	
-    	if (parentNd.entries.length==ndCapacity){
-    		split(parentNd,newEntry.head);
-    	} else {    		
-    		mtNdMap=mtNdMap-parentNdId+
-    				(parentNdId->MtNd(parentNdId,parentNd.parentObj,parentNd.entries++newEntry,parentNd.dist2ParentNd,parentNd.typ));
-    	}
-      
-    }
-    
-  }
-  
-  def getRadius(entries:Array[Entry],typ:String):Double={
-    var dist=0.0
-    if (entries.length>0){
-    	dist= typ match {
-    	case "leaf" => entries.map(_.distance2ParentObj).max
-    	case default => entries.map(x=>x.distance2ParentObj+x.radius).max
-    	}  
-    }    
-        
-    return dist;
-  }
-  def entryDistribution(o1:String,o2:String,entries:Array[Entry]):scala.collection.mutable.Map[String,Array[Entry]]={
-    
-    var tempSepMap=scala.collection.mutable.Map(o1->Array[Entry](),o2->Array[Entry]());
-    for (id<-entries){    
-      
-    	var dist1=eucDistance(ptMap(o1).content,ptMap(id.obj).content);
-    	var dist2=eucDistance(ptMap(o2).content,ptMap(id.obj).content);          
-    	if (dist1>=dist2){    	  
-    		tempSepMap(o2)=tempSepMap(o2):+Entry(id.obj,id.nextNdId,dist2,id.radius);
-    	} else {
-    		tempSepMap(o1)=tempSepMap(o1):+Entry(id.obj,id.nextNdId,dist1,id.radius);
-    	}
-
-    }
-    return tempSepMap;
-  }
-  def rangeQuery(id:String,radius:Double)(implicit nd:MtNd):Array[QueryResult]={
-    var neig=Array[QueryResult]();     
-    var dist=eucDistance(ptMap(nd.parentObj).content,ptMap(id).content);
-    if (nd.typ!="leaf"){      
-      for (x<-nd.entries if math.abs(dist-x.distance2ParentObj)<=(radius+x.radius)){        	
-        var dist1=eucDistance(ptMap(x.obj).content,ptMap(id).content);
-        if (dist1<(radius+x.radius)) {
-          neig=neig++rangeQuery(id,radius)(mtNdMap(x.nextNdId));
-        }
-      }
-    } else {
-      for (x<-nd.entries if math.abs(dist-x.distance2ParentObj)<=radius){
-        var dist1=eucDistance(ptMap(x.obj).content,ptMap(id).content);
-        if (dist1<=radius) {
-          neig=neig:+QueryResult(nd.id,x.obj);
-        }
-      }
-    }    
-    return neig;
-  }
-  def query(id:String,content:Array[Double],radius:Double):Array[String]={
-    var qr=rangeQuery(id,radius)(rootNd);    
-    return(qr.map(_.objId));
-  }
-  
-  def delUpdate(id:String,content:Array[Double],nd:MtNd,candidateEntry:Entry){
-    if (nd.typ=="leaf"){
-      var parentNdId=nd.dist2ParentNd._1;
-      var newEntries=nd.entries.filter(_.obj!=id);      
-      mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
-      var radius=getRadius(newEntries,nd.typ);
-      if(parentNdId!="None")
-    	  delUpdate(id,content,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
-      
-    } else {
-    	if (nd.dist2ParentNd._1=="None"){
-    		var newEntries=nd.entries.filter(_.obj!=candidateEntry.obj):+candidateEntry;
-    		mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));      
-    	} else {
-    		var parentNdId=nd.dist2ParentNd._1;
-    		var newEntries=nd.entries.filter(_.obj!=candidateEntry.obj):+candidateEntry;      
-    		mtNdMap=mtNdMap-nd.id+(nd.id->MtNd(nd.id,nd.parentObj,newEntries,nd.dist2ParentNd,nd.typ));
-    		var radius=getRadius(newEntries,nd.typ);
-    		delUpdate(id,content,mtNdMap(parentNdId),Entry(nd.parentObj,nd.id,nd.dist2ParentNd._2,radius));
-    	}
-    }
-  }
-  def delete(id:String,content:Array[Double]){
-    
-    var masterNdId=rangeQuery(id,0.1)(mtNdMap(rootNd.id)).filter(_.objId==id).head.ndId;
-	  var masterNd=mtNdMap(masterNdId);
-	  var newEntries=masterNd.entries.filter(_.obj!=id);
-	  //delUpdate(id,masterNd,masterNd.entries.filter(_.obj==id).head);
-	  mtNdMap=mtNdMap-masterNdId+(masterNdId->MtNd(masterNd.id,masterNd.parentObj,newEntries,masterNd.dist2ParentNd,masterNd.typ));
-	  	  
-    if (mtNdMap.filter(_._2.parentObj==id).isEmpty){
-		  ptMap=ptMap-id;  
-	  }
-	  rootNd=mtNdMap(rootNd.id);
-  }
-}
-*/

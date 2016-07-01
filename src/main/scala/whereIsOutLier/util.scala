@@ -71,7 +71,18 @@ trait util {
 	  var tempNumDistVec=item2(::,numericAttr).toDenseMatrix-DenseVector.ones[Double](item2.rows)*item1(numericAttr).toDenseVector.t;	  
 	  var numDistVec=breeze.linalg.sum(breeze.numerics.pow(tempNumDistVec,2.0),Axis._1);
 	  var tempNomDistMx=(item2(::,numericAttr).toDenseMatrix:==DenseVector.ones[Double](item2.rows)*item1(numericAttr).toDenseVector.t);
-	  var nomDistVec=breeze.linalg.sum(tempNomDistMx.map(x=>x match {case true => 1.0   case false=> 0.0}),Axis._1);	  
+	  var nomDistVec=breeze.linalg.sum(tempNomDistMx.map(x=>x match {case true => 0.0   case false=> 1.0}),Axis._1);	  
+	  var tsum=breeze.numerics.sqrt(nomDistVec+numDistVec);
+	  return(tsum);
+  }
+   def eucDistance(item1:DenseVector[Double],item2:DenseVector[Double])(implicit colName:Array[String], colAttr:Array[(String,String,String,String)]):Double ={
+		var usedAttr=colAttr.filter(x=>colName.contains(x._1)==true && x._4=="used")
+	  var numericAttr=usedAttr.filter(_._2=="numeric").map(x=>colName.indexOf(x._1)).toVector;
+	  var nominalAttr=usedAttr.filter(_._2!="numeric").map(x=>colName.indexOf(x._1)).toVector;  
+	  var tempNumDistVec=breeze.numerics.pow(item2(numericAttr).toDenseVector-item1(numericAttr).toDenseVector,2);	  
+	  var numDistVec=breeze.linalg.sum(tempNumDistVec);
+	  var tempNomDistMx=(item2(numericAttr).toDenseVector:==item2(numericAttr).toDenseVector);
+	  var nomDistVec=breeze.linalg.sum(tempNomDistMx.map(x=>x match {case true => 0.0   case false=> 1.0}));	  
 	  var tsum=breeze.numerics.sqrt(nomDistVec+numDistVec);
 	  return(tsum);
   }

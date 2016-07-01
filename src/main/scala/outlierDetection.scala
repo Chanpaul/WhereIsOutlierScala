@@ -14,6 +14,7 @@ import java.util.Scanner
 import java.io._
 import scala.math
 import com.typesafe.config._
+import com.github.tototoshi.csv._
 
 import whereIsOutLier._
 
@@ -31,7 +32,7 @@ case class TimeUnit(quantity:Int,unite:String);
 
 object outlierDetection {
   
-  def main(args:Array[String]){   //outlierdetectionmain
+  def outlierdetectionmain(args:Array[String]){   //outlierdetectionmain
 	  //val dataDir="C://Users//wangc//DataSet//CleanedData";
 	  //val window=Window(12.0,1);  //width=12.0,slide=1;  
 	  
@@ -62,7 +63,7 @@ object outlierDetection {
 		  */
 		  
 		  var newConfigCod = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(slidSz))
-				  .withValue("win.width", ConfigValueFactory.fromAnyRef(100000))
+				  .withValue("win.width", ConfigValueFactory.fromAnyRef(1000))   //100000
 				  .withValue("outlier.fileName", ConfigValueFactory.fromAnyRef("cod_slideSize_"+slidSz));
 		  var tcod=new cod;
 		  tcod.setConfig(newConfigCod);
@@ -127,18 +128,18 @@ object outlierDetection {
 		  }
 	  }*/
   }
-  def cleanBioSensorMain(args:Array[String]){      //cleanBioSensorMain
+  def main(args:Array[String]){      //cleanBioSensorMain
     val conf = new SparkConf().setAppName("WhereIsOutlier")
 			  .setMaster("local[2]")			  
 	  val sc = new SparkContext(conf);
 	  val sqlContext = new org.apache.spark.sql.SQLContext(sc);
-	  /*
-	   * //preliminary integrate
+	  /* 
+	  //preliminary integrate
 	  var srcDir="C://Users//wangc//DataSet//BoyerData//";
 	  var objDir="C://Users//wangc//DataSet//CleanedData//"
 	  var objPrefix="Patient";
 	  cleanMultiple(srcDir,objDir,objPrefix);
-	  * */
+	  */
 	  //aggregate and sort
 	  var timeUnit=Array(TimeUnit(1,"second"),TimeUnit(30,"second"),TimeUnit(1,"minute"),
 	      TimeUnit(10,"minute"),TimeUnit(30,"minute"),TimeUnit(1,"hour"));    
@@ -297,14 +298,38 @@ object outlierDetection {
 	    		.groupBy("year","month","day","hour")	    			    		
 	    		.agg(avg("Z_axis").alias("Z_axis"), avg("Y_axis").alias("Y_axis"),avg("X_axis").alias("X_axis"),avg(col("Celsius")),avg(col("EDA")),avg(col("Battery")),avg(col("Event")))
 	    		.sort("year", "month","day","hour");
- 	  } 
-	  
-	  	  
+ 	  }	   
+	    	  
 	  newDf.coalesce(1)
 	  .write
 	  .format("com.databricks.spark.csv")	  
 	  .option("header", "true")		  
 	  .save(objFile);  //"newcars.csv"
+	  	  
+	  val csvRead=CSVReader.open(new File(objFile+"//part-00000"));
+	  val csvWrite=CSVWriter.open(new File(objFile+"//part-00000.diff"))
+	  val tdf=csvRead.allWithHeaders();
+	  //val header=tdf.head.keys.toList;
+	  var header=newDf.columns.toList
+	  csvWrite.writeRow(header)
+	  var lineNum=tdf.size;
+	  var old=tdf.head
+	  val colNames=Array("Z_axis", "Y_axis","X_axis","EDA");
+	  var otherCol=header.diff(colNames.toSeq)
+	  for (i<-1 to lineNum){
+	    var tempRow=List[String]()
+	    for (cn<-header){
+	      cn match {
+	        case c1 if colNames.contains(c1)==false =>tempRow=tempRow:+tdf(i).apply(cn)
+	        case "EDA"   =>tempRow=tempRow:+math.abs(tdf(i).apply(cn).toDouble-tdf(i-1).apply(cn).toDouble).toString
+	        case _  => tempRow=tempRow:+(tdf(i).apply(cn).toDouble-tdf(i-1).apply(cn).toDouble).toString
+	      }
+	    }    
+	    csvWrite.writeRow(tempRow);
+	  }
+	  csvRead.close()
+	  csvWrite.close()
+  
   }
   def myRead[T](srcFile:String,delimiter:String,sqlContext:SQLContext) {
 	  import sqlContext.implicits._
