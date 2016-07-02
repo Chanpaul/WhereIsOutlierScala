@@ -14,7 +14,7 @@ import java.util.Scanner
 import java.io._
 import scala.math
 import com.typesafe.config._
-import com.github.tototoshi.csv._
+//import com.github.tototoshi.csv._
 
 import whereIsOutLier._
 
@@ -306,30 +306,40 @@ object outlierDetection {
 	  .option("header", "true")		  
 	  .save(objFile);  //"newcars.csv"
 	  	  
-	  val csvRead=CSVReader.open(new File(objFile+"//part-00000"));
-	  val csvWrite=CSVWriter.open(new File(objFile+"//part-00000.diff"))
-	  val tdf=csvRead.allWithHeaders();
-	  //val header=tdf.head.keys.toList;
+	  val writer = new PrintWriter(new File(objFile+"//part-00000.diff"));
+	  var lines=scala.io.Source.fromFile(objFile+"//part-00000").getLines;
+	  
 	  var header=newDf.columns.toList
-	  csvWrite.writeRow(header)
-	  var lineNum=tdf.size;
-	  var old=tdf.head
-	  val colNames=Array("Z_axis", "Y_axis","X_axis","EDA");
-	  var otherCol=header.diff(colNames.toSeq)
-	  for (i<-1 to lineNum){
-	    var tempRow=List[String]()
-	    for (cn<-header){
-	      cn match {
-	        case c1 if colNames.contains(c1)==false =>tempRow=tempRow:+tdf(i).apply(cn)
-	        case "EDA"   =>tempRow=tempRow:+math.abs(tdf(i).apply(cn).toDouble-tdf(i-1).apply(cn).toDouble).toString
-	        case _  => tempRow=tempRow:+(tdf(i).apply(cn).toDouble-tdf(i-1).apply(cn).toDouble).toString
-	      }
-	    }    
-	    csvWrite.writeRow(tempRow);
+	  	  
+	  val tempColNames=Array("Z_axis", "Y_axis","X_axis","EDA");	  
+	  var otherCol=header.diff(tempColNames.toSeq)
+	  var ptCount=0;
+	  var origColName=Array[String]();
+	  var old=Array[Tuple2[String,Double]]();
+	  for (line<-lines){
+		  if (ptCount==0){
+		    origColName=line.split(",").map(_.trim)//.filter(_!="ID");		    
+			  writer.write(line+"\n");
+		  } else{
+		    var curPt=line.split(",").map(_.trim).map(x=>{x match {
+		    case y if x.contains(".") =>x.toDouble
+		    case z if !x.contains(".") =>x.toInt.toDouble
+		    }
+		    });
+		    
+		    if (old.isEmpty==false){
+		      var newPt=Array[Double]();		      
+		      origColName.zip(curPt).foreach(yy=>yy match {
+		    		case c1 if tempColNames.contains(c1._1)==false =>newPt=newPt:+yy._2
+		    		case c2 if c2._1=="EDA" =>newPt=newPt:+math.abs(yy._2-old.filter(_._1=="EDA").head._2)
+		    		case _  => newPt=newPt:+(yy._2-old.filter(_._1==yy._1).head._2)
+		    		});	
+		      writer.write(newPt.mkString(",")+"\n");
+		    }
+		    old=origColName.zip(curPt);
+		  }
 	  }
-	  csvRead.close()
-	  csvWrite.close()
-  
+	  writer.close;
   }
   def myRead[T](srcFile:String,delimiter:String,sqlContext:SQLContext) {
 	  import sqlContext.implicits._
