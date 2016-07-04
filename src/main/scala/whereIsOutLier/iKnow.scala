@@ -26,6 +26,8 @@ import breeze.linalg._
 
 class iKnow extends util { 
 	type IKnowSlide = iKnow.IKnowSlide
+	type IKnowPt =iKnow.IKnowPt
+	type IKnowClust =iKnow.IKnowClust
   private var window=Window(12.0,1);  //width=12.0,slide=1;	  
   private var outlierParam=OutlierParam("ThreshOutlier",12.62,6); 
      
@@ -113,7 +115,7 @@ class iKnow extends util {
 	  writer.write(msg);     
   }
   
-  def leapMain(sqlContext:SQLContext){    
+  def iknowMain(sqlContext:SQLContext){    
     import sqlContext.implicits._;
     val dataFile=srcDataDir+srcMiddle+srcDataFileName;
     /*
@@ -129,10 +131,11 @@ class iKnow extends util {
     var firstDataItem=df.first;
     * */         
 	  var ptCount=0;	
-    var id="1";
-    
-	  var slideUnit=scala.collection.mutable.Map[String,Tuple2[LeapPtInfo,Evidence]]();
+    var id="1";    
+	  //var slideUnit=scala.collection.mutable.Map[String,Tuple2[Int,IKnowPt]]();
 	  var slideId=1;
+	  var tSlide=new IKnowSlide(slideId);	  
+	  slides=slides+(slideId->tSlide);
 	  val writer = new PrintWriter(new File(resDataDir+"//"+resDataFileName));
 	  var lines=scala.io.Source.fromFile(dataFile).getLines;
 	  //var mt=new emtree.emtree;
@@ -141,75 +144,74 @@ class iKnow extends util {
 	  var begTime=System.nanoTime;
 	  //var meter=new MemoryMeter;
 	  var runtime=Runtime.getRuntime();
-	  var totalMem=runtime.totalMemory();
-	  
+	  var totalMem=runtime.totalMemory();	  
 	  val pattern=new Regex("^[\\s]+\n");
-	  
-	  for(line<-lines if (pattern.findAllIn(line).isEmpty)) {	 	    
-	    println(ptCount);
+	  var ptIdInSlide=0;	  
+	  for(line<-lines if (pattern.findAllIn(line).isEmpty)) {	    
+		  println(ptCount);
 		  id=ptCount.toString;
 		  var curPt=Array[Double]();
 		  if (ptCount==0){
 			  colName=line.split(",").map(_.trim)//.filter(_!="ID");
 		  } else{
-		    curPt=line.split(",").map(_.trim).map(x=>{x match {
-		    case y if x.contains(".") =>x.toDouble
-		    case z if !x.contains(".") =>x.toInt.toDouble
-		    }
-		    });			    
-		    var tPtInfo=LeapPtInfo(id,slideId,ptCount.toDouble,curPt);	  	    
-		    slideUnit=slideUnit+(id->Tuple2(tPtInfo,Evidence(0,0,Map[Int,Int](),"Outlier")));		    
+			  curPt=line.split(",").map(_.trim).map(x=>{x match {
+			  case y if x.contains(".") =>x.toDouble
+			  case z if !x.contains(".") =>x.toInt.toDouble
+			  }
+			  });			    
+			  var tPtInfo=new IKnowPt(id,slideId,ptCount.toDouble); 
+			  slides(slideId).ptMap=slides(slideId).ptMap+(id->Tuple2(ptIdInSlide,tPtInfo));
+			  if (slides(slideId).eleMx.rows==0){
+				  slides(slideId).eleMx=DenseMatrix(curPt.toSeq);  
+			  } else {
+				  slides(slideId).eleMx=DenseMatrix.vertcat(slides(slideId).eleMx,DenseMatrix(curPt.toSeq));
+			  }     
+			  searching(slideId,id);
 		  }
-	    ptCount=ptCount+1;
-	    
-	    if (slideUnit.size==window.slideLen){	      
-	      	      
-	      var expSlidID=0;
-	      var expTrigered=Array[Tuple2[String,Int]]();
-	      var curWindowSz=slideUnit.size;
-	      slides.foreach(x=>curWindowSz=curWindowSz+x._2.ptMap.size)
-	      if (curWindowSz>window.width){
-	    	  var from=slides.minBy(_._1)._2.ptMap.minBy(_._2._1.startTime)._2._1.startTime.toString;
-	    	  var to=slides.maxBy(_._1)._2.ptMap.maxBy(_._2._1.startTime)._2._1.startTime.toString;
-	        var curFreeMem=runtime.freeMemory();
-	    		var cpuUsage=(System.nanoTime-begTime)/1000000000.0;
-	    		var memUsage=math.abs(totalMem-curFreeMem)/(1024*1024);  	    		
-	    		printAll(writer,from,to,memUsage,cpuUsage);	    		
-	    		expSlidID=slides.minBy(_._1)._1;
-	    			 
-	    		expTrigered=slides.apply(expSlidID).expTriger;
-	    		slides=slides-expSlidID;
-	    		//printOutlier(writer,from,to,memUsage,cpuUsage);
-	    		//reset profile;
-	    		begTime=System.nanoTime;
-	      }
-	      var tempSlideMx=DenseMatrix.zeros[Double](1,colName.length);      //record data item of each slide.
-	      
-	      slideUnit.foreach(s=>{tempSlideMx=DenseMatrix.vertcat(tempSlideMx,DenseMatrix(s._2._1.content.toSeq))});	      
-	      slides=slides+(slideId->Slide(slideId,tempSlideMx(1 to -1,::),Array[Tuple2[String,Int]](),slideUnit));
-	      
-	    	
-	     
-	      if (expTrigered.isEmpty==false){
-	    	  for (p<-expTrigered){
-	    		  var tempPt=slides.apply(p._2).ptMap(p._1);
-	    		  var tempEvidence=tempPt._2;
-	    		  var tempPtInfo=tempPt._1;
-	    		  
-	    		  var lastSlidId=tempEvidence.lastSlid;	    		  
-	    		  
-	    		  thresh(tempPt,slides.filter(_._1>lastSlidId));
-	    		    
-	    	  }  
-	      }
-	      
-	      slideUnit.foreach(s=>thresh(s._2,slides));
-	      
-	      slideUnit=slideUnit.empty;
-	      slideId=slideId+1;	    	    		            	       
-	    }	    	    
+		  ptCount=ptCount+1;
+		  ptIdInSlide=ptIdInSlide+1;
+		  if (slides(slideId).ptMap.size==window.slideLen){
+			  slideId=slideId+1;
+			  ptIdInSlide=0;
+			  var tSlide=new IKnowSlide(slideId);	  
+			  slides=slides+(slideId->tSlide);
+		  }
+
+		  if(ptCount%window.width==0){  //data expiration		    
+			  var from=slides.minBy(_._1)._2.ptMap.minBy(_._2._2.start)._2._2.start.toString;
+			  var to=slides.maxBy(_._1)._2.ptMap.maxBy(_._2._2.start)._2._2.start.toString;
+			  var curFreeMem=runtime.freeMemory();
+			  var cpuUsage=(System.nanoTime-begTime)/1000000000.0;
+			  var memUsage=math.abs(totalMem-curFreeMem)/(1024*1024);  	    		
+			  printAll(writer,from,to,memUsage,cpuUsage);	    		
+			  var expSlidID=slides.minBy(_._1)._1;
+
+			  var expTrigered=slides.apply(expSlidID).expTriger;
+			  slides=slides-expSlidID;
+			  //printOutlier(writer,from,to,memUsage,cpuUsage);
+			  //reset profile;
+			  begTime=System.nanoTime;
+			  if (expTrigered.isEmpty==false){
+				  for (p<-expTrigered){
+					  var tempPt=slides.apply(p._2).ptMap(p._1);
+					  var tempEvidence=tempPt._2;
+					  var tempPtInfo=tempPt._1;
+
+					  var lastSlidId=tempEvidence.lastSlid;	    		  
+
+					  thresh(tempPt,slides.filter(_._1>lastSlidId));
+
+				  }  
+			  }
+		  }    	
+
+
 	  }
 	  writer.close;
+  }
+  
+  def search(slideId:Int,ptId:String){
+    
   }
   
   def thresh(pt:Tuple2[LeapPtInfo,Evidence],slidSet:scala.collection.mutable.Map[Int,Slide]){
@@ -294,28 +296,23 @@ class iKnow extends util {
 
 object iKnow {  
 
-	class IKnowPt{
-	  private[iKnow] var id="";
-	  private[iKnow] var startTime=0.0
-		private[iKnow] var succ=0;
-		private[iKnow] var lastChkSlid=0;
-		private[iKnow] var prev=Map[Int,Int]();
-		private[iKnow] var status="Outlier"; 
+	class IKnowPt(id:String,slidId:Int,startTime:Double){	  
+		private[iKnow] var succ=0;		
+		private[iKnow] var prev=scala.collection.mutable.Map[Int,Int]();
+		private[iKnow] var status="Outlier";		
+		private[iKnow] var lastChkSlide=slidId;
+		def start=startTime;
 	}	  
 		
-	class IKnowSlide{
-	  private[iKnow] var id=0;
-	  private[iKnow] var ptMap=scala.collection.mutable.Map[String,Tuple2[Int,IKnowPt]]();
+	class IKnowSlide(id:Int){
+	  private[iKnow] var ptMap=scala.collection.mutable.Map[String,Tuple2[Int,IKnowPt]]();   //Tuple2(pt index in elemX, IKnowPt)
 	  private[iKnow] var eleMx:DenseMatrix[Double];	  
-	  private[iKnow] var expTriger=Array[Tuple2[Int,String]]();	  
-	  private[iKnow] var clust=scala.collection.mutable.Map[String,IKnowClust]();
+	  private[iKnow] var expTriger=Array[Tuple2[Int,String]]();	  //Tuple2(SlideId,clustId)
+	  private[iKnow] var clust=scala.collection.mutable.Map[String,IKnowClust]();  //Map[headId,IKnowClust]
 	}
-	class IKnowClust{
-	  private[iKnow] var head=""
-		private[iKnow] var element=Array[String]();		
-		//private[iKnow] var ptMap:scala.collection.mutable.Map[String,Tuple2[LeapPtInfo,Evidence]];
+	class IKnowClust(head:String){	  
+		private[iKnow] var element=Array[String]();			
 }
-
   
 }
 
