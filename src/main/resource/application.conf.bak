@@ -19,6 +19,6 @@ dataattr {
    name="year,month,day,hour,avg(Z-axis),avg(Y-axis),avg(X-axis),avg(Celsius),avg(EDA),avg(Battery),avg(Event)"
    label="None"
    type="(year,nominal,Int) (month,nominal,Int) (day,nominal,Int) (hour,nominal,Int) (minute,nominal,Int) (second,nominal,Int) (Z_axis,numeric,Double) (Y_axis,numeric,Double) (X_axis,numeric,Double) (Celsius,numeric,Double) (EDA,numeric,Double) (avg(Battery),numeric,Double) (avg(Event),numeric,Double)"
-   notUsed="0,1,2,3"   
-   used="4,7,8"
+   notUsed="year,month,day,hour"   
+   used="Z_axis,Y_axis,X_axis,Celsius,EDA"
 }

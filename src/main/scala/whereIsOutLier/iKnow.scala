@@ -1,3 +1,4 @@
+
 package whereIsOutLier
 
 import org.apache.spark.{SparkContext, SparkConf}
@@ -294,24 +295,24 @@ class iKnow extends util {
   }
 }
 
-object iKnow {  
-
-	class IKnowPt(id:String,slidId:Int,startTime:Double){	  
+object iKnow {
+	class IKnowPt(id:String,content:DenseVector[Double]){	  
 		private[iKnow] var succ=0;		
 		private[iKnow] var prev=scala.collection.mutable.Map[Int,Int]();
 		private[iKnow] var status="Outlier";		
-		private[iKnow] var lastChkSlide=slidId;
-		def start=startTime;
+		private[iKnow] var lastChkSlide=0;		
+		private[iKnow] var start=0.0;
 	}	  
 		
-	class IKnowSlide(id:Int){
-	  private[iKnow] var ptMap=scala.collection.mutable.Map[String,Tuple2[Int,IKnowPt]]();   //Tuple2(pt index in elemX, IKnowPt)
-	  private[iKnow] var eleMx:DenseMatrix[Double];	  
+	class IKnowSlide(id:Int){	   
 	  private[iKnow] var expTriger=Array[Tuple2[Int,String]]();	  //Tuple2(SlideId,clustId)
-	  private[iKnow] var clust=scala.collection.mutable.Map[String,IKnowClust]();  //Map[headId,IKnowClust]
+	  private[iKnow] var rootClust=null:IKnowClust;
 	}
-	class IKnowClust(head:String){	  
-		private[iKnow] var element=Array[String]();			
+	class IKnowClust(head:DenseVector[Double]){	
+	  private[iKnow] var eleMx=DenseMatrix.ones[Double](1,head.data.size):*head.t;	
+		private[iKnow] var element=Array[IKnowPt]();	
+		private[iKnow] var nextClust=null:IKnowClust;
+		private[iKnow] var neighborClusts=scala.collection.mutable.Map[Int,Array[IKnowClust]]();     //		
 }
   
 }

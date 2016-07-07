@@ -42,14 +42,14 @@ object outlierDetection {
 			  //.setJars(Seq("/a/b/x.jar", "/c/d/y.jar"));
 	  val sc = new SparkContext(conf);
 	  val sqlContext = new org.apache.spark.sql.SQLContext(sc);
-	  var confFileName="ForestCover.conf";
-	  //var confFileName="application.conf";
+	  //var confFileName="ForestCover.conf";
+	  var confFileName="application.conf";
 	  var confDir="C://Users//wangc//workspace//WhereIsOutlierScala//src//main//resource//";
 	  val myConfigFile = new File(confDir+confFileName);
 	  
 	  val fileConfig = ConfigFactory.parseFile(myConfigFile);
 	  val config = ConfigFactory.load(fileConfig);
-	  
+	  /*
 	  for (slidSz<-Array(0.5,1,5,10,25,50).map(_*1000)){
 	    /*
 	    var newConfigLeap = config.withValue("win.slideLen", ConfigValueFactory.fromAnyRef(slidSz))
@@ -86,8 +86,11 @@ object outlierDetection {
 		  tcod.setConfig(newConfigCod);
 		  tcod.codMain(sqlContext);
 	    }	  
-	  /*
+	    * 
+	    */
+	  
 	  var timeUnit=Array("1second","30second","1minute","10minute","30minute","1hour");
+	  //var timeUnit=(1 to 60).toArray.map(_+"second") //("1second","30second","1minute","10minute","30minute","1hour");
 	  var unitPattern=new Regex("[a-zA-Z]+");
 	  var objDir="C://Users//wangc//Results//WhereIsOutlierScala";
 	  var winRange=3 to 24;
@@ -126,7 +129,7 @@ object outlierDetection {
 				  }
 			  }  
 		  }
-	  }*/
+	  }
   }
   def main(args:Array[String]){      //cleanBioSensorMain
     val conf = new SparkConf().setAppName("WhereIsOutlier")
@@ -141,8 +144,13 @@ object outlierDetection {
 	  cleanMultiple(srcDir,objDir,objPrefix);
 	  */
 	  //aggregate and sort
-	  var timeUnit=Array(TimeUnit(1,"second"),TimeUnit(30,"second"),TimeUnit(1,"minute"),
-	      TimeUnit(10,"minute"),TimeUnit(30,"minute"),TimeUnit(1,"hour"));    
+	  //var timeUnit=Array(TimeUnit(1,"second"),TimeUnit(30,"second"),TimeUnit(1,"minute"),
+	  //    TimeUnit(10,"minute"),TimeUnit(30,"minute"),TimeUnit(1,"hour"));
+	  //var timeUnit=Array(TimeUnit(1,"hour"));
+	  //var timeUnit=Array(TimeUnit(1,"second"),TimeUnit(30,"second"),TimeUnit(1,"minute"),
+	  //    TimeUnit(10,"minute"),TimeUnit(30,"minute"),TimeUnit(1,"hour"));
+	  //var timeUnit = (1 to 60).toArray.map(x=>TimeUnit(x,"minute"));
+	  var timeUnit = Array(TimeUnit(1,"day"));
 	  for (tu<-timeUnit){
 		  job4Clean(sqlContext,tu);  
 	  }	  
@@ -296,8 +304,13 @@ object outlierDetection {
 	    		.sort("year", "month","day","hour","minute");
 	    case "hour"  => df.withColumn("newHour",(df("hour")/timeUnit.quantity).cast("Int")).drop("hour").withColumnRenamed("newHour","hour")
 	    		.groupBy("year","month","day","hour")	    			    		
-	    		.agg(avg("Z_axis").alias("Z_axis"), avg("Y_axis").alias("Y_axis"),avg("X_axis").alias("X_axis"),avg(col("Celsius")),avg(col("EDA")),avg(col("Battery")),avg(col("Event")))
+	    		.agg(avg("Z_axis").alias("Z_axis"), avg("Y_axis").alias("Y_axis"),avg("X_axis").alias("X_axis"),avg("Celsius").alias("Celsius"),avg("EDA").alias("EDA"),avg("Battery"),avg("Event"))
 	    		.sort("year", "month","day","hour");
+	    case "day"  => df.withColumn("newDay",(df("day")/timeUnit.quantity).cast("Int")).drop("day").withColumnRenamed("newDay","day")
+	    		.groupBy("year","month","day")	    			    		
+	    		.agg(avg("Z_axis").alias("Z_axis"), avg("Y_axis").alias("Y_axis"),avg("X_axis").alias("X_axis"),avg("Celsius").alias("Celsius"),avg("EDA").alias("EDA"),avg("Battery"),avg("Event"))
+	    		.sort("year", "month","day");
+	    
  	  }	   
 	    	  
 	  newDf.coalesce(1)
